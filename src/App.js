@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/pages/Home';
+import CustomerLogin from './components/pages/Customer/Login';
+// import RestaurantLogin from './components/pages/Restaurant/Login';
+// import DeliveryAgentLogin from './components/pages/DeliveryAgent/Login';
+// import AdminLogin from './components/pages/Admin/Login';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route exact path='/home' element={<Home/>} />
+        <Route path="/Customer/Login" element={<CustomerLogin/>} />
+        {/* <Route path="/Restaurant/Login" element={<RestaurantLogin/>} />
+        <Route path="/DeliveryAgent/Login" element={<DeliveryAgentLogin/>} />
+        <Route path="/Admin/Login" element={<AdminLogin/>} /> */}
+      </Routes>
+    </Router>
   );
 }
 

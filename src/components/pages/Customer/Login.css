@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.background-image {
+  background-image: url('../../../imgs/background.webp');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 1200px;
+  display: flex;
+}
+
+.welcome-text {
+  flex: 1;
+  padding: 40px;
+}
+
+.welcome-text h1 {
+  font-weight: 700;
+  font-size: 60px;
+  color: #333;
+}
+
+.login-form {
+  flex: 1;
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.login-form h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.wrapper form .input-box {
+  margin: 18px 0;
+}
+
+form .input-box input {
+  height: 52px;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+  border-color: #4d5b81;
+}
+
+.input-box.button input {
+  color: #fff;
+  letter-spacing: 1px;
+  border: none;
+  background: #53565f;
+  cursor: pointer;
+}
+
+.input-box.button input:hover {
+  background: #818db6;
+}
+
+form .text h3 {
+  color: #333;
+  width: 100%;
+  text-align: center;
+}
+
+form .text h3 a {
+  color: #4b5161;
+  text-decoration: none;
+}
+
+form .text h3 a:hover {
+  text-decoration: underline;
+}
