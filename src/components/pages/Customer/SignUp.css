@@ -22,6 +22,7 @@
   transform: translateY(-50%);
   max-width: 1200px;
   display: flex;
+  flex-wrap: wrap-reverse;
 }
 
 .welcome-text {
@@ -35,7 +36,7 @@
   color: #333;
 }
 
-.login-form {
+.signup-form {
   flex: 1;
   background: #fff;
   padding: 40px;
@@ -43,7 +44,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
-.login-form h2 {
+.signup-form h2 {
   font-size: 22px;
   font-weight: 600;
   color: #333;
@@ -70,6 +71,25 @@ form .input-box input {
 .input-box input:focus,
 .input-box input:valid {
   border-color: #4d5b81;
+}
+
+form .input-box textarea {
+    height: 70px;
+    width: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+    border: 1.5px solid #C7BEBE;
+    border-bottom-width: 2.5px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+.input-box textarea:focus,
+.input-box textarea:valid {
+border-color: #4d5b81;
 }
 
 .input-button {

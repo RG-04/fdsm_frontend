@@ -5,9 +5,15 @@ import CustomerLogin from './components/pages/Customer/Login';
 // import RestaurantLogin from './components/pages/Restaurant/Login';
 // import DeliveryAgentLogin from './components/pages/DeliveryAgent/Login';
 // import AdminLogin from './components/pages/Admin/Login';
+import CustomerSignup from './components/pages/Customer/SignUp';
+import CustomerDashboard from './components/pages/Customer/Dashboard';
 
 
 function App() {
+
+  const customer_details = {name: "Dummy"}
+
+
   return (
     <Router>
       <Routes>
@@ -17,6 +23,11 @@ function App() {
         {/* <Route path="/Restaurant/Login" element={<RestaurantLogin/>} />
         <Route path="/DeliveryAgent/Login" element={<DeliveryAgentLogin/>} />
         <Route path="/Admin/Login" element={<AdminLogin/>} /> */}
+        <Route path="/Customer/SignUp" element={<CustomerSignup/>} />
+        {/* <Route path="Restaurant/SignUp" element={<CustomerLogin/>} />
+        <Route path="DeliveryAgent/SignUp" element={<CustomerLogin/>} />
+        <Route path="Admin/SignUp" element={<CustomerLogin/>} /> */}
+        <Route path="/Customer/Dashboard" element={<CustomerDashboard customer_details={customer_details}/>} />
       </Routes>
     </Router>
   );
