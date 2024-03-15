@@ -3,6 +3,7 @@
 .restaurant-list-page {
     margin: 0;
     padding: 0;
+    min-height: 100vh;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     background-color: #3b3636;
@@ -34,7 +35,7 @@
     transform: scale(1.05);
 }
 
-.restaurant-list-page .menu-button{
+.restaurant-list-page .menu-button {
     width: 40px;
     height: 40px;
     background: transparent;
@@ -46,7 +47,7 @@
     transition: 0.1s;
 }
 
-.restaurant-list-page .menu-button:hover{
+.restaurant-list-page .menu-button:hover {
     transform: scale(1.1);
 }
 
@@ -59,17 +60,17 @@
 }
 
 .restaurant-list-page .change .bar:nth-child(1) {
-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
 }
 
 .restaurant-list-page .change .bar:nth-child(2) {
-opacity: 0;
+    opacity: 0;
 }
 
 .restaurant-list-page .change .bar:nth-child(3) {
-transform: rotate(45deg) translate(-5px, -5px);
+    transform: rotate(45deg) translate(-5px, -5px);
 }
-  
+
 
 .restaurant-list-page .menu-container {
     position: absolute;
@@ -89,7 +90,7 @@ transform: rotate(45deg) translate(-5px, -5px);
     right: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
-  
+
 .restaurant-list-page .menu-links {
     padding: 10px;
     text-decoration: none;
@@ -101,26 +102,27 @@ transform: rotate(45deg) translate(-5px, -5px);
     margin: 40px 20%;
 }
 
-.restaurant-list-page div.menu-container a{
-    --c: #f0f0f0; /* the border color */
-    --b: 5px;    /* the border thickness*/
-    --g: 10px;     /* the gap on hover */
+.restaurant-list-page div.menu-container a {
+    --c: #f0f0f0;
+    /* the border color */
+    --b: 5px;
+    /* the border thickness*/
+    --g: 10px;
+    /* the gap on hover */
     border-radius: 10px;
 
     padding: calc(var(--g) + var(--b));
-    --_g: #0000 25%,var(--c) 0;
-    background: 
-        conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
-        var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
-        conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
-        0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+    --_g: #0000 25%, var(--c) 0;
+    background:
+        conic-gradient(from 180deg at top var(--b) right var(--b), var(--_g)) var(--_i, 200%) 0 /200% var(--_i, var(--b)) no-repeat,
+        conic-gradient(at bottom var(--b) left var(--b), var(--_g)) 0 var(--_i, 200%)/var(--_i, var(--b)) 200% no-repeat;
     transition: .1s, background-position .1s .1s;
     cursor: pointer;
 }
 
-.restaurant-list-page div.menu-container a:hover{
-  --_i: 100%;
-  transition: .1s, background-size .1s .1s;
+.restaurant-list-page div.menu-container a:hover {
+    --_i: 100%;
+    transition: .1s, background-size .1s .1s;
 }
 
 .restaurant-list-page .menu-button.hidden {
@@ -148,6 +150,30 @@ transform: rotate(45deg) translate(-5px, -5px);
     border: 2px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
+}
+
+.restaurant-list-page .sort-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.restaurant-list-page .sort-container label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.restaurant-list-page .sorter {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-inline: 10px;
+    outline: none;
+}
+
+.sorter:focus {
+    border-color: #aaa;
 }
 
 .restaurant-list-page .restaurant-list {
