@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-* {
+.customer-dashboard  {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-.background-image {
+.customer-dashboard .background-image {
   background-image: url('../../../imgs/background.webp');
   background-size: cover;
   background-position: center;
@@ -17,7 +17,7 @@
   height: 100vh;
 }
 
-.nav-bar {
+.customer-dashboard .nav-bar {
     position: absolute;
     top: 0px;
     background-color: transparent;
@@ -29,16 +29,16 @@
     align-items: center;
 }
 
-.navbar-logo img {
+.customer-dashboard .navbar-logo img {
     margin: 15px 30px;
     height: 50px;
 }
 
-.nav-home:hover {
+.customer-dashboard .nav-home:hover {
     transform: scale(1.05);
 }
 
-.main-container {
+.customer-dashboard .main-container {
   height: 100vh;
   width: 100%;
   /* align-items: center; */
@@ -46,7 +46,7 @@
   display: flex;
 }
 
-.left-side {
+.customer-dashboard .left-side {
     flex-basis: 50%;
     padding: 2%;
     display: flex;
@@ -54,7 +54,7 @@
     justify-content: center;
 }
 
-.left-div {
+.customer-dashboard .left-div {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -64,9 +64,9 @@
     width: 100%;
 }
 
-.dashboard-button {
+.customer-dashboard .dashboard-button {
     display: block;
-    width: 50%;
+    width: 100%;
     padding: 25px;
     margin-top: 20px;
     font-size: 26px;
@@ -80,13 +80,13 @@
     border-radius: 10px;
 }
 
-.dashboard-button:hover {
+.customer-dashboard .dashboard-button:hover {
     background-color: #627891;
 }
 
 
 
-.content-side {
+.customer-dashboard .content-side {
     flex-basis: 50%;
     padding: 50px;
     background-color: transparent;
@@ -94,18 +94,18 @@
     display: flex;
 }
 
-div.content {
+.customer-dashboard div.content {
     margin: auto 10%;
 }
 
-div.content h1 {
+.customer-dashboard div.content h1 {
     font-size: 8em;
     font-weight: 700;
     color: #25252b;
     margin-bottom: 5%;
 }
 
-.menu-button{
+.customer-dashboard .menu-button{
     width: 40px;
     height: 40px;
     background: transparent;
@@ -117,11 +117,11 @@ div.content h1 {
     transition: 0.1s;
 }
 
-.menu-button:hover{
+.customer-dashboard .menu-button:hover{
     transform: scale(1.1);
 }
 
-.bar {
+.customer-dashboard .bar {
     width: 100%;
     height: 5px;
     background-color: rgb(253, 244, 244);
@@ -129,20 +129,20 @@ div.content h1 {
     transition: 0.4s;
 }
 
-.change .bar:nth-child(1) {
+.customer-dashboard .change .bar:nth-child(1) {
 transform: rotate(-45deg) translate(-6px, 6px);
 }
 
-.change .bar:nth-child(2) {
+.customer-dashboard .change .bar:nth-child(2) {
 opacity: 0;
 }
 
-.change .bar:nth-child(3) {
+.customer-dashboard .change .bar:nth-child(3) {
 transform: rotate(45deg) translate(-5px, -5px);
 }
   
 
-.menu-container {
+.customer-dashboard .menu-container {
     position: absolute;
     top: 0;
     right: -20%;
@@ -156,12 +156,12 @@ transform: rotate(45deg) translate(-5px, -5px);
     box-shadow: none;
 }
 
-.menu-container.active {
+.customer-dashboard .menu-container.active {
     right: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
   
-.menu-links {
+.customer-dashboard .menu-links {
     padding: 10px;
     text-decoration: none;
     font-size: 1.5em;
@@ -172,7 +172,7 @@ transform: rotate(45deg) translate(-5px, -5px);
     margin: 40px 20%;
 }
 
-div.menu-container a{
+.customer-dashboard div.menu-container a{
     --c: #f0f0f0; /* the border color */
     --b: 5px;    /* the border thickness*/
     --g: 10px;     /* the gap on hover */
@@ -189,11 +189,11 @@ div.menu-container a{
     cursor: pointer;
 }
 
-div.menu-container a:hover{
+.customer-dashboard div.menu-container a:hover{
   --_i: 100%;
   transition: .1s, background-size .1s .1s;
 }
 
-.menu-button.hidden {
+.customer-dashboard .menu-button.hidden {
     filter: drop-shadow(2px 2px 1px #7c7979) invert(1);
 }

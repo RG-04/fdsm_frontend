@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-* {
+.customer-signup {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-.background-image {
+.customer-signup .background-image {
   background-image: url('../../../imgs/background.webp');
   background-size: cover;
   background-position: center;
@@ -16,7 +16,7 @@
   height: 100vh;
 }
 
-.wrapper {
+.customer-signup .wrapper {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -25,18 +25,18 @@
   flex-wrap: wrap-reverse;
 }
 
-.welcome-text {
+.customer-signup .welcome-text {
   flex: 1;
   padding: 40px;
 }
 
-.welcome-text h1 {
+.customer-signup .welcome-text h1 {
   font-weight: 700;
   font-size: 60px;
   color: #333;
 }
 
-.signup-form {
+.customer-signup .signup-form {
   flex: 1;
   background: #fff;
   padding: 40px;
@@ -44,17 +44,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
-.signup-form h2 {
+.customer-signup .signup-form h2 {
   font-size: 22px;
   font-weight: 600;
   color: #333;
 }
 
-.wrapper form .input-box {
+.customer-signup .wrapper form .input-box {
   margin: 18px 0;
 }
 
-form .input-box input {
+.customer-signup form .input-box input {
   height: 52px;
   width: 100%;
   outline: none;
@@ -68,12 +68,12 @@ form .input-box input {
   transition: all 0.3s ease;
 }
 
-.input-box input:focus,
-.input-box input:valid {
+.customer-signup .input-box input:focus,
+.customer-signup .input-box input:valid {
   border-color: #4d5b81;
 }
 
-form .input-box textarea {
+.customer-signup form .input-box textarea {
     height: 70px;
     width: 100%;
     outline: none;
@@ -87,12 +87,12 @@ form .input-box textarea {
     transition: all 0.3s ease;
   }
   
-.input-box textarea:focus,
-.input-box textarea:valid {
+.customer-signup .input-box textarea:focus,
+.customer-signup .input-box textarea:valid {
 border-color: #4d5b81;
 }
 
-.input-button {
+.customer-signup .input-button {
   /* margin: 0px auto; */
   transform: translate(10%, 0);
   height: 52px;
@@ -107,21 +107,21 @@ border-color: #4d5b81;
   transition: all 0.3s ease;
 }
 
-.input-button:hover {
+.customer-signup .input-button:hover {
   background: #666f8b;
 }
 
-form .text h3 {
+.customer-signup form .text h3 {
   color: #333;
   width: 100%;
   text-align: center;
 }
 
-form .text h3 a {
+.customer-signup form .text h3 a {
   color: #4b5161;
   text-decoration: none;
 }
 
-form .text h3 a:hover {
+.customer-signup form .text h3 a:hover {
   text-decoration: underline;
 }

@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import './Navbar.css';
-import {Link} from 'react-router-dom';
-import {HashLink} from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 
 const Navbar = () => {
-    return (
-        <>
+  return (
+    <>
+      <div className="navbar-main">
         <nav className="navbar">
           <div className="navbar-container">
             <div className="navbar-logo">
@@ -19,8 +20,9 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
-        </>
-    );
+      </div>
+    </>
+  );
 }
 
 export default Navbar;

@@ -1,42 +1,43 @@
-.main-content {
-    min-height: 100vh;
-  }
-  
-  .background-image {
-    background-image: url('../imgs/background.webp');
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card-container { 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .card {
-    background-color: #457c92;
-    border-radius: 5px;
-    min-height: 300px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* .card-title {
+.hero-section .main-content {
+  min-height: 100vh;
+}
+
+.hero-section .background-image {
+  background-image: url('../imgs/background.webp');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section .card-container {
+  background: transparent;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.hero-section .card {
+  background-color: #457c92;
+  border-radius: 5px;
+  min-height: 300px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.hero-section .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* .card-title {
     font-size: 24px;
     font-weight: bold;
   } */
