@@ -57,11 +57,10 @@
 
 
 .nav-bar-customer .menu-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: -20%;
     width: 20%;
-    min-width: 200px;
     height: 100vh;
     background-color: #ada894;
     padding-top: 100px;
