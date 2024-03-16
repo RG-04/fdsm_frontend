@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import './ViewRestaurant.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
+import CustomerNavbar from './CustomerNavbar';
 
 const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
 
     const { cartItems, addToCart, removeFromCart, totalPrice } = useContext(CartContext);
 
     const navigate = useNavigate();
-
-    const [menuVisible, setMenuVisible] = useState(false);
 
     let { restaurantID } = useParams();
     restaurantID = Number(restaurantID);
@@ -21,14 +20,6 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
 
     const [currentItemList, setCurrentItemList] = useState(restaurantMenu);
     const [sortPrice, setSortPrice] = useState(0);
-
-    const toggleMenu = () => {
-        setMenuVisible(!menuVisible);
-    };
-
-    const handleLogout = () => {
-        // TODO
-    }
 
     const handleSearchBar = (searchVal) => {
         if (searchVal === "") {
@@ -76,23 +67,8 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
                 {/* TODO */}
 
                 <div className="all-container">
-                    <div className="nav-bar">
-                        <div className="navbar-logo">
-                            <img className="logo" src={require("../../../imgs/logo.png")} alt="Ea2Go Logo" />
-                        </div>
-                        <div className={`menu-button ${menuVisible ? 'change' : ''}`} onClick={toggleMenu}>
-                            <div className="bar"></div>
-                            <div className="bar"></div>
-                            <div className="bar"></div>
-                        </div>
-                        <div className={`menu-container ${menuVisible ? 'active' : ''}`} id="menuContainer">
-                            <Link to="/Customer/Dashboard" className="menu-links">Dashboard</Link>
-                            <Link to="/Customer/Cart" className="menu-links">Cart</Link>
-                            <Link to="/Customer/Orders" className="menu-links">My Orders</Link>
-                            <Link to="/Customer/Profile" className="menu-links">Profile</Link>
-                            <Link to="/home" className="menu-links" onClick={handleLogout}>Logout</Link>
-                        </div>
-                    </div>
+                    
+                    <CustomerNavbar />
 
                     <div className="proceed">
                         <button onClick={() => navigate('/Customer/Cart')}>Proceed to Cart</button>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import './Cart.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
+import CustomerNavbar  from './CustomerNavbar';
 
 const ViewRestaurant = ({ all_restaurants_info }) => {
 
@@ -11,16 +12,7 @@ const ViewRestaurant = ({ all_restaurants_info }) => {
 
     const navigate = useNavigate();
 
-    const [menuVisible, setMenuVisible] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("Cash");
-
-    const toggleMenu = () => {
-        setMenuVisible(!menuVisible);
-    };
-
-    const handleLogout = () => {
-        // TODO
-    }
 
     const getQuantity = (restaurantID, itemID) => {
         const index = cartItems.findIndex((cartItem) => (cartItem.restaurantID == restaurantID && cartItem.item.id == itemID));
@@ -49,23 +41,8 @@ const ViewRestaurant = ({ all_restaurants_info }) => {
             <div className="customer-cart">
 
                 <div className="all-container">
-                    <div className="nav-bar">
-                        <div className="navbar-logo">
-                            <img className="logo" src={require("../../../imgs/logo.png")} alt="Ea2Go Logo" />
-                        </div>
-                        <div className={`menu-button ${menuVisible ? 'change' : ''}`} onClick={toggleMenu}>
-                            <div className="bar"></div>
-                            <div className="bar"></div>
-                            <div className="bar"></div>
-                        </div>
-                        <div className={`menu-container ${menuVisible ? 'active' : ''}`} id="menuContainer">
-                            <Link to="/Customer/Dashboard" className="menu-links">Dashboard</Link>
-                            <Link to="/Customer/Cart" className="menu-links">Cart</Link>
-                            <Link to="/Customer/Orders" className="menu-links">My Orders</Link>
-                            <Link to="/Customer/Profile" className="menu-links">Profile</Link>
-                            <Link to="/home" className="menu-links" onClick={handleLogout}>Logout</Link>
-                        </div>
-                    </div>
+                    
+                    <CustomerNavbar />
 
                     {cartItems.length === 0 ? (
                         <div className="main-container">
