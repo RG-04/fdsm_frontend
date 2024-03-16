@@ -11,6 +11,7 @@ import CustomerDashboard from './components/pages/Customer/Dashboard';
 import CustomerRestaurantList from './components/pages/Customer/RestaurantList';
 import CustomerViewRestaurant from './components/pages/Customer/ViewRestaurant';
 import Cart from './components/pages/Customer/Cart';
+import Profile from './components/pages/Customer/Profile';
 
 function App() {
 
@@ -103,6 +104,7 @@ function App() {
         <Route path="/Customer/RestaurantList" element={<CustomerRestaurantList all_restaurants_info={restaurants_info}/>} />
         <Route path="/Customer/ViewRestaurant/:restaurantID" element={<CustomerViewRestaurant all_restaurants_info={restaurants_info} all_restaurants_menu={all_restaurants_menu}/>} />
         <Route path="/Customer/Cart" element={<Cart all_restaurants_info={restaurants_info}/>} />
+        <Route path="/Customer/Profile" element={<Profile customer_details={customer_details}/>} />
       </Routes>
     </Router>
   );

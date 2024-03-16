@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-.customer-view-restaurant {
+.customer-profile {
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -9,24 +9,12 @@
     background-color: #3b3636;
 }
 
-.customer-view-restaurant .all-container {
+.customer-profile .all-container {
     width: 100%;
     /* height: 100vh; */
 }
 
-/* .customer-view-restaurant .background-image {
-    position: fixed;
-    z-index: -1;
-    width: 100%;
-    height: 100vh;
-}
-
-.customer-view-restaurant .background-image img {
-    object-fit: fill;
-    filter: blur(5px);
-} */
-
-.customer-view-restaurant .nav-bar {
+.customer-profile .nav-bar {
     position: sticky;
     top: 0px;
     background-color: transparent;
@@ -38,16 +26,16 @@
     align-items: center;
 }
 
-.customer-view-restaurant .navbar-logo img {
+.customer-profile .navbar-logo img {
     margin: 15px 30px;
     height: 50px;
 }
 
-.customer-view-restaurant .nav-home:hover {
+.customer-profile .nav-home:hover {
     transform: scale(1.05);
 }
 
-.customer-view-restaurant .menu-button {
+.customer-profile .menu-button {
     width: 40px;
     height: 40px;
     background: transparent;
@@ -59,11 +47,11 @@
     transition: 0.1s;
 }
 
-.customer-view-restaurant .menu-button:hover {
+.customer-profile .menu-button:hover {
     transform: scale(1.1);
 }
 
-.customer-view-restaurant .bar {
+.customer-profile .bar {
     width: 100%;
     height: 5px;
     background-color: rgb(253, 244, 244);
@@ -71,20 +59,20 @@
     transition: 0.4s;
 }
 
-.customer-view-restaurant .change .bar:nth-child(1) {
+.customer-profile .change .bar:nth-child(1) {
     transform: rotate(-45deg) translate(-6px, 6px);
 }
 
-.customer-view-restaurant .change .bar:nth-child(2) {
+.customer-profile .change .bar:nth-child(2) {
     opacity: 0;
 }
 
-.customer-view-restaurant .change .bar:nth-child(3) {
+.customer-profile .change .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -5px);
 }
 
 
-.customer-view-restaurant .menu-container {
+.customer-profile .menu-container {
     position: absolute;
     top: 0;
     right: -20%;
@@ -98,12 +86,12 @@
     box-shadow: none;
 }
 
-.customer-view-restaurant .menu-container.active {
+.customer-profile .menu-container.active {
     right: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
-.customer-view-restaurant .menu-links {
+.customer-profile .menu-links {
     padding: 10px;
     text-decoration: none;
     font-size: 1.5em;
@@ -114,7 +102,7 @@
     margin: 40px 20%;
 }
 
-.customer-view-restaurant div.menu-container a {
+.customer-profile div.menu-container a {
     --c: #f0f0f0;
     /* the border color */
     --b: 5px;
@@ -132,16 +120,16 @@
     cursor: pointer;
 }
 
-.customer-view-restaurant div.menu-container a:hover {
+.customer-profile div.menu-container a:hover {
     --_i: 100%;
     transition: .1s, background-size .1s .1s;
 }
 
-.customer-view-restaurant .menu-button.hidden {
+.customer-profile .menu-button.hidden {
     filter: drop-shadow(2px 2px 1px #7c7979) invert(1);
 }
 
-.customer-view-restaurant .proceed {
+.customer-profile .proceed {
     --w: 300px;
     position: fixed;
     bottom: 0;
@@ -156,105 +144,68 @@
     color: #e7e5dc;
     font-weight: 500;
     transition: 0.3s;
+}
+
+.customer-profile .proceed:hover {
+    transform: scale(1.05);
+    background-color: #8e969b;
     cursor: pointer;
 }
 
-.customer-view-restaurant .proceed:hover {
-    transform: scale(1.05);
-    background-color: #8e969b;
-}
-
-.customer-view-restaurant .main-container {
+.customer-profile .main-container {
     background-color: #f1efef;
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
     border-radius: 10px;
     padding: 30px;
 }
 
-.customer-view-restaurant .restaurant-name{
-    width: 100%;
-    font-size: 3em;
+.customer-profile .title{
+    font-size: 40px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.customer-view-restaurant .search-container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.customer-view-restaurant input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.customer-view-restaurant .sort-container {
+.customer-profile .detail{
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.customer-view-restaurant .sort-container label {
-    margin-right: 10px;
-    font-size: 16px;
-}
-
-.customer-view-restaurant .sorter {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-inline: 10px;
-    outline: none;
-}
-
-.sorter:focus {
-    border-color: #aaa;
-}
-
-.customer-view-restaurant .item-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.customer-view-restaurant .item {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content:flex-start;
+    margin-block: 20px;
     font-size: 20px;
 }
 
-.customer-view-restaurant .item > div {
-    width: 30%;
+.customer-profile .detail-title{
+    width: 50%;
 }
 
-.customer-view-restaurant .quantity-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-inline-start: 20%;
-}
-
-.customer-view-restaurant .quantity-box > div {
-    width: 30%;
-    text-align: center;
+.customer-profile .input-box{
+    padding: 5px;
+    border: 1px solid rgb(94, 93, 93);
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.customer-view-restaurant .quantity-change {
+.customer-profile .save-button, .customer-profile .edit-button{
+    position: relative;
+    bottom: 0;
+    --w: 300px;
+    width: var(--w);
+    left: calc(50% - var(--w)/2);
+}
+
+.customer-profile .save-button > button, .customer-profile .edit-button > button{
+    background-color: #4a4f52;
+    width: 100%;
+    font-size: 20px;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #e7e5dc;
+    font-weight: 500;
+    transition: 0.3s;
     cursor: pointer;
+}
+
+.customer-profile .save-button > button:hover, .customer-profile .edit-button >button:hover{
+    transform: scale(1.05);
+    background-color: #8e969b;
 }
