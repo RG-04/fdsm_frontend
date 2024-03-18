@@ -100,6 +100,7 @@
 .customer-login form .text h3 a {
   color: #4b5161;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .customer-login form .text h3 a:hover {

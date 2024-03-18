@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
 import CustomerNavbar  from './CustomerNavbar';
 
-const ViewRestaurant = ({ all_restaurants_info }) => {
+const Cart = ({ all_restaurants_info }) => {
 
     const { cartItems, addToCart, removeFromCart, totalPrice } = useContext(CartContext);
 
@@ -105,4 +105,4 @@ const ViewRestaurant = ({ all_restaurants_info }) => {
     );
 }
 
-export default ViewRestaurant;
+export default Cart;

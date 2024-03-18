@@ -61,12 +61,14 @@
     text-align: center;
     color: #e7e5dc;
     font-weight: 500;
-    transition: 0.3s;
+    transition: 0.2s;
     cursor: pointer;
 }
 
-/* .customer-orders .track-order > button:hover{
-} */
+.customer-orders .track-order > button:hover{
+    transform: scale(1.1);
+    background: #666f8b;
+}
 
 .customer-orders .date{
     position: absolute;
