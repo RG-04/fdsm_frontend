@@ -31,6 +31,7 @@
 
 .customer-orders .order{
     position: relative;
+    background-color: #dbdbdb;
     margin: 20px 0;
     padding: 20px;
     box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.2);

@@ -8,8 +8,6 @@ const Cart = ({ all_restaurants_info }) => {
 
     const { cartItems, addToCart, removeFromCart, totalPrice } = useContext(CartContext);
 
-    const restaurants_info = [(cartItems.map(cartItem => all_restaurants_info.filter(restaurant => restaurant.id === cartItem.restaurantID)[0]))];
-
     const navigate = useNavigate();
 
     const [paymentMethod, setPaymentMethod] = useState("Cash");
@@ -56,7 +54,7 @@ const Cart = ({ all_restaurants_info }) => {
                                 <button onClick={() => navigate('/Customer/Cart')}>Proceed to Pay Rs. {totalPrice}</button>
                             </div>
 
-                            <div className="main-container">
+                            <div className="main-container cart-list">
                                 <div className="title">
                                     <h1>Cart</h1>
                                 </div>
@@ -82,17 +80,15 @@ const Cart = ({ all_restaurants_info }) => {
                                 </div>
                             </div>
 
-                            <div className="main-container">
+                            <div className="main-container payment-list">
                                 <div className="payment-title">
                                     <h2>Choose a Payment Method:</h2>
                                 </div>
                                 <div className="payment-methods">
-                                    <div className="payment-method">
-                                        <input type="radio" id="cash" name="payment" value="Cash" checked={paymentMethod === "Cash"} onChange={() => setPaymentMethod("Cash")} />
+                                    <div className={`payment-method cash ${paymentMethod === "Cash" ? 'selected' : ''}`} onClick={() => (setPaymentMethod("Cash"))}>
                                         <label htmlFor="cash">Cash</label>
                                     </div>
-                                    <div className="payment-method">
-                                        <input type="radio" id="card" name="payment" value="Card" checked={paymentMethod === "Card"} onChange={() => setPaymentMethod("Card")} />
+                                    <div className={`payment-method card ${paymentMethod === "Card" ? 'selected' : ''}`} onClick={() => (setPaymentMethod("Card"))}>
                                         <label htmlFor="card">Card</label>
                                     </div>
                                 </div>
