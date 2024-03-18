@@ -70,8 +70,8 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
                     
                     <CustomerNavbar />
 
-                    <div className="proceed">
-                        <button onClick={() => navigate('/Customer/Cart')}>Proceed to Cart</button>
+                    <div className="proceed" onClick={() => navigate('/Customer/Cart')}>
+                        Proceed to Cart
                     </div>
 
                     <div className="main-container">

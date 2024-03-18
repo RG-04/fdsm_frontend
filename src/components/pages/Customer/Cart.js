@@ -50,8 +50,7 @@ const Cart = ({ all_restaurants_info }) => {
                         </div>
                     ) : (
                         <>
-                            <div className="proceed">
-                                <button onClick={() => navigate('/Customer/Cart')}>Proceed to Pay Rs. {totalPrice}</button>
+                            <div className="proceed" onClick={() => navigate('/Customer/Orders')}>Proceed to Pay Rs. {totalPrice}
                             </div>
 
                             <div className="main-container cart-list">
