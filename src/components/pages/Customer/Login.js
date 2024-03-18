@@ -48,9 +48,6 @@ const CustomerLogin = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         />
                                 </div>
-                                {/* <div className="input-box button">
-                                    <input type="Submit" value="Login" />
-                                </div> */}
                                 <button className="input-button" type="Submit">Login</button>
                                 <div className="text">
                                     <h3>New User? <Link to="/Customer/SignUp">Sign Up now!</Link></h3>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './SignUp.css';
 import { Link } from 'react-router-dom';
 import Navbar from '../../Navbar';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 
 const CustomerSignup = () => {
     const [name, setName] = useState('');
@@ -10,10 +11,46 @@ const CustomerSignup = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const { setAuthState } = useAuthContext();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password, name, number, address);
         // TODO
+
+        const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/signup';
+
+        console.log(url);
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: number,
+                address: address,
+                email: username,
+                password: password
+            })
+        }).then((response) => {
+            if (response.ok) {
+                console.log(response);
+                response.json().then((data) => {
+                    console.log(data);
+                    setAuthState({ token: data.token });
+                });
+            } else {
+                response.json().then((data) => {
+                    console.log(data);
+                    alert(data.error);
+                });
+            }
+        }).catch((error) => {
+            console.log(error);
+            alert('An error occurred. Please try again later.');
+        });
     }
 
     return (
