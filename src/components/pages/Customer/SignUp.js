@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './SignUp.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../../Navbar';
-import { useAuthContext } from '../../../hooks/useAuthContext';
+import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
 
 const CustomerSignup = () => {
     const [name, setName] = useState('');
@@ -11,15 +11,15 @@ const CustomerSignup = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const { setAuthState } = useAuthContext();
+    const { setCustomerAuthState } = useCustomerAuthContext();
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password, name, number, address);
-        // TODO
 
         const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/signup';
-
         console.log(url);
 
         fetch(url, {
@@ -39,7 +39,8 @@ const CustomerSignup = () => {
                 console.log(response);
                 response.json().then((data) => {
                     console.log(data);
-                    setAuthState({ token: data.token });
+                    setCustomerAuthState({ token: data.token });
+                    navigate('/Customer/Dashboard');
                 });
             } else {
                 response.json().then((data) => {

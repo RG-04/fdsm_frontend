@@ -9,13 +9,13 @@ export const CartContext = createContext({
 });
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([{ restaurantID: 1, restaurantName: "Restaurant Name 1", item: { id: 1, name: "Pizza", price: 100 }, count: 1 }]);
-  const [totalPrice, setTotalPrice] = useState(100);
+  const [cartItems, setCartItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addToCart = (restaurantID, restaurantName, item) => {
     const newCartItems = [...cartItems];
     const index = newCartItems.findIndex(
-      (cartItem) => (cartItem.restaurantID == restaurantID && cartItem.item.id == item.id)
+      (cartItem) => (cartItem.restaurantID == restaurantID && cartItem.item.uid == item.uid)
     );
     if (index === -1) {
       newCartItems.push({ restaurantID, restaurantName, item, count: 1 });
@@ -30,7 +30,7 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = (restaurantID, restaurantName, item) => {
     const newCartItems = [...cartItems];
     const index = newCartItems.findIndex(
-      (cartItem) => (cartItem.restaurantID == restaurantID && cartItem.item.id == item.id)
+      (cartItem) => (cartItem.restaurantID == restaurantID && cartItem.item.uid == item.uid)
     );
     if (index === -1) {
       return;

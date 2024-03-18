@@ -1,28 +1,91 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomerNavbar from './CustomerNavbar';
+import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
 
+const CustomerProfile = () => {
 
-const CustomerSignup = () => {
+    const [name, setName] = useState("");
+    const [number, setNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [username, setUsername] = useState("");
 
-    const details = { name: "Dummy", number: "1234567890", address: "Dummy Address", username: "abc@gmail.com", password: "123456" };
-    //TODO get details from backend
+    const { customerAuthState } = useCustomerAuthContext();
+    
+    const navigate = useNavigate();
 
-    const [name, setName] = useState(details.name);
-    const [number, setNumber] = useState(details.number);
-    const [address, setAddress] = useState(details.address);
-    const [username, setUsername] = useState(details.username);
+    useEffect(() => {
+        const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/info';
 
-    console.log(name, number, address, username);
+        if(customerAuthState.token === "") {
+            navigate('/Customer/Login');
+            return;
+        }
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${customerAuthState.token}`,
+            },
+        }).then((response) => {
+            if (response.ok) {
+                console.log(response);
+                response.json().then((data) => {
+                    console.log(data);
+                    setName(data.name);
+                    setNumber(data.phone);
+                    setAddress(data.address);
+                    setUsername(data.email);
+                });
+            } else {
+                response.json().then((data) => {
+                    console.log(data);
+                    alert(data.error);
+                });
+            }
+        }).catch((error) => {
+            console.log(error);
+            navigate('/Customer/Login');
+            alert('An error occurred. Please try again later.');
+        });
+    }, []);
 
     const [isEditing, setIsEditing] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, number, address);
-        setIsEditing(false);
-        // TODO
+
+        const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/info';
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${customerAuthState.token}`,
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: number,
+                address: address,
+            }),
+        }).then((response) => {
+            if (response.ok) {
+                console.log(response);
+                response.json().then((data) => {
+                    console.log(data);
+                    alert('Details Updated Successfully');
+                    setIsEditing(false);
+                });
+            } else {
+                response.json().then((data) => {
+                    console.log(data);
+                    alert(data.error);
+                });
+            }
+        }).catch((error) => {
+            console.log(error);
+            alert('An error occurred. Please try again later.');
+        });
     }
 
     return (
@@ -114,4 +177,4 @@ const CustomerSignup = () => {
     );
 }
 
-export default CustomerSignup;
+export default CustomerProfile;

@@ -1,44 +1,83 @@
 import React, { useState, useEffect } from 'react';
 import './RestaurantList.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CustomerNavbar from './CustomerNavbar';
+import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
 
 const CustomerRestaurantList = ({ all_restaurants_info }) => {
 
     const navigate = useNavigate();
 
-    const [restaurants_info, setRestaurantsInfo] = useState(all_restaurants_info);
-
+    const cuisines = ["Italian", "Chinese"];
+    const ratings = [2, 3, 3.5, 4, 4.5, 5];
+    
     const [searchBar, setSearchBar] = useState("");
     const [sortCuisine, setSortCuisine] = useState("all");
     const [sortRating, setSortRating] = useState("all");
+    
 
+    const [allRestaurantsInfo, setAllRestaurantsInfo] = useState(all_restaurants_info);
+    const [restaurantsInfo, setRestaurantsInfo] = useState(allRestaurantsInfo);
 
-    const cuisines = ["Italian", "Chinese"]
-    const ratings = [2, 3, 3.5, 4, 4.5, 5]
+    const { customerAuthState } = useCustomerAuthContext();
+
+    useEffect(() => {
+        const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/restaurants';
+
+        if (customerAuthState.token === "") {
+            navigate('/Customer/Login');
+        }
+        
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${customerAuthState.token}`,
+            },
+        }).then((response) => {
+            if (response.ok) {
+                console.log(response);
+                response.json().then((data) => {
+                    console.log(data);
+                    setAllRestaurantsInfo(data);
+                    setRestaurantsInfo(data);
+                });
+            } else {
+                response.json().then((data) => {
+                    console.log(data);
+                    alert(data.error);
+                });
+            }
+        }).catch((error) => {
+            console.log(error);
+            navigate('/Customer/Login');
+            alert('An error occurred. Please try again later.');
+        });
+    }, []);
+
 
     const handleRestaurantClick = (restaurant) => {
-        navigate(`/Customer/ViewRestaurant/${restaurant.id}`);
+        navigate(`/Customer/ViewRestaurant/${restaurant.uid}`);
         console.log(restaurant);
     }
 
     const handleSortByCuisine = (cuisine) => {
         setSortCuisine(cuisine);
         if (cuisine === "all") {
-            setRestaurantsInfo(all_restaurants_info);
+            setRestaurantsInfo(allRestaurantsInfo);
         } else {
-            setRestaurantsInfo(all_restaurants_info.filter(restaurant => restaurant.cuisine === cuisine));
+            setRestaurantsInfo(allRestaurantsInfo.filter(restaurant => restaurant.cuisine === cuisine));
         }
     }
 
     const handleSortByRating = (rating) => {
         setSortRating(rating);
-        setRestaurantsInfo(all_restaurants_info.filter(restaurant => restaurant.rating >= rating));
+        setRestaurantsInfo(allRestaurantsInfo.filter(restaurant => restaurant.rating >= rating));
     }
 
     const handleSearchBar = (searchVal) => {
         setSearchBar(searchVal);
-        setRestaurantsInfo(all_restaurants_info.filter(restaurant => restaurant.name.toLowerCase().includes(searchVal.toLowerCase())));
+        setRestaurantsInfo(allRestaurantsInfo.filter(restaurant => restaurant.name.toLowerCase().includes(searchVal.toLowerCase())));
     }
 
     return (
@@ -73,10 +112,9 @@ const CustomerRestaurantList = ({ all_restaurants_info }) => {
                             </select>
                         </div>
                         <div className="restaurant-list">
-                            {restaurants_info.map(restaurant => (
+                            {restaurantsInfo.map(restaurant => (
                                 <div className="restaurant" key={restaurant.id} onClick={() => handleRestaurantClick(restaurant)}>
                                     <div className="restaurant-img">
-                                        {/* <img src={require(restaurant.imageSrc)} alt="Restaurant Image" /> */}
                                         <img src={restaurant.imageSrc} alt="Restaurant Image" />
                                     </div>
                                     <div className="restaurant-info">

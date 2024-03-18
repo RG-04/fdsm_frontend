@@ -1,17 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../../Navbar';
+import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
 
 
 const CustomerLogin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const { setCustomerAuthState } = useCustomerAuthContext();
+
+    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password);
-        // TODO
+        
+        const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/login';
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: username,
+                password: password
+            })
+        }).then((response) => {
+            if (response.ok) {
+                console.log(response);
+                response.json().then((data) => {
+                    console.log(data);
+                    alert('Login Successful');
+                    setCustomerAuthState({ token: data.token });
+                    localStorage.setItem('token', data.token);
+                    navigate('/Customer/Profile');
+                });
+            } else {
+                response.json().then((data) => {
+                    console.log(data);
+                    alert(data.error);
+                });
+            }
+        }).catch((error) => {
+            console.log(error);
+            alert('An error occurred. Please try again later.');
+        });
+
     }
 
     return (
