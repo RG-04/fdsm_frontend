@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './CustomerNavbar.css';
 import { Link } from 'react-router-dom';
+import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerNavbar = () => {
 
     const [menuVisible, setMenuVisible] = useState(false);
+    const { setCustomerAuthState } = useCustomerAuthContext();
+
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setMenuVisible(!menuVisible);
     };
 
     const handleLogout = () => {
-        // TODO
+        setCustomerAuthState({ token: "" });
+        localStorage.removeItem('token');
+        localStorage.removeItem('cartItems');
+        localStorage.removeItem('totalPrice');
+        navigate('/home');
     }
 
     return (
