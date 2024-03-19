@@ -15,6 +15,7 @@ import { CustomerAuthContextProvider } from "./contexts/CustomerAuthContext";
 import RestaurantLogin from './components/pages/Restaurant/Login';
 import RestaurantSignup from './components/pages/Restaurant/SignUp';
 import RestaurantDashboard from './components/pages/Restaurant/Dashboard';
+import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 function App() {
   const customer_details = { name: "Dummy" };
@@ -109,11 +110,12 @@ function App() {
           <Route path="*" element={<CustomerDashboard />} />
         </Route>
 
-        <Route path="/Restaurant/Login" element={<RestaurantLogin/>} />
-        <Route path="/Restaurant/SignUp" element={<RestaurantSignup/>} />
-        <Route path="/Restaurant/Dashboard" element={<RestaurantDashboard/>} />
-
-        <Route path="restaurant"></Route>
+        <Route path="restaurant" element={<RestaurantAuthContextProvider />}>
+          <Route index element={<RestaurantDashboard />} />
+          <Route path="login" element={<RestaurantLogin />} />
+          <Route path="signup" element={<RestaurantSignup />} />
+          <Route path="*" element={<RestaurantDashboard />} />
+        </Route>
 
         <Route path="management"></Route>
 

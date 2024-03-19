@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { Outlet } from 'react-router';
 
 export const RestaurantAuthContext = createContext();
 
@@ -9,7 +10,7 @@ export const RestaurantAuthContextProvider = (props) => {
 
     const [loading, setLoading] = useState(true);
 
-    
+
     useEffect(() => {
         let token = localStorage.getItem("token");
         if (token) {
@@ -17,11 +18,18 @@ export const RestaurantAuthContextProvider = (props) => {
         }
         setLoading(false);
     }
-    , []);
+        , []);
 
     return (
         <RestaurantAuthContext.Provider value={{ restaurantAuthState, setRestaurantAuthState }}>
-            {!loading ? props.children : <h1>loading</h1>}
+            {!loading ? (
+                <Outlet />
+            ) : (
+                <div style={{ height: "400px", width: "400px", background: "blue" }}>
+                    {" "}
+                    <h1 style={{ color: "white" }}>Loading</h1>
+                </div>
+            )}
         </RestaurantAuthContext.Provider>
     );
 }
