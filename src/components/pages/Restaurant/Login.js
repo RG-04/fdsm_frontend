@@ -1,26 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import './SignUp.css';
+import React, { useState } from 'react';
+import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../../Navbar';
-import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
+import { useRestaurantAuthContext } from '../../../hooks/useRestaurantAuthContext';
 
-const CustomerSignup = () => {
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
-    const [address, setAddress] = useState('');
+
+const RestaurantLogin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const { setCustomerAuthState } = useCustomerAuthContext();
+    const { setRestaurantAuthState } = useRestaurantAuthContext();
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password, name, number, address);
-
-        const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/signup';
-        console.log(url);
+        console.log(username, password);
+        
+        const url = process.env.REACT_APP_BACKEND_URL + '/api/restaurant/login';
 
         fetch(url, {
             method: 'POST',
@@ -28,9 +25,6 @@ const CustomerSignup = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: name,
-                phone: number,
-                address: address,
                 email: username,
                 password: password
             })
@@ -39,9 +33,10 @@ const CustomerSignup = () => {
                 console.log(response);
                 response.json().then((data) => {
                     console.log(data);
-                    setCustomerAuthState({ token: data.token });
+                    alert('Login Successful');
+                    setRestaurantAuthState({ token: data.token });
                     localStorage.setItem('token', data.token);
-                    navigate('/Customer/Dashboard');
+                    navigate('/Restaurant/Dashboard');
                 });
             } else {
                 response.json().then((data) => {
@@ -53,51 +48,23 @@ const CustomerSignup = () => {
             console.log(error);
             alert('An error occurred. Please try again later.');
         });
+
     }
 
     return (
         <>
-            <div className='customer-signup'>
+            <div className='restaurant-login'>
                 <Navbar />
 
                 <div className="background-image">
                     <div className="wrapper">
                         <div className="welcome-text">
-                            <h1>Welcome to Ea2Go! We're glad to have you.</h1>
+                            <h1>Welcome dear Partner!</h1>
                         </div>
 
-                        <div className="signup-form">
-                            <h2>Sign Up</h2>
+                        <div className="login-form">
+                            <h2>Login</h2>
                             <form onSubmit={handleSubmit}>
-                                <div className="input-box">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Name"
-                                        required
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                    />
-                                </div>
-                                <div className="input-box">
-                                    <input
-                                        type="phone"
-                                        name="phone"
-                                        placeholder="Phone Number"
-                                        required
-                                        value={number}
-                                        onChange={(e) => setNumber(e.target.value)}
-                                    />
-                                </div>
-                                <div className="input-box">
-                                    <textarea
-                                        name="address"
-                                        placeholder="Address"
-                                        required
-                                        value={address}
-                                        onChange={(e) => setAddress(e.target.value)}
-                                    />
-                                </div>
                                 <div className="input-box">
                                     <input
                                         type="text"
@@ -118,9 +85,9 @@ const CustomerSignup = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         />
                                 </div>
-                                <button className="input-button" type="Submit">Join</button>
+                                <button className="input-button" type="Submit">Login</button>
                                 <div className="text">
-                                    <h3>Already have an account? <Link to="/Customer/Login">Login!</Link></h3>
+                                    <h3>Interested in Partnering? <Link to="/Restaurant/SignUp">Sign Up now!</Link></h3>
                                 </div>
                             </form>
                         </div>
@@ -131,4 +98,4 @@ const CustomerSignup = () => {
     );
 }
 
-export default CustomerSignup;
+export default RestaurantLogin;

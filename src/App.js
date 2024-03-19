@@ -11,6 +11,10 @@ import Cart from './components/pages/Customer/Cart';
 import Profile from './components/pages/Customer/Profile';
 import Orders from './components/pages/Customer/Orders';
 
+import RestaurantLogin from './components/pages/Restaurant/Login';
+import RestaurantSignup from './components/pages/Restaurant/SignUp';
+import RestaurantDashboard from './components/pages/Restaurant/Dashboard';
+
 function App() {
 
   const customer_details = {name: "Dummy"}
@@ -98,6 +102,10 @@ function App() {
         <Route path="/Customer/Cart" element={<Cart all_restaurants_info={restaurants_info}/>} />
         <Route path="/Customer/Profile" element={<Profile customer_details={customer_details}/>} />
         <Route path="/Customer/Orders" element={<Orders/>} />
+
+        <Route path="/Restaurant/Login" element={<RestaurantLogin/>} />
+        <Route path="/Restaurant/SignUp" element={<RestaurantSignup/>} />
+        <Route path="/Restaurant/Dashboard" element={<RestaurantDashboard/>} />
 
       </Routes>
     </Router>

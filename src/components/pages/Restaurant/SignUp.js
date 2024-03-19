@@ -2,24 +2,26 @@ import React, { useState, useEffect } from 'react';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../../Navbar';
-import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
+import { useRestaurantAuthContext } from '../../../hooks/useRestaurantAuthContext';
 
-const CustomerSignup = () => {
+const RestaurantSignup = () => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [address, setAddress] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [tags, setTags] = useState('');
+    const [timings, setTimings] = useState('');
 
-    const { setCustomerAuthState } = useCustomerAuthContext();
+    const { setRestaurantAuthState } = useRestaurantAuthContext();
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password, name, number, address);
+        console.log(username, password, name, number, address, tags, timings);
 
-        const url = process.env.REACT_APP_BACKEND_URL + '/api/customer/signup';
+        const url = process.env.REACT_APP_BACKEND_URL + '/api/restaurant/signup';
         console.log(url);
 
         fetch(url, {
@@ -32,16 +34,18 @@ const CustomerSignup = () => {
                 phone: number,
                 address: address,
                 email: username,
-                password: password
+                password: password,
+                tags: tags,
+                timings: timings
             })
         }).then((response) => {
             if (response.ok) {
                 console.log(response);
                 response.json().then((data) => {
                     console.log(data);
-                    setCustomerAuthState({ token: data.token });
+                    setRestaurantAuthState({ token: data.token });
                     localStorage.setItem('token', data.token);
-                    navigate('/Customer/Dashboard');
+                    navigate('/Restaurant/Dashboard');
                 });
             } else {
                 response.json().then((data) => {
@@ -57,13 +61,13 @@ const CustomerSignup = () => {
 
     return (
         <>
-            <div className='customer-signup'>
+            <div className='restaurant-signup'>
                 <Navbar />
 
                 <div className="background-image">
                     <div className="wrapper">
                         <div className="welcome-text">
-                            <h1>Welcome to Ea2Go! We're glad to have you.</h1>
+                            <h1>We're excited to have you as a partner!</h1>
                         </div>
 
                         <div className="signup-form">
@@ -72,28 +76,23 @@ const CustomerSignup = () => {
                                 <div className="input-box">
                                     <input
                                         type="text"
-                                        name="name"
                                         placeholder="Name"
-                                        required
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                     />
                                 </div>
                                 <div className="input-box">
                                     <input
-                                        type="phone"
-                                        name="phone"
+                                        type="text"
                                         placeholder="Phone Number"
-                                        required
                                         value={number}
                                         onChange={(e) => setNumber(e.target.value)}
                                     />
                                 </div>
                                 <div className="input-box">
-                                    <textarea
-                                        name="address"
+                                    <input
+                                        type="text"
                                         placeholder="Address"
-                                        required
                                         value={address}
                                         onChange={(e) => setAddress(e.target.value)}
                                     />
@@ -101,9 +100,7 @@ const CustomerSignup = () => {
                                 <div className="input-box">
                                     <input
                                         type="text"
-                                        name="usr"
-                                        placeholder="Enter your email"
-                                        required
+                                        placeholder="Email"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
                                     />
@@ -111,16 +108,30 @@ const CustomerSignup = () => {
                                 <div className="input-box">
                                     <input
                                         type="password"
-                                        name="pwd"
-                                        placeholder="password"
-                                        required
+                                        placeholder="Password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        />
+                                    />
                                 </div>
-                                <button className="input-button" type="Submit">Join</button>
+                                <div className="input-box">
+                                    <input
+                                        type="text"
+                                        placeholder="Tags"
+                                        value={tags}
+                                        onChange={(e) => setTags(e.target.value)}
+                                    />
+                                </div>
+                                <div className="input-box">
+                                    <input
+                                        type="text"
+                                        placeholder="Timings"
+                                        value={timings}
+                                        onChange={(e) => setTimings(e.target.value)}
+                                    />
+                                </div>
+                                <button type="submit" className="input-button">Sign Up</button>
                                 <div className="text">
-                                    <h3>Already have an account? <Link to="/Customer/Login">Login!</Link></h3>
+                                    <h3>Already have an account? <Link to="/Restaurant/Login">Login!</Link></h3>
                                 </div>
                             </form>
                         </div>
@@ -128,7 +139,9 @@ const CustomerSignup = () => {
                 </div>
             </div>
         </>
-    );
+    )
 }
 
-export default CustomerSignup;
+export default RestaurantSignup;
+
+
