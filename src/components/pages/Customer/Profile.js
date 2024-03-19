@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CustomerNavbar from "./CustomerNavbar";
 import { useCustomerAuthContext } from "../../../hooks/useCustomerAuthContext";
 
@@ -172,7 +172,6 @@ const CustomerProfile = () => {
                   <button
                     className="input-button"
                     onClick={() => {
-                      console.log("click");
                       setIsEditing(true);
                     }}
                   >

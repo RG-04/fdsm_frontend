@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "./Orders.css";
 import { useNavigate } from "react-router-dom";
-import CustomerNavbar from "./CustomerNavbar";
-import { useCustomerAuthContext } from "../../../hooks/useCustomerAuthContext";
+import RestaurantNavbar from "./RestaurantNavbar";
+import { useRestaurantAuthContext } from "../../../hooks/useRestaurantAuthContext";
 
-const CustomerOrders = () => {
-  // const orders = [{restaurant: "Restaurant Name 1", items: [{name: "Item 1", price: 100}, {name: "Item 2", price: 200}], totalPrice: 300, date: "2020-12-01", status: "Delivered"},
-  //                 {restaurant: "Restaurant Name 2", items: [{name: "Item 3", price: 300}, {name: "Item 4", price: 400}], totalPrice: 700, date: "2020-12-02", status: "Pending"},
-  //                 {restaurant: "Restaurant Name 3", items: [{name: "Item 5", price: 500}, {name: "Item 6", price: 600}], totalPrice: 1100, date: "2020-12-03", status: "Delivered"},
-  //                 {restaurant: "Restaurant Name 4", items: [{name: "Item 7", price: 700}, {name: "Item 8", price: 800}], totalPrice: 1500, date: "2020-12-04", status: "Pending"}];
-
-  const { customerAuthState } = useCustomerAuthContext();
+const RestaurantOrders = () => {
+  const { restaurantAuthState } = useRestaurantAuthContext();
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [pendingOrders, setPendingOrders] = useState([]);
   const [deliveredOrders, setDeliveredOrders] = useState([]);
 
   useEffect(() => {
-    if (customerAuthState.token === "") {
-      navigate("/customer/login");
+    if (restaurantAuthState.token === "") {
+      navigate("/restaurant/login");
     }
 
-    const url = process.env.REACT_APP_BACKEND_URL + "/api/customer/orders";
+    const url = process.env.REACT_APP_BACKEND_URL + "/api/restaurant/orders";
 
     fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${customerAuthState.token}`,
+        Authorization: `Bearer ${restaurantAuthState.token}`,
       },
     })
       .then((response) => {
@@ -52,7 +47,7 @@ const CustomerOrders = () => {
       })
       .catch((error) => {
         console.log(error);
-        navigate("/customer/login");
+        navigate("/restaurant/login");
         alert("An error occurred. Please try again later.");
       });
   }, []);
@@ -111,9 +106,9 @@ const CustomerOrders = () => {
 
   return (
     <>
-      <div className="customer-orders">
+      <div className="restaurant-orders">
         <div className="all-container">
-          <CustomerNavbar />
+          <RestaurantNavbar />
           {pendingOrders.length === 0 && deliveredOrders.length === 0 ? (
             <div className="main-container">
               <div className="title">No Orders</div>
@@ -129,4 +124,4 @@ const CustomerOrders = () => {
   );
 };
 
-export default CustomerOrders;
+export default RestaurantOrders;
