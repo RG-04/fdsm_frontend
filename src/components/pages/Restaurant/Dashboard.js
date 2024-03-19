@@ -52,9 +52,9 @@ const RestaurantDashboard = () => {
                     <div className="main-container">
                         <div className="left-side">
                             <div className="left-div">
-                                <Link to="/Restaurant/Orders"><button className="dashboard-button">Orders</button></Link>
-                                <Link to="/Restaurant/AddItem"><button className="dashboard-button">Add an item</button></Link>
-                                <Link to="/Restaurant/Menu"><button className="dashboard-button">Menu</button></Link>
+                                <Link to="/restaurant/orders"><button className="dashboard-button">Orders</button></Link>
+                                <Link to="/restaurant/newitem"><button className="dashboard-button">Add an item</button></Link>
+                                <Link to="/restaurant/menu"><button className="dashboard-button">Menu</button></Link>
                             </div>
                         </div>
 

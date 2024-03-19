@@ -18,6 +18,8 @@ import RestaurantDashboard from './components/pages/Restaurant/Dashboard';
 import RestaurantProfile from "./components/pages/Restaurant/Profile";
 import RestaurantOrders from "./components/pages/Restaurant/Orders";
 import RestaurantOrderInfo from "./components/pages/Restaurant/OrderInfo";
+import RestaurantMenu from "./components/pages/Restaurant/Menu";
+import RestaurantNewItem from "./components/pages/Restaurant/NewItem";
 import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 function App() {
@@ -120,6 +122,8 @@ function App() {
           <Route path="profile" element={<RestaurantProfile />} />
           <Route path="orders" element={<RestaurantOrders />} />
           <Route path="order/:orderID" element={<RestaurantOrderInfo />} />
+          <Route path="menu" element={<RestaurantMenu />} />
+          <Route path="newitem" element={<RestaurantNewItem />} />
           <Route path="*" element={<RestaurantDashboard />} />
         </Route>
 

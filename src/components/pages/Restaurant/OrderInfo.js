@@ -8,7 +8,7 @@ const RestaurantOrderInfo = () => {
     const { restaurantAuthState } = useRestaurantAuthContext();
     const navigate = useNavigate();
 
-    const [order, setOrder] = useState({customer: {}, deliverer: {}, items: []});
+    const [order, setOrder] = useState({ customer: {}, deliverer: {}, items: [] });
     const uid = useParams().orderID;
 
     useEffect(() => {
@@ -47,12 +47,12 @@ const RestaurantOrderInfo = () => {
     return (
         <>
             <>
-            <div className="restaurant-order-info">
-                <div className="all-container">
-                    <RestaurantNavbar />
+                <div className="restaurant-order-info">
+                    <div className="all-container">
+                        <RestaurantNavbar />
 
-                    <div className="main-container">
-                        <div className="title">Order Details</div>
+                        <div className="main-container">
+                            <div className="title">Order Details</div>
                             <div className="order-details">
                                 <div className="detail">
                                     <div className="detail-title">Customer:</div>
@@ -75,16 +75,16 @@ const RestaurantOrderInfo = () => {
                                     <div className="detail-value items">
                                         {order.items.map((item, index) => (
                                             <>
-                                            <div className="item" key={index}>
-                                                <div className="name">{item.dish.name}</div>
-                                                <div className="quantity">Quantity: {item.quantity}</div>
-                                            </div>
-                                            <div className="total">
-                                                <div className="total-label">Total:</div>
-                                                <div className="total-price">Rs. {order.total}</div>
-                                            </div>
+                                                <div className="item" key={index}>
+                                                    <div className="name">{item.dish.name}</div>
+                                                    <div className="quantity">Quantity: {item.quantity}</div>
+                                                </div>
                                             </>
                                         ))}
+                                    </div>
+                                    <div className="total">
+                                        <div className="total-label">Total:</div>
+                                        <div className="total-price">Rs. {order.total}</div>
                                     </div>
                                 </div>
                                 <div className="detail">
@@ -92,10 +92,10 @@ const RestaurantOrderInfo = () => {
                                     <div className="detail-value">{order.orderTime}</div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </>
         </>
     );
 }
