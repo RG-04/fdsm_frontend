@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './ViewRestaurant.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { CartContext } from '../../CartContext';
+import { useNavigate, useParams } from 'react-router-dom';
+import { CartContext } from '../../../contexts/CartContext';
 import CustomerNavbar from './CustomerNavbar';
 import { CustomerAuthContext } from '../../../contexts/CustomerAuthContext';
 

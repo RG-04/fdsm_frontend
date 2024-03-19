@@ -1,10 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Cart.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { CartContext } from '../../CartContext';
+import { CartContext } from '../../../contexts/CartContext';
 import CustomerNavbar  from './CustomerNavbar';
+import { useCustomerAuthContext } from '../../../hooks/useCustomerAuthContext';
+import { requestOrders } from '../../../helpers/RequestOrders';
 
 const Cart = ({ all_restaurants_info }) => {
+
+    const { customerAuthState } = useCustomerAuthContext();
+
+    useEffect(() => {
+        if (customerAuthState.token === "") {
+            navigate('/Customer/Login');
+        }
+    }, []);
 
     const { cartItems, addToCart, removeFromCart, totalPrice } = useContext(CartContext);
 
@@ -34,6 +44,20 @@ const Cart = ({ all_restaurants_info }) => {
         navigate(`/Customer/ViewRestaurant/${restaurantID}`);
     }
 
+    const handleProceed = () => {
+        if (paymentMethod === "Cash") {
+            requestOrders(cartItems, customerAuthState.token).then (({successfulOrders}) => {
+                cartItems.map((cartItem) =>{
+                    if(successfulOrders.includes(cartItem.restaurantID)) {
+                        removeFromCart(cartItem.restaurantID, cartItem.restaurantName, cartItem.item);
+                    }
+                }
+                );
+                navigate('/Customer/Orders');
+            });
+        }
+    }
+
     return (
         <>
             <div className="customer-cart">
@@ -50,7 +74,7 @@ const Cart = ({ all_restaurants_info }) => {
                         </div>
                     ) : (
                         <>
-                            <div className="proceed" onClick={() => navigate('/Customer/Orders')}>Proceed to Pay Rs. {totalPrice}
+                            <div className="proceed" onClick={() => handleProceed()}>Proceed to Pay Rs. {totalPrice}
                             </div>
 
                             <div className="main-container cart-list">
