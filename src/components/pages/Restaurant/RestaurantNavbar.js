@@ -33,9 +33,9 @@ const RestaurantNavbar = () => {
                     <div className="bar"></div>
                 </div>
                 <div className={`menu-container ${menuVisible ? 'active' : ''}`} id="menuContainer">
-                    <Link to="/Restaurant/Dashboard" className="menu-links">Dashboard</Link>
-                    <Link to="/Restaurant/Orders" className="menu-links">Orders</Link>
-                    <Link to="/Restaurant/Profile" className="menu-links">Profile</Link>
+                    <Link to="/restaurant/dashboard" className="menu-links">Dashboard</Link>
+                    <Link to="/restaurant/orders" className="menu-links">Orders</Link>
+                    <Link to="/restaurant/profile" className="menu-links">Profile</Link>
                     <Link to="/home" className="menu-links" onClick={handleLogout}>Logout</Link>
                 </div>
             </div>

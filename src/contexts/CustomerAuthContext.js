@@ -21,10 +21,10 @@ export const CustomerAuthContextProvider = (props) => {
   }, []);
 
   return (
-    <CartProvider>
-      <CustomerAuthContext.Provider
-        value={{ customerAuthState, setCustomerAuthState }}
-      >
+    <CustomerAuthContext.Provider
+      value={{ customerAuthState, setCustomerAuthState }}
+    >
+      <CartProvider>
         {!loading ? (
           <Outlet />
         ) : (
@@ -33,8 +33,8 @@ export const CustomerAuthContextProvider = (props) => {
             <h1 style={{ color: "white" }}>Loading</h1>
           </div>
         )}
-      </CustomerAuthContext.Provider>
-    </CartProvider>
+      </CartProvider>
+    </CustomerAuthContext.Provider>
 
   );
 };

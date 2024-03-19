@@ -47,13 +47,13 @@ const CustomerNavbar = () => {
           <Link to="/customer" className="menu-links">
             Dashboard
           </Link>
-          <Link to="cart" className="menu-links">
+          <Link to="/customer/cart" className="menu-links">
             Cart
           </Link>
-          <Link to="orders" className="menu-links">
+          <Link to="/customer/orders" className="menu-links">
             My Orders
           </Link>
-          <Link to="profile" className="menu-links">
+          <Link to="/customer/profile" className="menu-links">
             Profile
           </Link>
           <Link to="/home" className="menu-links" onClick={handleLogout}>
