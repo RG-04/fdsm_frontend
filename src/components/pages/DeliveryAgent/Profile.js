@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
-import RestaurantNavbar from "./RestaurantNavbar";
-import { useRestaurantAuthContext } from "../../../hooks/useRestaurantAuthContext";
+import DeliveryAgentNavbar from "./DeliveryAgentNavbar";
+import { useDeliveryAgentAuthContext } from "../../../hooks/useDeliveryAgentAuthContext";
 
-const RestaurantProfile = () => {
+const DeliveryAgentProfile = () => {
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
-    const [address, setAddress] = useState("");
     const [username, setUsername] = useState("");
-    const [tags, setTags] = useState("");
-    const [timings, setTimings] = useState("");
 
-    const { restaurantAuthState } = useRestaurantAuthContext();
+    const { deliveryAgentAuthState } = useDeliveryAgentAuthContext();
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        const url = process.env.REACT_APP_BACKEND_URL + "/api/restaurant/info";
+        const url = process.env.REACT_APP_BACKEND_URL + "/api/deliverer/info";
 
-        if (restaurantAuthState.token === "") {
-            navigate("/restaurant/login");
+        if (deliveryAgentAuthState.token === "") {
+            navigate("/deliverer/login");
             return;
         }
         fetch(url, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${restaurantAuthState.token}`,
+                Authorization: `Bearer ${deliveryAgentAuthState.token}`,
             },
         })
             .then((response) => {
@@ -37,10 +34,8 @@ const RestaurantProfile = () => {
                         console.log(data);
                         setName(data.name);
                         setNumber(data.phone);
-                        setAddress(data.address);
                         setUsername(data.email);
-                        setTags(data.tags);
-                        setTimings(data.timings);
+
                     });
                 } else {
                     response.json().then((data) => {
@@ -51,7 +46,7 @@ const RestaurantProfile = () => {
             })
             .catch((error) => {
                 console.log(error);
-                navigate("/restaurant/login");
+                navigate("/delivery-agent/login");
                 alert("An error occurred. Please try again later.");
             });
     }, []);
@@ -61,19 +56,17 @@ const RestaurantProfile = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = process.env.REACT_APP_BACKEND_URL + "/api/restaurant/info";
+        const url = process.env.REACT_APP_BACKEND_URL + "/api/deliverer/info";
         fetch(url, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${restaurantAuthState.token}`,
+                Authorization: `Bearer ${deliveryAgentAuthState.token}`,
             },
             body: JSON.stringify({
                 name: name,
                 phone: number,
-                address: address,
-                tags: tags,
-                timings: timings,
+                email: username,
             }),
         })
             .then((response) => {
@@ -99,12 +92,12 @@ const RestaurantProfile = () => {
 
     return (
         <>
-            <div className="restaurant-profile">
+            <div className="delivery-agent-profile">
                 <div className="all-container">
-                    <RestaurantNavbar />
+                    <DeliveryAgentNavbar />
 
                     <div className="main-container">
-                        <div className="title">Restaurant Info</div>
+                        <div className="title">Profile</div>
                         {isEditing ? (
                             <form onSubmit={handleSubmit}>
                                 <div className="detail">
@@ -137,44 +130,6 @@ const RestaurantProfile = () => {
                                     <div className="detail-title">Email:</div>
                                     <div className="detail-value">{username}</div>
                                 </div>
-                                <div className="detail">
-                                    <div className="detail-title">Address:</div>
-                                    <div className="input-box">
-                                        <textarea
-                                            name="address"
-                                            placeholder="Address"
-                                            required
-                                            value={address}
-                                            onChange={(e) => setAddress(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="detail">
-                                    <div className="detail-title">Tags:</div>
-                                    <div className="input-box">
-                                        <input
-                                            type="text"
-                                            name="tags"
-                                            placeholder="Tags"
-                                            required
-                                            value={tags}
-                                            onChange={(e) => setTags(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="detail">
-                                    <div className="detail-title">Timings:</div>
-                                    <div className="input-box">
-                                        <input
-                                            type="text"
-                                            name="timings"
-                                            placeholder="Timings"
-                                            required
-                                            value={timings}
-                                            onChange={(e) => setTimings(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
                                 <div className="save-button">
                                     <button className="input-button" type="Submit">
                                         Save Details
@@ -194,18 +149,6 @@ const RestaurantProfile = () => {
                                 <div className="detail">
                                     <div className="detail-title">Email:</div>
                                     <div className="detail-value">{username}</div>
-                                </div>
-                                <div className="detail">
-                                    <div className="detail-title">Address:</div>
-                                    <div className="detail-value">{address}</div>
-                                </div>
-                                <div className="detail">
-                                    <div className="detail-title">Tags:</div>
-                                    <div className="detail-value">{tags}</div>
-                                </div>
-                                <div className="detail">
-                                    <div className="detail-title">Timings:</div>
-                                    <div className="detail-value">{timings}</div>
                                 </div>
 
                                 <div className="edit-button">
@@ -227,4 +170,4 @@ const RestaurantProfile = () => {
     );
 };
 
-export default RestaurantProfile;
+export default DeliveryAgentProfile;
