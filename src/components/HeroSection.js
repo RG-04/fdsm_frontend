@@ -11,10 +11,10 @@ const HeroSection = () => {
         <main className="main-content">
           <div className="background-image">
             <div className="card-container">
-              <Link to="/Customer/Login" className="card">Customer Login</Link>
-              <Link to="/Restaurant/Login" className="card">Restaurant Login</Link>
-              <Link to="/DeliveryAgent/Login" className="card">Delivery Agent Login</Link>
-              <Link to="/Admin/Login" className="card">Admin Login</Link>
+              <Link to="/customer/login" className="card">Customer Login</Link>
+              <Link to="/restaurant/login" className="card">Restaurant Login</Link>
+              <Link to="/delivery-agent/login" className="card">Delivery Agent Login</Link>
+              <Link to="/admin/login" className="card">Admin Login</Link>
             </div>
           </div>
         </main>

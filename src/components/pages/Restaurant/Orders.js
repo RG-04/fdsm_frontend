@@ -68,7 +68,6 @@ const RestaurantOrders = () => {
                                 {order.items.map((item, index) => (
                                     <div className="item" key={index}>
                                         <div className="name">{item.dish.name}</div>
-                                        <div className="price">Rs. {item.dish.price}</div>
                                         <div className="quantity">Quantity: {item.quantity}</div>
                                     </div>
                                 ))}

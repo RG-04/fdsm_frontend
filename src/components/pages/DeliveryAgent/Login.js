@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
-import "./SignUp.css";
+import React, { useState } from "react";
+import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Navbar";
-import { useCustomerAuthContext } from "../../../hooks/useCustomerAuthContext";
+import { useDeliveryAgentAuthContext } from "../../../hooks/useDeliveryAgentAuthContext";
 
-const CustomerSignup = () => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [address, setAddress] = useState("");
+const DeliveryAgentLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setCustomerAuthState } = useCustomerAuthContext();
+  const { setDeliveryAgentAuthState } = useDeliveryAgentAuthContext();
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, name, number, address);
+    console.log(username, password);
 
-    const url = process.env.REACT_APP_BACKEND_URL + "/api/customer/signup";
-    console.log(url);
+    const url = process.env.REACT_APP_BACKEND_URL + "/api/deliverer/login";
 
     fetch(url, {
       method: "POST",
@@ -28,9 +24,6 @@ const CustomerSignup = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: name,
-        phone: number,
-        address: address,
         email: username,
         password: password,
       }),
@@ -40,9 +33,10 @@ const CustomerSignup = () => {
           console.log(response);
           response.json().then((data) => {
             console.log(data);
-            setCustomerAuthState({ token: data.token });
+            alert("Login Successful");
+            setDeliveryAgentAuthState({ token: data.token });
             localStorage.setItem("token", data.token);
-            navigate("/customer");
+            navigate("/delivery-agent");
           });
         } else {
           response.json().then((data) => {
@@ -59,47 +53,18 @@ const CustomerSignup = () => {
 
   return (
     <>
-      <div className="customer-signup">
+      <div className="delivery-agent-login">
         <Navbar />
 
         <div className="background-image">
           <div className="wrapper">
             <div className="welcome-text">
-              <h1>Welcome to Ea2Go! We're glad to have you.</h1>
+              <h1>Welcome dear Customer!</h1>
             </div>
 
-            <div className="signup-form">
-              <h2>Sign Up</h2>
+            <div className="login-form">
+              <h2>Login</h2>
               <form onSubmit={handleSubmit}>
-                <div className="input-box">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div className="input-box">
-                  <input
-                    type="phone"
-                    name="phone"
-                    placeholder="Phone Number"
-                    required
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
-                  />
-                </div>
-                <div className="input-box">
-                  <textarea
-                    name="address"
-                    placeholder="Address"
-                    required
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </div>
                 <div className="input-box">
                   <input
                     type="text"
@@ -121,11 +86,11 @@ const CustomerSignup = () => {
                   />
                 </div>
                 <button className="input-button" type="Submit">
-                  Join
+                  Login
                 </button>
                 <div className="text">
                   <h3>
-                    Already have an account? <Link to="/customer/login">Login!</Link>
+                    New User? <Link to="/delivery-agent/signup">Sign Up now!</Link>
                   </h3>
                 </div>
               </form>
@@ -137,4 +102,4 @@ const CustomerSignup = () => {
   );
 };
 
-export default CustomerSignup;
+export default DeliveryAgentLogin;

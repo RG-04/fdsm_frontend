@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import Home from "./components/pages/Home";
+
 import CustomerLogin from "./components/pages/Customer/Login";
 import CustomerSignup from "./components/pages/Customer/SignUp";
 import CustomerDashboard from "./components/pages/Customer/Dashboard";
@@ -21,6 +22,11 @@ import RestaurantOrderInfo from "./components/pages/Restaurant/OrderInfo";
 import RestaurantMenu from "./components/pages/Restaurant/Menu";
 import RestaurantNewItem from "./components/pages/Restaurant/NewItem";
 import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
+
+import DeliveryAgentLogin from './components/pages/DeliveryAgent/Login';
+import DeliveryAgentSignup from './components/pages/DeliveryAgent/SignUp';
+import DeliveryAgentDashboard from "./components/pages/DeliveryAgent/Dashboard";
+import { DeliveryAgentAuthContextProvider } from "./contexts/DeliveryAgentAuthContext";
 
 function App() {
   const customer_details = { name: "Dummy" };
@@ -127,9 +133,15 @@ function App() {
           <Route path="*" element={<RestaurantDashboard />} />
         </Route>
 
+        <Route path="delivery-agent" element={<DeliveryAgentAuthContextProvider />}>
+          <Route index element={<DeliveryAgentDashboard />} />
+          <Route path="login" element={<DeliveryAgentLogin />} />
+          <Route path="signup" element={<DeliveryAgentSignup />} />
+          <Route path="*" element={<DeliveryAgentDashboard />} />
+        </Route>
+
         <Route path="management"></Route>
 
-        <Route path="delivery"></Route>
       </Routes>
     </Router>
   );

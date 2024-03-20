@@ -36,7 +36,7 @@ const CustomerLogin = () => {
             alert("Login Successful");
             setCustomerAuthState({ token: data.token });
             localStorage.setItem("token", data.token);
-            navigate("/customer/profile");
+            navigate("/customer");
           });
         } else {
           response.json().then((data) => {
@@ -90,7 +90,7 @@ const CustomerLogin = () => {
                 </button>
                 <div className="text">
                   <h3>
-                    New User? <Link to="signup">Sign Up now!</Link>
+                    New User? <Link to="/customer/signup">Sign Up now!</Link>
                   </h3>
                 </div>
               </form>
