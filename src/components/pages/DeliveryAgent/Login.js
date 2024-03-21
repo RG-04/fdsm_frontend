@@ -59,7 +59,7 @@ const DeliveryAgentLogin = () => {
         <div className="background-image">
           <div className="wrapper">
             <div className="welcome-text">
-              <h1>Welcome dear Customer!</h1>
+              <h1>Welcome dear Delivery Agent!</h1>
             </div>
 
             <div className="login-form">

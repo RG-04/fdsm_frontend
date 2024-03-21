@@ -11,6 +11,8 @@ const DeliveryAgentOrderInfo = () => {
     const [order, setOrder] = useState({ customer: {}, restaurant: {}, items: [] });
     const uid = useParams().orderID;
 
+    const [isClicked, setIsClicked] = useState(false);
+
     useEffect(() => {
         const url = process.env.REACT_APP_BACKEND_URL + `/api/deliverer/order/${uid}`;
 
@@ -35,6 +37,7 @@ const DeliveryAgentOrderInfo = () => {
             } else {
                 response.json().then((data) => {
                     console.log(data);
+                    navigate('/delivery-agent/login');
                     alert(data.error);
                 });
             }
@@ -43,6 +46,45 @@ const DeliveryAgentOrderInfo = () => {
             alert('An error occurred. Please try again later.');
         });
     }, []);
+
+    const handleOTPClick = () => {
+        setIsClicked(true);
+    }
+
+    const handleOTPClose = () => {
+        setIsClicked(false);
+    }
+
+    const handleOTPSubmit = () => {
+        const url = process.env.REACT_APP_BACKEND_URL + `/api/deliverer/order/${uid}`;
+
+        const otp = document.querySelector('.otp-box input').value;
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${deliveryAgentAuthState.token}`,
+            },
+            body: JSON.stringify({ otp }),
+        }).then((response) => {
+            if (response.ok) {
+                console.log(response);
+                response.json().then((data) => {
+                    console.log(data);
+                    navigate('/delivery-agent/orders');
+                });
+            } else {
+                response.json().then((data) => {
+                    console.log(data);
+                    alert(data.error);
+                });
+            }
+        }).catch((error) => {
+            console.log(error);
+            alert('An error occurred. Please try again later.');
+        });
+    }
 
     return (
         <>
@@ -97,6 +139,26 @@ const DeliveryAgentOrderInfo = () => {
                                 </div>
                             </div>
                         </div>
+
+                        {order.isCompleted ? (<></>) : (
+                            <>
+                                <div className="enter-otp-button" onClick={() => handleOTPClick()}>Enter OTP</div>
+
+                                <div className="otp-container" style={{ display: isClicked ? "block" : "none" }}>
+                                    <div className="otp-close">
+                                        <button className="close-button" onClick={() => handleOTPClose()}>X</button>
+                                    </div>
+                                    <div className="otp-data">
+                                        <div className="otp-box">
+                                            <input type="text" placeholder="Enter OTP" maxLength="4" />
+                                        </div>
+                                        <div className="submit-otp">
+                                            <button onClick={() => handleOTPSubmit()}>Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </>

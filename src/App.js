@@ -11,6 +11,7 @@ import CustomerViewRestaurant from "./components/pages/Customer/ViewRestaurant";
 import Cart from "./components/pages/Customer/Cart";
 import CustomerProfile from "./components/pages/Customer/Profile";
 import CustomerOrders from "./components/pages/Customer/Orders";
+import CustomerOrderInfo from "./components/pages/Customer/OrderInfo";
 import { CustomerAuthContextProvider } from "./contexts/CustomerAuthContext";
 
 import RestaurantLogin from './components/pages/Restaurant/Login';
@@ -114,13 +115,11 @@ function App() {
           <Route path="login" element={<CustomerLogin />} />
           <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<CustomerRestaurantList />} />
-          <Route
-            path="restaurant/:restaurantID"
-            element={<CustomerViewRestaurant />}
-          />
+          <Route path="restaurant/:restaurantID" element={<CustomerViewRestaurant />}/>
           <Route path="cart" element={<Cart />} />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<CustomerOrders />} />
+          <Route path="order/:orderID" element={<CustomerOrderInfo />} />
           <Route path="*" element={<CustomerDashboard />} />
         </Route>
 

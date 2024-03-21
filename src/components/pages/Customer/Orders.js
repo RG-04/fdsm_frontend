@@ -57,6 +57,10 @@ const CustomerOrders = () => {
       });
   }, []);
 
+  const handleOrderInfoClick = (uid) => {
+    navigate(`/customer/order/${uid}`);
+  };
+
   const PendingOrders = () => {
     return (
       <div className="main-container">
@@ -76,7 +80,10 @@ const CustomerOrders = () => {
               </div>
               <div className="date">{order.orderTime.split("T")[0]}</div>
               <div className="track-order">
-                <button>Track Order</button>
+                <button className="order-list-button">Track Order</button>
+              </div>
+              <div className="order-info">
+                <button className="order-list-button" onClick={() => handleOrderInfoClick(order.uid)}>More Info</button>
               </div>
             </div>
           ))}
@@ -102,6 +109,9 @@ const CustomerOrders = () => {
                 ))}
               </div>
               <div className="date">{order.orderTime}</div>
+              <div className="order-info">
+                <button className="order-list-button" onClick={() => handleOrderInfoClick(order.uid)}>More Info</button>
+              </div>
             </div>
           ))}
         </div>

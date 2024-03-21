@@ -66,3 +66,94 @@
 .delivery-agent-order-info .total-price {
     width: 50%;
 }
+
+.delivery-agent-order-info .enter-otp-button {
+    --w: 300px;
+    position: fixed;
+    bottom: 0;
+    width: var(--w);
+    background-color: #4a4f52;
+    font-size: 20px;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    left: calc(50% - var(--w)/2);
+    color: #e7e5dc;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.delivery-agent-order-info .enter-otp-button:hover {
+    transform: scale(1.05);
+    background-color: #8e969b;
+    cursor: pointer;
+}
+
+.delivery-agent-order-info .otp-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1efef;
+    width: 40%;
+    height: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.delivery-agent-order-info .otp-data {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-agent-order-info .otp-box {
+    width: 50%;
+    margin: 20px;
+}
+
+.delivery-agent-order-info .submit-otp > button {
+    background-color: #4a4f52;
+    font-size: 20px;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #e7e5dc;
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.delivery-agent-order-info .submit-otp > button:hover {
+    transform: scale(1.05);
+    background-color: #8e969b;
+}
+
+.delivery-agent-order-info .otp-box > input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.delivery-agent-order-info .otp-close {
+    margin: 20px;
+    position: absolute;
+    width: fit-content;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 2px;
+}
+
