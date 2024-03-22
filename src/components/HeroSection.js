@@ -14,7 +14,7 @@ const HeroSection = () => {
               <Link to="/customer/login" className="card">Customer Login</Link>
               <Link to="/restaurant/login" className="card">Restaurant Login</Link>
               <Link to="/delivery-agent/login" className="card">Delivery Agent Login</Link>
-              <Link to="/admin/login" className="card">Admin Login</Link>
+              <Link to="/management/login" className="card">Admin Login</Link>
             </div>
           </div>
         </main>

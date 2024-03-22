@@ -32,78 +32,13 @@ import DeliveryAgentOrders from "./components/pages/DeliveryAgent/Orders";
 import DeliveryAgentOrderInfo from "./components/pages/DeliveryAgent/OrderInfo";
 import { DeliveryAgentAuthContextProvider } from "./contexts/DeliveryAgentAuthContext";
 
-function App() {
-  const customer_details = { name: "Dummy" };
-  const restaurants_info = [
-    {
-      id: 1,
-      name: "Restaurant Name 1",
-      rating: 4.5,
-      cuisine: "Italian",
-      timings: "10:00 AM - 10:00 PM",
-      imageSrc: "/imgs/restaurants/restaurant1.jpg",
-    },
-    {
-      id: 2,
-      name: "Restaurant Name 1",
-      rating: 4.5,
-      cuisine: "Italian",
-      timings: "10:00 AM - 10:00 PM",
-      imageSrc: "/imgs/restaurants/restaurant1.jpg",
-    },
-    {
-      id: 3,
-      name: "Restaurant Name 1",
-      rating: 4.5,
-      cuisine: "Italian",
-      timings: "10:00 AM - 10:00 PM",
-      imageSrc: "/imgs/restaurants/restaurant1.jpg",
-    },
-    {
-      id: 4,
-      name: "Restaurant Name 1",
-      rating: 4.5,
-      cuisine: "Italian",
-      timings: "10:00 AM - 10:00 PM",
-      imageSrc: "/imgs/restaurants/restaurant1.jpg",
-    },
-    {
-      id: 5,
-      name: "Restaurant Name 1",
-      rating: 4.5,
-      cuisine: "Italian",
-      timings: "10:00 AM - 10:00 PM",
-      imageSrc: "/imgs/restaurants/restaurant1.jpg",
-    },
-  ];
+import ManagementLogin from "./components/pages/Management/Login";
+import ManagementDashboard from "./components/pages/Management/Dashboard";
+import ManagementRestaurantList from "./components/pages/Management/RestaurantList";
+import ManagementViewRestaurant from "./components/pages/Management/ViewRestaurant";
+import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
 
-  const all_restaurants_menu = [
-    {
-      restaurant_id: 1,
-      items: [
-        {
-          id: 1,
-          name: "Pizza",
-          price: 100,
-        },
-        {
-          id: 2,
-          name: "Burger",
-          price: 50,
-        },
-        {
-          id: 3,
-          name: "Pasta",
-          price: 150,
-        },
-        {
-          id: 4,
-          name: "Sandwich",
-          price: 50,
-        },
-      ],
-    },
-  ];
+function App() {
 
   return (
     <Router>
@@ -145,7 +80,13 @@ function App() {
           <Route path="*" element={<DeliveryAgentDashboard />} />
         </Route>
 
-        <Route path="management"></Route>
+        <Route path="management" element={<ManagementAuthContextProvider />}>
+          <Route index element={<ManagementDashboard />} />
+          <Route path="login" element={<ManagementLogin />} />
+          <Route path="restaurants" element={<ManagementRestaurantList />} />
+          <Route path="restaurant/:restaurantID" element={<ManagementViewRestaurant />} />
+          <Route path="*" element={<ManagementDashboard />} />
+        </Route>
 
       </Routes>
     </Router>
