@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-.management-view-restaurant {
+.management-customer-list {
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -9,12 +9,12 @@
     background-color: #3b3636;
 }
 
-.management-view-restaurant .all-container {
+.management-customer-list .all-container {
     width: 100%;
     /* height: 100vh; */
 }
 
-.management-view-restaurant .main-container {
+.management-customer-list .main-container {
     background-color: #f1efef;
     width: 80%;
     margin: 0 auto;
@@ -22,20 +22,20 @@
     padding: 30px;
 }
 
-.management-restaurant-list .title{
+.management-customer-list .title{
     width: 100%;
     font-size: 3em;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.management-view-restaurant .search-container {
+.management-customer-list .search-container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
 }
 
-.management-view-restaurant input[type="text"] {
+.management-customer-list input[type="text"] {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -44,37 +44,13 @@
     margin-bottom: 20px;
 }
 
-.management-view-restaurant .sort-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.management-view-restaurant .sort-container label {
-    margin-right: 10px;
-    font-size: 16px;
-}
-
-.management-view-restaurant .sorter {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-inline: 10px;
-    outline: none;
-}
-
-.sorter:focus {
-    border-color: #aaa;
-}
-
-.management-view-restaurant .item-list {
+.management-customer-list .customer-list {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.management-view-restaurant .item {
+.management-customer-list .customer {
     width: 80%;
     display: flex;
     justify-content: flex-start;
@@ -85,8 +61,14 @@
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.management-view-restaurant .item > div {
+.management-customer-list .customer:hover {
+    transform: scale(1.02);
+}
+
+.management-customer-list .customer > div {
     width: 40%;
 }

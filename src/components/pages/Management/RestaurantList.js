@@ -116,6 +116,9 @@ const ManagementRestaurantList = () => {
           <ManagementNavbar />
 
           <div className="main-container">
+            <div className="title">
+              <h1>All Restaurants</h1>
+            </div>
             <div className="search-container">
               <input
                 type="text"
