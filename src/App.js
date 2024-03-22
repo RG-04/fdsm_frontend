@@ -35,8 +35,10 @@ import { DeliveryAgentAuthContextProvider } from "./contexts/DeliveryAgentAuthCo
 import ManagementLogin from "./components/pages/Management/Login";
 import ManagementDashboard from "./components/pages/Management/Dashboard";
 import ManagementCustomerList from "./components/pages/Management/CustomerList";
+import ManagementViewCustomer from "./components/pages/Management/ViewCustomer";
 import ManagementRestaurantList from "./components/pages/Management/RestaurantList";
 import ManagementViewRestaurant from "./components/pages/Management/ViewRestaurant";
+import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryAgentList";
 import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
 
 function App() {
@@ -85,8 +87,10 @@ function App() {
           <Route index element={<ManagementDashboard />} />
           <Route path="login" element={<ManagementLogin />} />
           <Route path="customers" element={<ManagementCustomerList />} />
+          <Route path="customer/:customerID" element={<ManagementViewCustomer />} />
           <Route path="restaurants" element={<ManagementRestaurantList />} />
           <Route path="restaurant/:restaurantID" element={<ManagementViewRestaurant />} />
+          <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
           <Route path="*" element={<ManagementDashboard />} />
         </Route>
 
