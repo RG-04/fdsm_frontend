@@ -45,9 +45,19 @@
 }
 
 .restaurant-profile .input-box{
+    width: 50%;
+    display: flex;
+}
+
+.restaurant-profile .input-box > input{
     padding: 5px;
     border: 1px solid rgb(94, 93, 93);
     border-radius: 5px;
+    margin-inline: 10px;
+}
+
+.restaurant-profile .input-box.timings > input{
+    width: 30%;
 }
 
 .restaurant-profile .save-button, .restaurant-profile .edit-button{

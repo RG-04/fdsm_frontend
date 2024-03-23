@@ -19,7 +19,7 @@ const RateDeliveryAgent = ({ deliveryAgentInfo, customerAuthState, setRateDA, or
         const url = process.env.REACT_APP_BACKEND_URL + "/api/customer/reviews/deliverer/" + deliveryAgentInfo.uid;
         const data = {
             rating: rating,
-            comment: comment,
+            review: comment,
             order: orderInfo.uid
         }
 

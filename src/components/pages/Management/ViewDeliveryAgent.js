@@ -5,7 +5,7 @@ import ManagementNavbar from "./ManagementNavbar";
 import { useManagementAuthContext } from "../../../hooks/useManagementAuthContext";
 
 const ManagementViewDeliveryAgent = () => {
-  const [deliveryAgentInfo, setDeliveryAgentInfo] = useState({});
+  const [deliveryAgentInfo, setDeliveryAgentInfo] = useState({ reviews: [] });
   const [workingStatus, setWorkingStatus] = useState(0); // 0: not available, 1: available, 2: on delivery
   const { managementAuthState } = useManagementAuthContext();
 
@@ -72,29 +72,45 @@ const ManagementViewDeliveryAgent = () => {
 
           <div className="main-container">
             <div className="title">Delivery Agent Info</div>
-              <div className="profile-details">
-                <div className="detail">
-                  <div className="detail-title">Name:</div>
-                  <div className="detail-value">{deliveryAgentInfo.name}</div>
-                </div>
-                <div className="detail">
-                  <div className="detail-title">Phone Number:</div>
-                  <div className="detail-value">{deliveryAgentInfo.phone}</div>
-                </div>
-                <div className="detail">
-                  <div className="detail-title">Email:</div>
-                  <div className="detail-value">{deliveryAgentInfo.email}</div>
-                </div>
-                <div className="detail">
-                  <div className="detail-title">Status:</div>
-                  <div className="detail-value">{getStatus()}</div>
-                </div>
-
-                <div className="orders-button">
-                  <button onClick={handleOrdersClick}>View Orders</button>
-                </div>
+            <div className="profile-details">
+              <div className="detail">
+                <div className="detail-title">Name:</div>
+                <div className="detail-value">{deliveryAgentInfo.name}</div>
               </div>
+              <div className="detail">
+                <div className="detail-title">Phone Number:</div>
+                <div className="detail-value">{deliveryAgentInfo.phone}</div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Email:</div>
+                <div className="detail-value">{deliveryAgentInfo.email}</div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Status:</div>
+                <div className="detail-value">{getStatus()}</div>
+              </div>
+
+              <div className="orders-button">
+                <button onClick={handleOrdersClick}>View Orders</button>
+              </div>
+            </div>
           </div>
+          {deliveryAgentInfo.reviews.length ? (
+          <div className="main-container reviews">
+            <div className="title">
+              <h1>Reviews</h1>
+            </div>
+            <div className="review-list">
+              {deliveryAgentInfo.reviews.map((review) => (
+                <div className="review">
+                  <div className="review-rating">{"⭐".repeat(review.rating)}</div>
+                  <div className="review-name">{review.poster.name}</div>
+                  <div className="review-comment">{review.review}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          ) : (<></>)}
         </div>
       </div>
     </>

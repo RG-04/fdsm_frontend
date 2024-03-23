@@ -10,7 +10,8 @@ const RestaurantProfile = () => {
     const [address, setAddress] = useState("");
     const [username, setUsername] = useState("");
     const [tags, setTags] = useState("");
-    const [timings, setTimings] = useState("");
+    const [openTime, setOpenTime] = useState(0);
+    const [closeTime, setCloseTime] = useState(0);
     const [imageSrc, setImageSrc] = useState("");
 
     const { restaurantAuthState } = useRestaurantAuthContext();
@@ -41,7 +42,8 @@ const RestaurantProfile = () => {
                         setAddress(data.address);
                         setUsername(data.email);
                         setTags(data.tags);
-                        setTimings(data.timings);
+                        setOpenTime(data.timings.open);
+                        setCloseTime(data.timings.close);
                         setImageSrc(data.image);
                     });
                 } else {
@@ -75,7 +77,7 @@ const RestaurantProfile = () => {
                 phone: number,
                 address: address,
                 tags: tags,
-                timings: timings,
+                timings: {open: openTime, close: closeTime},
                 image: imageSrc,
             }),
         })
@@ -166,14 +168,26 @@ const RestaurantProfile = () => {
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Timings:</div>
-                                    <div className="input-box">
+                                    <div className="input-box timings">
                                         <input
-                                            type="text"
-                                            name="timings"
-                                            placeholder="Timings"
+                                            type="number"
+                                            name="open"
+                                            placeholder="Open"
                                             required
-                                            value={timings}
-                                            onChange={(e) => setTimings(e.target.value)}
+                                            value={openTime}
+                                            min="0"
+                                            max="24"
+                                            onChange={(e) => setOpenTime(e.target.value)}
+                                        />
+                                        <input
+                                            type="number"
+                                            name="close"
+                                            placeholder="Close"
+                                            required
+                                            value={closeTime}
+                                            min="0"
+                                            max="24"
+                                            onChange={(e) => setCloseTime(e.target.value)}
                                         />
                                     </div>
                                 </div>
@@ -219,10 +233,10 @@ const RestaurantProfile = () => {
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Timings:</div>
-                                    <div className="detail-value">{timings}</div>
+                                    <div className="detail-value">{String(openTime).padStart(2, '0')} hrs to {String(closeTime).padStart(2, '0')} hrs </div>
                                 </div>
                                 <div className="image">
-                                    <img src={imageSrc} alt="Restaurant" />
+                                    <img src={process.env.REACT_APP_BACKEND_URL + imageSrc} alt="Restaurant" />
                                 </div>
 
                                 <div className="edit-button">

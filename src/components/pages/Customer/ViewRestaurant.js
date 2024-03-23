@@ -127,7 +127,7 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
               <h1>{restaurantInfo.name}</h1>
             </div>
             {restaurantInfo.image ? (<div className="restaurant-image">
-              <img src={restaurantInfo.image} alt="Restaurant Image" />
+              <img src={process.env.REACT_APP_BACKEND_URL + restaurantInfo.image} alt="Restaurant Image" />
             </div>) : (<></>)}
 
             <div className="search-container">
@@ -185,8 +185,8 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
               {restaurantInfo.reviews.map((review) => (
                 <div className="review">
                   <div className="review-rating">{"⭐".repeat(review.rating)}</div>
-                  <div className="review-name">{review.poster}</div>
-                  <div className="review-comment">{review.comment}</div>
+                  <div className="review-name">{review.poster.name}</div>
+                  <div className="review-comment">{review.review}</div>
                 </div>
               ))}
             </div>

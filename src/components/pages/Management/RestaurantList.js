@@ -152,13 +152,13 @@ const ManagementRestaurantList = () => {
                   onClick={() => handleRestaurantClick(restaurant)}
                 >
                   <div className="restaurant-img">
-                    <img src={restaurant.image} alt="Restaurant Image" />
+                    <img src={process.env.REACT_APP_BACKEND_URL + restaurant.image} alt="Restaurant Image" />
                   </div>
                   <div className="restaurant-info">
                     <h3>{restaurant.name}</h3>
                     <p>Rating: {restaurant.rating}</p>
-                    <p>Cuisine: {restaurant.cuisine}</p>
-                    <p>Timings: {restaurant.timings}</p>
+                    <p>Tags: {restaurant.tags.toString()}</p>
+                    <p>Timings: {String(restaurant.timings.open).padStart(2, '0')} hrs to {String(restaurant.timings.close).padStart(2, '0')} hrs </p>
                   </div>
                 </div>
               ))}

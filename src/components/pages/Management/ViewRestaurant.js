@@ -11,7 +11,7 @@ const ManagementViewRestaurant = () => {
   let { restaurantID } = useParams();
 
   const [restaurantMenu, setRestaurantMenu] = useState([]);
-  const [restaurantInfo, setRestaurantInfo] = useState({});
+  const [restaurantInfo, setRestaurantInfo] = useState({timings: {}, reviews: []});
 
   const { managementAuthState } = useContext(ManagementAuthContext);
 
@@ -114,7 +114,7 @@ const ManagementViewRestaurant = () => {
           <div className="main-container restaurant-info">
             <div className="title">{restaurantInfo.name}</div>
             {restaurantInfo.image ? (<div className="restaurant-image">
-              <img src={restaurantInfo.image} alt="Restaurant Image" />
+              <img src={process.env.REACT_APP_BACKEND_URL + restaurantInfo.image} alt="Restaurant Image" />
             </div>) : (<></>)}
             <div className="profile-details">
               <div className="detail">
@@ -131,11 +131,11 @@ const ManagementViewRestaurant = () => {
               </div>
               <div className="detail">
                 <div className="detail-title">Tags:</div>
-                <div className="detail-value">{restaurantInfo.tags ? (restaurantInfo.tags.toString()) : ("") }</div>
+                <div className="detail-value">{restaurantInfo.tags ? (restaurantInfo.tags.toString()) : ("")}</div>
               </div>
               <div className="detail">
                 <div className="detail-title">Timings:</div>
-                <div className="detail-value">{restaurantInfo.timings}</div>
+                <div className="detail-value">{String(restaurantInfo.timings.open).padStart(2, '0')} hrs to {String(restaurantInfo.timings.close).padStart(2, '0')} hrs </div>
               </div>
               <div className="detail">
                 <div className="detail-title">Rating:</div>
@@ -182,6 +182,22 @@ const ManagementViewRestaurant = () => {
               ))}
             </div>
           </div>
+          {restaurantInfo.reviews.length ? (
+          <div className="main-container reviews">
+            <div className="title">
+              <h1>Reviews</h1>
+            </div>
+            <div className="review-list">
+              {restaurantInfo.reviews.map((review) => (
+                <div className="review">
+                  <div className="review-rating">{"⭐".repeat(review.rating)}</div>
+                  <div className="review-name">{review.poster.name}</div>
+                  <div className="review-comment">{review.review}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          ) : (<></>)}
         </div>
       </div>
     </>

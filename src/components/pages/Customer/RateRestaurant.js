@@ -19,7 +19,7 @@ const RateRestaurant = ({ restaurantInfo, customerAuthState, setRateRes, orderIn
         const url = process.env.REACT_APP_BACKEND_URL + "/api/customer/reviews/restaurant/" + restaurantInfo.uid;
         const data = {
             rating: rating,
-            comment: comment,
+            review: comment,
             order: orderInfo.uid
         }
 
