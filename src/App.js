@@ -42,7 +42,10 @@ import ManagementViewRestaurant from "./components/pages/Management/ViewRestaura
 import ManagementRestaurantOrders from "./components/pages/Management/RestaurantOrders";
 import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryAgentList";
 import ManagementViewDeliveryAgent from "./components/pages/Management/ViewDeliveryAgent";
+import ManagementDeliveryAgentOrders from "./components/pages/Management/DeliveryAgentOrders";
 import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
+
+// import TrackOrder from "./components/pages/Customer/TrackOrder";
 
 function App() {
 
@@ -51,12 +54,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
+        {/* <Route path="track-order" element={<TrackOrder />} /> */}
         <Route path="customer" element={<CustomerAuthContextProvider />}>
           <Route index element={<CustomerDashboard />} />
           <Route path="login" element={<CustomerLogin />} />
           <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<CustomerRestaurantList />} />
-          <Route path="restaurant/:restaurantID" element={<CustomerViewRestaurant />}/>
+          <Route path="restaurant/:restaurantID" element={<CustomerViewRestaurant />} />
           <Route path="cart" element={<Cart />} />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<CustomerOrders />} />
@@ -97,8 +101,10 @@ function App() {
           <Route path="restaurant/:restaurantID/orders" element={<ManagementRestaurantOrders />} />
           <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
           <Route path="delivery-agent/:deliveryAgentID" element={<ManagementViewDeliveryAgent />} />
+          <Route path="delivery-agent/:deliveryAgentID/orders" element={<ManagementDeliveryAgentOrders />} />
           <Route path="*" element={<ManagementDashboard />} />
         </Route>
+
 
       </Routes>
     </Router>

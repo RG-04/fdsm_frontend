@@ -6,6 +6,7 @@ import { useManagementAuthContext } from "../../../hooks/useManagementAuthContex
 
 const ManagementViewDeliveryAgent = () => {
   const [deliveryAgentInfo, setDeliveryAgentInfo] = useState({});
+  const [workingStatus, setWorkingStatus] = useState(0); // 0: not available, 1: available, 2: on delivery
   const { managementAuthState } = useManagementAuthContext();
 
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const ManagementViewDeliveryAgent = () => {
           response.json().then((data) => {
             console.log(data);
             setDeliveryAgentInfo(data);
+            setWorkingStatus(data.workingStatus);
           });
         } else {
           response.json().then((data) => {
@@ -50,6 +52,16 @@ const ManagementViewDeliveryAgent = () => {
   const handleOrdersClick = (e) => {
     e.preventDefault();
     navigate("/management/delivery-agent/" + deliveryAgentID + "/orders");
+  };
+
+  const getStatus = () => {
+    if (workingStatus === 0) {
+      return "Not Available";
+    } else if (workingStatus === 1) {
+      return "Available";
+    } else if (workingStatus === 2) {
+      return "On Delivery";
+    }
   };
 
   return (
@@ -75,22 +87,7 @@ const ManagementViewDeliveryAgent = () => {
                 </div>
                 <div className="detail">
                   <div className="detail-title">Status:</div>
-                  <div className="detail-value">{() =>
-                    {
-                      console.log(deliveryAgentInfo.workingStatus)
-                      if (deliveryAgentInfo.workingStatus === 0) {
-                        return "Not available";
-                      } else if (deliveryAgentInfo.workingStatus === 1) {
-                        return "Available";
-                      }
-                      else if (deliveryAgentInfo.workingStatus === 2) {
-                        return "On delivery";
-                      }
-                      else {
-                        return "Unknown";
-                      }
-                    }
-                  }</div>
+                  <div className="detail-value">{getStatus()}</div>
                 </div>
 
                 <div className="orders-button">

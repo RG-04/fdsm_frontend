@@ -14,9 +14,18 @@
     /* height: 100vh; */
 }
 
+.restaurant-menu .button-container{
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
 .restaurant-menu .new-item {
     --w: 300px;
-    position: fixed;
     bottom: 0;
     width: var(--w);
     background-color: #4a4f52;
@@ -25,7 +34,6 @@
     margin: 20px;
     border-radius: 10px;
     text-align: center;
-    left: calc(50% - var(--w)/2);
     color: #e7e5dc;
     font-weight: 500;
     transition: 0.3s;
@@ -85,4 +93,34 @@
 
 .restaurant-menu .toggle-box {
     width: 10%;
+}
+
+.restaurant-menu .changes-button{
+    position: relative;
+    bottom: 0;
+    --w: 300px;
+    width: var(--w);
+}
+
+.restaurant-menu .changes-button > button{
+    background-color: #4a4f52;
+    width: 100%;
+    font-size: 20px;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #e7e5dc;
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.restaurant-menu .changes-button >button:hover{
+    transform: scale(1.05);
+    background-color: #8e969b;
+}
+
+.restaurant-menu .toggle-switch > input {
+    cursor: pointer;
 }
