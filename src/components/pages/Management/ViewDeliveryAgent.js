@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
-import "./ViewCustomer.css";
+import "./ViewDeliveryAgent.css";
 import { useNavigate, useParams } from "react-router-dom";
 import ManagementNavbar from "./ManagementNavbar";
 import { useManagementAuthContext } from "../../../hooks/useManagementAuthContext";
 
-const ManagementViewCustomer = () => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [address, setAddress] = useState("");
-  const [username, setUsername] = useState("");
+const ManagementViewDeliveryAgent = () => {
+  const [deliveryAgentInfo, setDeliveryAgentInfo] = useState({});
   const { managementAuthState } = useManagementAuthContext();
 
   const navigate = useNavigate();
 
-  const { customerID } = useParams();
+  const { deliveryAgentID } = useParams();
 
   useEffect(() => {
-    const url = process.env.REACT_APP_BACKEND_URL + "/api/management/customer/" + customerID;
+    const url = process.env.REACT_APP_BACKEND_URL + "/api/management/deliverer/" + deliveryAgentID;
 
     if (managementAuthState.token === "") {
       navigate("/management/login");
@@ -34,10 +31,7 @@ const ManagementViewCustomer = () => {
           console.log(response);
           response.json().then((data) => {
             console.log(data);
-            setName(data.name);
-            setNumber(data.phone);
-            setAddress(data.address);
-            setUsername(data.email);
+            setDeliveryAgentInfo(data);
           });
         } else {
           response.json().then((data) => {
@@ -55,33 +49,48 @@ const ManagementViewCustomer = () => {
 
   const handleOrdersClick = (e) => {
     e.preventDefault();
-    navigate("/management/customer/" + customerID + "/orders");
+    navigate("/management/delivery-agent/" + deliveryAgentID + "/orders");
   };
 
   return (
     <>
-      <div className="management-view-customer">
+      <div className="management-view-delivery-agent">
         <div className="all-container">
           <ManagementNavbar />
 
           <div className="main-container">
-            <div className="title">Customer Info</div>
+            <div className="title">Delivery Agent Info</div>
               <div className="profile-details">
                 <div className="detail">
                   <div className="detail-title">Name:</div>
-                  <div className="detail-value">{name}</div>
+                  <div className="detail-value">{deliveryAgentInfo.name}</div>
                 </div>
                 <div className="detail">
                   <div className="detail-title">Phone Number:</div>
-                  <div className="detail-value">{number}</div>
+                  <div className="detail-value">{deliveryAgentInfo.phone}</div>
                 </div>
                 <div className="detail">
                   <div className="detail-title">Email:</div>
-                  <div className="detail-value">{username}</div>
+                  <div className="detail-value">{deliveryAgentInfo.email}</div>
                 </div>
                 <div className="detail">
-                  <div className="detail-title">Address:</div>
-                  <div className="detail-value">{address}</div>
+                  <div className="detail-title">Status:</div>
+                  <div className="detail-value">{() =>
+                    {
+                      console.log(deliveryAgentInfo.workingStatus)
+                      if (deliveryAgentInfo.workingStatus === 0) {
+                        return "Not available";
+                      } else if (deliveryAgentInfo.workingStatus === 1) {
+                        return "Available";
+                      }
+                      else if (deliveryAgentInfo.workingStatus === 2) {
+                        return "On delivery";
+                      }
+                      else {
+                        return "Unknown";
+                      }
+                    }
+                  }</div>
                 </div>
 
                 <div className="orders-button">
@@ -95,4 +104,4 @@ const ManagementViewCustomer = () => {
   );
 };
 
-export default ManagementViewCustomer;
+export default ManagementViewDeliveryAgent;

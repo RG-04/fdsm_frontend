@@ -91,10 +91,6 @@ const CustomerOrderInfo = () => {
                                     <div className="detail-title">Order Time:</div>
                                     <div className="detail-value">{order.orderTime}</div>
                                 </div>
-                                <div className="detail">
-                                    <div className="detail-title">OTP:</div>
-                                    <div className="detail-value">{order.otp}</div>
-                                </div>
                                 {order.isCompleted ? (<></>) : (
                                 <>
                                     <div className="detail">

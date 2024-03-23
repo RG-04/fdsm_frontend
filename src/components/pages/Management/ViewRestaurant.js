@@ -95,6 +95,11 @@ const ManagementViewRestaurant = () => {
     return sieve_inner;
   };
 
+  const handleOrdersClick = (e) => {
+    e.preventDefault();
+    navigate("/management/restaurant/" + restaurantID + "/orders");
+  };
+
   return (
     <>
       <div className="management-view-restaurant">
@@ -106,11 +111,41 @@ const ManagementViewRestaurant = () => {
         <div className="all-container">
           <ManagementNavbar />
 
-          <div className="main-container">
-            <div className="restaurant-name">
-              <h1>{restaurantInfo.name}</h1>
-            </div>
+          <div className="main-container restaurant-info">
+            <div className="title">{restaurantInfo.name}</div>
+            <div className="profile-details">
+              <div className="detail">
+                <div className="detail-title">Phone Number:</div>
+                <div className="detail-value">{restaurantInfo.phone}</div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Email:</div>
+                <div className="detail-value">{restaurantInfo.email}</div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Address:</div>
+                <div className="detail-value">{restaurantInfo.address}</div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Tags:</div>
+                <div className="detail-value">{restaurantInfo.tags ? (restaurantInfo.tags.toString()) : ("") }</div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Timings:</div>
+                <div className="detail-value">{restaurantInfo.timings}</div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Rating:</div>
+                <div className="detail-value">{restaurantInfo.rating}</div>
+              </div>
 
+              <div className="orders-button">
+                <button className="input-button" onClick={handleOrdersClick}>View Orders</button>
+              </div>
+            </div>
+          </div>
+
+          <div className="main-container">
             <div className="search-container">
               <input
                 type="text"
