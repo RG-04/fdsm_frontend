@@ -12,6 +12,7 @@ const RestaurantSignup = () => {
     const [password, setPassword] = useState('');
     const [tags, setTags] = useState('');
     const [timings, setTimings] = useState('');
+    const [imageSrc, setImageSrc] = useState('');
 
     const { setRestaurantAuthState } = useRestaurantAuthContext();
 
@@ -36,7 +37,8 @@ const RestaurantSignup = () => {
                 email: username,
                 password: password,
                 tags: tags,
-                timings: timings
+                timings: timings,
+                image: imageSrc
             })
         }).then((response) => {
             if (response.ok) {
@@ -79,6 +81,7 @@ const RestaurantSignup = () => {
                                         placeholder="Name"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
+                                        required
                                     />
                                 </div>
                                 <div className="input-box">
@@ -87,6 +90,7 @@ const RestaurantSignup = () => {
                                         placeholder="Phone Number"
                                         value={number}
                                         onChange={(e) => setNumber(e.target.value)}
+                                        required
                                     />
                                 </div>
                                 <div className="input-box">
@@ -95,6 +99,7 @@ const RestaurantSignup = () => {
                                         placeholder="Address"
                                         value={address}
                                         onChange={(e) => setAddress(e.target.value)}
+                                        required
                                     />
                                 </div>
                                 <div className="input-box">
@@ -103,6 +108,7 @@ const RestaurantSignup = () => {
                                         placeholder="Email"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
+                                        required
                                     />
                                 </div>
                                 <div className="input-box">
@@ -111,6 +117,7 @@ const RestaurantSignup = () => {
                                         placeholder="Password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
+                                        required
                                     />
                                 </div>
                                 <div className="input-box">
@@ -127,6 +134,15 @@ const RestaurantSignup = () => {
                                         placeholder="Timings"
                                         value={timings}
                                         onChange={(e) => setTimings(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div className="input-box">
+                                    <input
+                                        type="text"
+                                        placeholder="Image URL"
+                                        value={timings}
+                                        onChange={(e) => setImageSrc(e.target.value)}
                                     />
                                 </div>
                                 <button type="submit" className="input-button">Sign Up</button>

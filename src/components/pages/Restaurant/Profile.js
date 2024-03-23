@@ -11,6 +11,7 @@ const RestaurantProfile = () => {
     const [username, setUsername] = useState("");
     const [tags, setTags] = useState("");
     const [timings, setTimings] = useState("");
+    const [imageSrc, setImageSrc] = useState("");
 
     const { restaurantAuthState } = useRestaurantAuthContext();
 
@@ -156,7 +157,6 @@ const RestaurantProfile = () => {
                                             type="text"
                                             name="tags"
                                             placeholder="Tags"
-                                            required
                                             value={tags}
                                             onChange={(e) => setTags(e.target.value)}
                                         />
@@ -172,6 +172,18 @@ const RestaurantProfile = () => {
                                             required
                                             value={timings}
                                             onChange={(e) => setTimings(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="detail">
+                                    <div className="detail-title">Image:</div>
+                                    <div className="input-box">
+                                        <input
+                                            type="text"
+                                            name="image"
+                                            placeholder="Image URL"
+                                            value={imageSrc}
+                                            onChange={(e) => setImageSrc(e.target.value)}
                                         />
                                     </div>
                                 </div>
@@ -206,6 +218,12 @@ const RestaurantProfile = () => {
                                 <div className="detail">
                                     <div className="detail-title">Timings:</div>
                                     <div className="detail-value">{timings}</div>
+                                </div>
+                                <div className="detail">
+                                    <div className="detail-title">Image:</div>
+                                    <div className="detail-value">
+                                        <img src={imageSrc} alt="Restaurant" />
+                                    </div>
                                 </div>
 
                                 <div className="edit-button">
