@@ -29,6 +29,11 @@
     text-align: center;
 }
 
+.management-view-restaurant .restaurant-image{
+    width: 100%;
+    padding-inline: 20%;
+}
+
 .management-view-restaurant .detail{
     display: flex;
     justify-content:flex-start;

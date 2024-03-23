@@ -130,6 +130,9 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
             <div className="restaurant-name">
               <h1>{restaurantInfo.name}</h1>
             </div>
+            {restaurantInfo.image ? (<div className="restaurant-image">
+              <img src={restaurantInfo.image} alt="Restaurant Image" />
+            </div>) : (<></>)}
 
             <div className="search-container">
               <input

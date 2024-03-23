@@ -52,6 +52,11 @@
     text-align: center;
 }
 
+.customer-view-restaurant .restaurant-image{
+    width: 100%;
+    padding-inline: 20%;
+}
+
 .customer-view-restaurant .search-container {
     width: 80%;
     margin: 0 auto;

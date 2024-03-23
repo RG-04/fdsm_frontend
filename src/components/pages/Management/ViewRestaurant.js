@@ -113,6 +113,9 @@ const ManagementViewRestaurant = () => {
 
           <div className="main-container restaurant-info">
             <div className="title">{restaurantInfo.name}</div>
+            {restaurantInfo.image ? (<div className="restaurant-image">
+              <img src={restaurantInfo.image} alt="Restaurant Image" />
+            </div>) : (<></>)}
             <div className="profile-details">
               <div className="detail">
                 <div className="detail-title">Phone Number:</div>

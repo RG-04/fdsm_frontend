@@ -149,10 +149,10 @@ const CustomerRestaurantList = () => {
                   onClick={() => handleRestaurantClick(restaurant)}
                 >
                   <div className="restaurant-img">
-                    <img src={restaurant.imageSrc} alt="Restaurant Image" />
+                    <img src={restaurant.image} alt="Restaurant Image" />
                   </div>
                   <div className="restaurant-info">
-                    <h3>{restaurant.name}</h3>
+                    <h3>{restaurant.name}aaaa</h3>
                     <p>Rating: {restaurant.rating}</p>
                     <p>Cuisine: {restaurant.cuisine}</p>
                     <p>Timings: {restaurant.timings}</p>

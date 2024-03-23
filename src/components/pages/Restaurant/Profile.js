@@ -42,6 +42,7 @@ const RestaurantProfile = () => {
                         setUsername(data.email);
                         setTags(data.tags);
                         setTimings(data.timings);
+                        setImageSrc(data.image);
                     });
                 } else {
                     response.json().then((data) => {
@@ -75,6 +76,7 @@ const RestaurantProfile = () => {
                 address: address,
                 tags: tags,
                 timings: timings,
+                image: imageSrc,
             }),
         })
             .then((response) => {
@@ -219,11 +221,8 @@ const RestaurantProfile = () => {
                                     <div className="detail-title">Timings:</div>
                                     <div className="detail-value">{timings}</div>
                                 </div>
-                                <div className="detail">
-                                    <div className="detail-title">Image:</div>
-                                    <div className="detail-value">
-                                        <img src={imageSrc} alt="Restaurant" />
-                                    </div>
+                                <div className="image">
+                                    <img src={imageSrc} alt="Restaurant" />
                                 </div>
 
                                 <div className="edit-button">

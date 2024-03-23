@@ -39,6 +39,11 @@
     width: 50%;
 }
 
+.restaurant-profile .image {
+    width: 100%;
+    padding-inline: 20%;
+}
+
 .restaurant-profile .input-box{
     padding: 5px;
     border: 1px solid rgb(94, 93, 93);
@@ -50,7 +55,9 @@
     bottom: 0;
     --w: 300px;
     width: var(--w);
-    left: calc(50% - var(--w)/2);
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 20px;
 }
 
 .restaurant-profile .save-button > button, .restaurant-profile .edit-button > button{
@@ -58,7 +65,6 @@
     width: 100%;
     font-size: 20px;
     padding: 15px;
-    margin: 20px;
     border-radius: 10px;
     text-align: center;
     color: #e7e5dc;
