@@ -53,6 +53,12 @@
     width: 50%;
 }
 
+.customer-orders .order-buttons {
+    display: flex;
+    justify-content: flex-start;
+
+}
+
 .customer-orders .order-list-button{
     background-color: #4a4f52;
     font-size: 20px;

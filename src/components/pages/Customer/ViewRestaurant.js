@@ -12,13 +12,9 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
   const navigate = useNavigate();
 
   let { restaurantID } = useParams();
-  // restaurantID = Number(restaurantID);
-  // const restaurantInfo = all_restaurants_info.filter(restaurant => restaurant.id === restaurantID)[0];
-  // all_restaurants_menu.map(menu => console.log(menu.restaurant_id, restaurantID));
-  // const restaurantMenu = all_restaurants_menu.filter(menu => menu.restaurant_id === restaurantID)[0].items;
 
   const [restaurantMenu, setRestaurantMenu] = useState([]);
-  const [restaurantInfo, setRestaurantInfo] = useState({});
+  const [restaurantInfo, setRestaurantInfo] = useState({ reviews: []});
   const [currentItemList, setCurrentItemList] = useState(restaurantMenu);
 
   const { customerAuthState } = useContext(CustomerAuthContext);
@@ -127,7 +123,7 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
           </div>
 
           <div className="main-container">
-            <div className="restaurant-name">
+            <div className="title">
               <h1>{restaurantInfo.name}</h1>
             </div>
             {restaurantInfo.image ? (<div className="restaurant-image">
@@ -180,6 +176,22 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
               ))}
             </div>
           </div>
+          {restaurantInfo.reviews.length ? (
+          <div className="main-container reviews">
+            <div className="title">
+              <h1>Reviews</h1>
+            </div>
+            <div className="review-list">
+              {restaurantInfo.reviews.map((review) => (
+                <div className="review">
+                  <div className="review-rating">{"⭐".repeat(review.rating)}</div>
+                  <div className="review-name">{review.poster}</div>
+                  <div className="review-comment">{review.comment}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          ) : (<></>)}
         </div>
       </div>
     </>

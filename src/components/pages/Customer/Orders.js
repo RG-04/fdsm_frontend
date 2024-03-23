@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Orders.css";
 import { useNavigate } from "react-router-dom";
 import CustomerNavbar from "./CustomerNavbar";
+import RateRestaurant from "./RateRestaurant";
+import RateDeliveryAgent from "./RateDeliveryAgent";
 import { useCustomerAuthContext } from "../../../hooks/useCustomerAuthContext";
 
 const CustomerOrders = () => {
-  // const orders = [{restaurant: "Restaurant Name 1", items: [{name: "Item 1", price: 100}, {name: "Item 2", price: 200}], totalPrice: 300, date: "2020-12-01", status: "Delivered"},
-  //                 {restaurant: "Restaurant Name 2", items: [{name: "Item 3", price: 300}, {name: "Item 4", price: 400}], totalPrice: 700, date: "2020-12-02", status: "Pending"},
-  //                 {restaurant: "Restaurant Name 3", items: [{name: "Item 5", price: 500}, {name: "Item 6", price: 600}], totalPrice: 1100, date: "2020-12-03", status: "Delivered"},
-  //                 {restaurant: "Restaurant Name 4", items: [{name: "Item 7", price: 700}, {name: "Item 8", price: 800}], totalPrice: 1500, date: "2020-12-04", status: "Pending"}];
 
   const { customerAuthState } = useCustomerAuthContext();
   const navigate = useNavigate();
@@ -79,11 +77,13 @@ const CustomerOrders = () => {
                 ))}
               </div>
               <div className="date">{order.orderTime.split("T")[0]}</div>
-              <div className="track-order">
-                <button className="order-list-button">Track Order</button>
-              </div>
-              <div className="order-info">
-                <button className="order-list-button" onClick={() => handleOrderInfoClick(order.uid)}>More Info</button>
+              <div className="order-buttons">
+                <div className="track-order">
+                  <button className="order-list-button">Track Order</button>
+                </div>
+                <div className="order-info">
+                  <button className="order-list-button" onClick={() => handleOrderInfoClick(order.uid)}>More Info</button>
+                </div>
               </div>
             </div>
           ))}
@@ -108,9 +108,17 @@ const CustomerOrders = () => {
                   </div>
                 ))}
               </div>
-              <div className="date">{order.orderTime}</div>
-              <div className="order-info">
-                <button className="order-list-button" onClick={() => handleOrderInfoClick(order.uid)}>More Info</button>
+              <div className="date">{order.orderTime.split("T")[0]}</div>
+              <div className="order-buttons">
+                <div className="order-info">
+                  <button className="order-list-button" onClick={() => handleOrderInfoClick(order.uid)}>More Info</button>
+                </div>
+                {!order.isRestaurantRated ? (<div className="review-restaurant">
+                  <button className="order-list-button" onClick={() => handleRateRestaurant(order.restaurant, order)}>Rate Restaurant</button>
+                </div>) : (<></>)}
+                {!order.isDelivererRated ? (<div className="review-delivery-agent">
+                  <button className="order-list-button" onClick={() => handleRateDeliveryAgent(order.deliverer, order)}>Rate Delivery Agent</button>
+                </div>) : (<></>)}
               </div>
             </div>
           ))}
@@ -118,6 +126,25 @@ const CustomerOrders = () => {
       </div>
     );
   };
+
+  const [rateRes, setRateRes] = useState(false);
+  const [resInfo, setResInfo] = useState({});
+  const [orderInfo, setOrderInfo] = useState({});
+
+  const handleRateRestaurant = (restaurantInfo, order) => {
+    setRateRes(true);
+    setResInfo(restaurantInfo);
+    setOrderInfo(order);
+  }
+
+  const [rateDA, setRateDA] = useState(false);
+  const [daInfo, setDAInfo] = useState({});
+
+  const handleRateDeliveryAgent = (deliveryAgentInfo, order) => {
+    setRateDA(true);
+    setDAInfo(deliveryAgentInfo);
+    setOrderInfo(order);
+  }
 
   return (
     <>
@@ -135,6 +162,9 @@ const CustomerOrders = () => {
           {deliveredOrders.length !== 0 ? <DeliveredOrders /> : <></>}
         </div>
       </div>
+
+      {rateRes ? <RateRestaurant restaurantInfo={resInfo} setRateRes={setRateRes} customerAuthState={customerAuthState} orderInfo={orderInfo} /> : <></>}
+      {rateDA ? <RateDeliveryAgent deliveryAgentInfo={daInfo} setRateDA={setRateDA} customerAuthState={customerAuthState} orderInfo={orderInfo} /> : <></>}
     </>
   );
 };
