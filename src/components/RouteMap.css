@@ -1,47 +1,47 @@
+.map-container-comp .mapDiv {
+  width: 50vw;
+  height: 50vh;
+}
 
+.map-container-comp button {
+  padding: 8px 16px;
+  background: red;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
 
-.mapDiv {
-    width: 50vw;
-    height: 50vh;
-  }
-  
-  button {
-    padding: 8px 16px;
-    background: red;
-    border: none;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .clearButton {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-  }
-  
-  .routeButton {
-    position: absolute;
-    top: 10px;
-    left: 85px;
-    z-index: 10;
-  }
+.map-container-comp .clearButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
 
-  #container {
-    position: relative;
-    top: 0;
-    left: 0;
-    background-color: lightgray;
-    z-index: 909; /* Set a high z-index to ensure it appears on top */
+.map-container-comp .routeButton {
+  position: absolute;
+  top: 10px;
+  left: 85px;
+  z-index: 10;
+}
 
-  }
-  
-  #text {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px; /* Adjust padding as needed */
-    z-index: 999; /* Set a high z-index to ensure it appears on top */
+.map-container-comp #container {
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: lightgray;
+  z-index: 909;
+  /* Set a high z-index to ensure it appears on top */
 
-  }
-  
+}
+
+.map-container-comp #text {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  /* Adjust padding as needed */
+  z-index: 999;
+  /* Set a high z-index to ensure it appears on top */
+
+}

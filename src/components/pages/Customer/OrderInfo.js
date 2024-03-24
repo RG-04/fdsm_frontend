@@ -2,13 +2,14 @@ import React, { useState, useEffect, } from "react";
 import { useParams, useNavigate } from "react-router";
 import "./OrderInfo.css";
 import CustomerNavbar from "./CustomerNavbar";
+import RouteMap from "../../RouteMap";
 import { useCustomerAuthContext } from "../../../hooks/useCustomerAuthContext";
 
 const CustomerOrderInfo = () => {
     const { customerAuthState } = useCustomerAuthContext();
     const navigate = useNavigate();
 
-    const [order, setOrder] = useState({ restaurant: {}, deliverer: {}, items: [] });
+    const [order, setOrder] = useState({ restaurant: {}, deliverer: { location: {}}, items: [] , customer: { location: {} }});
     const uid = useParams().orderID;
 
     useEffect(() => {
@@ -31,6 +32,7 @@ const CustomerOrderInfo = () => {
                 response.json().then((data) => {
                     console.log(data);
                     setOrder(data);
+                    console.log("hello", data.customer.location, data.deliverer.location)
                 });
             } else {
                 response.json().then((data) => {
@@ -59,7 +61,7 @@ const CustomerOrderInfo = () => {
                                     <div className="detail-value">{order.restaurant.name}</div>
                                 </div>
                                 <div className="detail">
-                                    <div className="detail-title">Address:</div>
+                                    <div className="detail-title">Delivery Address:</div>
                                     <div className="detail-value">{order.deliveryAddress}</div>
                                 </div>
                                 <div className="detail">
@@ -92,18 +94,31 @@ const CustomerOrderInfo = () => {
                                     <div className="detail-value">{order.orderTime}</div>
                                 </div>
                                 {order.isCompleted ? (<></>) : (
-                                <>
-                                    <div className="detail">
-                                        <div className="detail-title">Estimated Delivery Time:</div>
-                                        <div className="detail-value">{order.etd}</div>
-                                    </div>
-                                    <div className="detail">
-                                        <div className="detail-title">Delivery OTP:</div>
-                                        <div className="detail-value">{order.otp}</div>
-                                    </div>
-                                </>)}
+                                    <>
+                                        <div className="detail">
+                                            <div className="detail-title">Estimated Delivery Time:</div>
+                                            <div className="detail-value">{order.etd}</div>
+                                        </div>
+                                        <div className="detail">
+                                            <div className="detail-title">Delivery OTP:</div>
+                                            <div className="detail-value">{order.otp}</div>
+                                        </div>
+                                    </>)}
                             </div>
                         </div>
+
+                        {order.customer.name && !order.isCompleted ? (
+                            <div className="main-container map">
+                                <div className="title">Track Your Order</div>
+                                <div className="map-div">
+                                    <RouteMap start={order.deliverer.location} destination={order.customer.location}/>
+                                </div>
+                                <div className="refresh">
+                                    <button className="refresh-button" onClick={() => window.location.reload()}>Refresh</button>
+                                </div>
+                            </div>
+
+                        ) : (<></>)}
                     </div>
                 </div>
             </>

@@ -12,6 +12,7 @@
 .customer-order-info .all-container {
     width: 100%;
     /* height: 100vh; */
+    padding: 2px;
 }
 
 .customer-order-info .main-container {
@@ -20,6 +21,7 @@
     margin: 0 auto;
     border-radius: 10px;
     padding: 30px;
+    margin-bottom: 20px;
 }
 
 .customer-order-info .title{
@@ -65,4 +67,34 @@
 
 .customer-order-info .total-price {
     width: 50%;
+}
+
+.customer-order-info .main-container.map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.customer-order-info .map-div {
+    width: fit-content;
+}
+
+.customer-order-info .refresh{
+    background-color: #4a4f52;
+    font-size: 20px;
+    padding: 12px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #e7e5dc;
+    font-weight: 500;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.customer-order-info .refresh:hover{
+    transform: scale(1.1);
+    background: #666f8b;
 }
