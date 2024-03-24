@@ -14,7 +14,10 @@ const ManagementViewDeliveryAgent = () => {
   const { deliveryAgentID } = useParams();
 
   useEffect(() => {
-    const url = process.env.REACT_APP_BACKEND_URL + "/api/management/deliverer/" + deliveryAgentID;
+    const url =
+      process.env.REACT_APP_BACKEND_URL +
+      "/api/management/deliverer/" +
+      deliveryAgentID;
 
     if (managementAuthState.token === "") {
       navigate("/management/login");
@@ -54,6 +57,37 @@ const ManagementViewDeliveryAgent = () => {
     navigate("/management/delivery-agent/" + deliveryAgentID + "/orders");
   };
 
+  const handlePaymentCollected = (e) => {
+    e.preventDefault();
+    const url =
+      process.env.REACT_APP_BACKEND_URL +
+      "/api/management/markpaid/deliverer/" +
+      deliveryAgentID;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${managementAuthState.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(response);
+          alert("Payment collected successfully");
+          window.location.reload(false);
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+            alert(data.error);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("An error occurred. Please try again later.");
+      });
+  };
+
   const getStatus = () => {
     if (workingStatus === 0) {
       return "Not Available";
@@ -89,28 +123,60 @@ const ManagementViewDeliveryAgent = () => {
                 <div className="detail-title">Status:</div>
                 <div className="detail-value">{getStatus()}</div>
               </div>
-
-              <div className="orders-button">
-                <button onClick={handleOrdersClick}>View Orders</button>
+              <div className="detail">
+                <div className="detail-title">Rating:</div>
+                <div className="detail-value">
+                  {"⭐".repeat(deliveryAgentInfo.rating)}
+                </div>
+              </div>
+              <div className="detail">
+                <div className="detail-title">Payment to be collected:</div>
+                <div className="detail-value">
+                  {deliveryAgentInfo.pendingMoney}
+                </div>
+              </div>
+              <div
+                className="button-holder"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                }}
+              >
+                {deliveryAgentInfo.pendingMoney > 0 && (
+                  <div className="orders-button">
+                    <button onClick={handlePaymentCollected}>
+                      Payment Collected!
+                    </button>
+                  </div>
+                )}
+                <div className="orders-button">
+                  <button onClick={handleOrdersClick}>View Orders</button>
+                </div>
               </div>
             </div>
           </div>
           {deliveryAgentInfo.reviews.length ? (
-          <div className="main-container reviews">
-            <div className="title">
-              <h1>Reviews</h1>
+            <div className="main-container reviews">
+              <div className="title">
+                <h1>Reviews</h1>
+              </div>
+              <div className="review-list">
+                {deliveryAgentInfo.reviews.map((review) => (
+                  <div className="review">
+                    <div className="review-rating">
+                      {"⭐".repeat(review.rating)}
+                    </div>
+                    <div className="review-name">{review.poster.name}</div>
+                    <div className="review-comment">{review.comment}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="review-list">
-              {deliveryAgentInfo.reviews.map((review) => (
-                <div className="review">
-                  <div className="review-rating">{"⭐".repeat(review.rating)}</div>
-                  <div className="review-name">{review.poster.name}</div>
-                  <div className="review-comment">{review.comment}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          ) : (<></>)}
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

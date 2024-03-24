@@ -1,91 +1,90 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 .management-view-delivery-agent {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    background-color: #3b3636;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background-color: #3b3636;
 }
 
 .management-view-delivery-agent .all-container {
-    width: 100%;
-    /* height: 100vh; */
-    padding-bottom: 2px;
+  width: 100%;
+  /* height: 100vh; */
+  padding-bottom: 2px;
 }
 
 .management-view-delivery-agent .main-container {
-    background-color: #f1efef;
-    width: 60%;
-    margin: 20px auto;
-    border-radius: 10px;
-    padding: 30px;
+  background-color: #f1efef;
+  width: 60%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 30px;
 }
 
-.management-view-delivery-agent .title{
-    font-size: 40px;
-    margin-bottom: 20px;
-    text-align: center;
+.management-view-delivery-agent .title {
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.management-view-delivery-agent .detail{
-    display: flex;
-    justify-content:flex-start;
-    margin-block: 20px;
-    font-size: 20px;
+.management-view-delivery-agent .detail {
+  display: flex;
+  justify-content: flex-start;
+  margin-block: 20px;
+  font-size: 20px;
 }
 
-.management-view-delivery-agent .detail-title{
-    width: 50%;
+.management-view-delivery-agent .detail-title {
+  width: 50%;
 }
 
-.management-view-delivery-agent .orders-button{
-    position: relative;
-    bottom: 0;
-    --w: 300px;
-    width: var(--w);
-    left: calc(50% - var(--w)/2);
+.management-view-delivery-agent .orders-button {
+  position: relative;
+  bottom: 0;
+  --w: 300px;
+  width: var(--w);
 }
 
-.management-view-delivery-agent .orders-button > button{
-    background-color: #4a4f52;
-    width: 100%;
-    font-size: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    color: #e7e5dc;
-    font-weight: 500;
-    transition: 0.3s;
-    cursor: pointer;
+.management-view-delivery-agent .orders-button > button {
+  background-color: #4a4f52;
+  width: 100%;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  color: #e7e5dc;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
-.management-view-delivery-agent .orders-button > button:hover{
-    transform: scale(1.05);
-    background-color: #8e969b;
+.management-view-delivery-agent .orders-button > button:hover {
+  transform: scale(1.05);
+  background-color: #8e969b;
 }
 
 .management-view-delivery-agent .review-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .management-view-delivery-agent .review {
-    width: 80%;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 20px;
+  width: 80%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
 }
 
 .management-view-delivery-agent .review-comment {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
