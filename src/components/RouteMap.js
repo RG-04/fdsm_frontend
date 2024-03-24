@@ -17,7 +17,7 @@ const RouteMap = ({ start, destination }) => {
 
   const key = process.env.REACT_APP_TOMTOM_API_KEY;
 
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState(undefined);
 
   const addMarker = (position) => {
     position = [position.lon, position.lat];
@@ -89,16 +89,19 @@ const RouteMap = ({ start, destination }) => {
 
     setMap(map);
 
-    return () => map.remove();
+    return () => {
+      map.remove();
+      setMap(null);
+    };
   }, []);
 
   useEffect(() => {
-    if (map) {
+    if (map && !map.getLayer("routeblue")) {
       addRoute(start, destination, "blue");
     }
 
     return () => {
-      if (map) {
+      if (mapElement.current && map && map.getLayer("routeblue")) {
         map.removeLayer("routeblue");
       }
     };
