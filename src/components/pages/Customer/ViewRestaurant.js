@@ -3,6 +3,7 @@ import "./ViewRestaurant.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../../../contexts/CartContext";
 import CustomerNavbar from "./CustomerNavbar";
+import FavoriteButton from "../../FavouriteButton";
 import { CustomerAuthContext } from "../../../contexts/CustomerAuthContext";
 
 const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
@@ -14,7 +15,7 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
   let { restaurantID } = useParams();
 
   const [restaurantMenu, setRestaurantMenu] = useState([]);
-  const [restaurantInfo, setRestaurantInfo] = useState({ reviews: []});
+  const [restaurantInfo, setRestaurantInfo] = useState({ reviews: [] });
   const [currentItemList, setCurrentItemList] = useState(restaurantMenu);
 
   const { customerAuthState } = useContext(CustomerAuthContext);
@@ -57,10 +58,38 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
         navigate("/customer/login");
         alert("An error occurred. Please try again later.");
       });
+
+    const customer_url = process.env.REACT_APP_BACKEND_URL + "/api/customer/info";
+
+    fetch(customer_url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${customerAuthState.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(response);
+          response.json().then((data) => {
+            console.log(data);
+            setIsFavorite(data.favouriteRestaurants.some((restaurant) => restaurant.uid == restaurantID));
+          });
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+            alert(data.error);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/customer/login");
+        alert("An error occurred. Please try again later.");
+      });
   }, []);
 
   const prices = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500];
-
   const [sortPrice, setSortPrice] = useState(0);
 
   const handleSearchBar = (searchVal) => {
@@ -107,6 +136,38 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
     console.log("cart", cartItems);
   };
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    const url =
+      process.env.REACT_APP_BACKEND_URL +
+      "/api/customer/favouriterestaurant/" +
+      restaurantID;
+
+    fetch(url, {
+      method: isFavorite ? "DELETE" : "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${customerAuthState.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(response);
+          setIsFavorite(!isFavorite);
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+            alert(data.error);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("An error occurred. Please try again later.");
+      });
+  }
+
   return (
     <>
       <div className="customer-view-restaurant">
@@ -123,6 +184,9 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
           </div>
 
           <div className="main-container">
+            <div className="favourite-button">
+              <FavoriteButton isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
+            </div>
             <div className="title">
               <h1>{restaurantInfo.name}</h1>
             </div>
@@ -177,20 +241,20 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
             </div>
           </div>
           {restaurantInfo.reviews.length ? (
-          <div className="main-container reviews">
-            <div className="title">
-              <h1>Reviews</h1>
+            <div className="main-container reviews">
+              <div className="title">
+                <h1>Reviews</h1>
+              </div>
+              <div className="review-list">
+                {restaurantInfo.reviews.map((review) => (
+                  <div className="review">
+                    <div className="review-rating">{"⭐".repeat(review.rating)}</div>
+                    <div className="review-name">{review.poster.name}</div>
+                    <div className="review-comment">{review.comment}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="review-list">
-              {restaurantInfo.reviews.map((review) => (
-                <div className="review">
-                  <div className="review-rating">{"⭐".repeat(review.rating)}</div>
-                  <div className="review-name">{review.poster.name}</div>
-                  <div className="review-comment">{review.comment}</div>
-                </div>
-              ))}
-            </div>
-          </div>
           ) : (<></>)}
         </div>
       </div>
