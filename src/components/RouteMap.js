@@ -25,7 +25,7 @@ const RouteMap = ({ start, destination }) => {
     // console.log("Marker added at ", position);
   };
 
-  const addRoute = (start, end) => {
+  const addRoute = (start, end, color) => {
     addMarker(start);
     addMarker(end);
 
@@ -37,7 +37,7 @@ const RouteMap = ({ start, destination }) => {
       travelMode: "motorcycle",
     };
 
-    calculateRoute("blue", options);
+    calculateRoute(color, options);
   };
 
   const calculateRoute = async (color, options) => {
@@ -94,8 +94,14 @@ const RouteMap = ({ start, destination }) => {
 
   useEffect(() => {
     if (map) {
-      addRoute(start, destination);
+      addRoute(start, destination, "blue");
     }
+
+    return () => {
+      if (map) {
+        map.removeLayer("routeblue");
+      }
+    };
   }, [map, start, destination]);
 
   return (
