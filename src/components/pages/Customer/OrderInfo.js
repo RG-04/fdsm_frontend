@@ -32,7 +32,6 @@ const CustomerOrderInfo = () => {
                 response.json().then((data) => {
                     console.log(data);
                     setOrder(data);
-                    console.log("hello", data.customer.location, data.deliverer.location)
                 });
             } else {
                 response.json().then((data) => {
