@@ -45,35 +45,7 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
             setRestaurantMenu(data.menu);
             setRestaurantInfo(data);
             setCurrentItemList(data.menu);
-          });
-        } else {
-          response.json().then((data) => {
-            console.log(data);
-            alert(data.error);
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        navigate("/customer/login");
-        alert("An error occurred. Please try again later.");
-      });
-
-    const customer_url = process.env.REACT_APP_BACKEND_URL + "/api/customer/info";
-
-    fetch(customer_url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${customerAuthState.token}`,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log(response);
-          response.json().then((data) => {
-            console.log(data);
-            setIsFavorite(data.favouriteRestaurants.some((restaurant) => restaurant.uid == restaurantID));
+            setIsFavorite(data.isFavourite);
           });
         } else {
           response.json().then((data) => {
@@ -166,7 +138,7 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
         console.log(error);
         alert("An error occurred. Please try again later.");
       });
-  }
+  };
 
   return (
     <>
@@ -185,14 +157,24 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
 
           <div className="main-container">
             <div className="favourite-button">
-              <FavoriteButton isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
+              <FavoriteButton
+                isFavorite={isFavorite}
+                toggleFavorite={toggleFavorite}
+              />
             </div>
             <div className="title">
               <h1>{restaurantInfo.name}</h1>
             </div>
-            {restaurantInfo.image ? (<div className="restaurant-image">
-              <img src={process.env.REACT_APP_BACKEND_URL + restaurantInfo.image} alt="Restaurant Image" />
-            </div>) : (<></>)}
+            {restaurantInfo.image ? (
+              <div className="restaurant-image">
+                <img
+                  src={process.env.REACT_APP_BACKEND_URL + restaurantInfo.image}
+                  alt="Restaurant Image"
+                />
+              </div>
+            ) : (
+              <></>
+            )}
 
             <div className="search-container">
               <input
@@ -248,14 +230,18 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
               <div className="review-list">
                 {restaurantInfo.reviews.map((review) => (
                   <div className="review">
-                    <div className="review-rating">{"⭐".repeat(review.rating)}</div>
+                    <div className="review-rating">
+                      {"⭐".repeat(review.rating)}
+                    </div>
                     <div className="review-name">{review.poster.name}</div>
                     <div className="review-comment">{review.comment}</div>
                   </div>
                 ))}
               </div>
             </div>
-          ) : (<></>)}
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
