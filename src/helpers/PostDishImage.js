@@ -1,39 +1,51 @@
 import React from "react";
 
-const PostDishImage = ({ image, uid, token }) => {
-
+const PostDishImage = async ({ image, uid, token }) => {
+    console.log("image", image);
     if(image === null) {
-        naviagate('/restaurant/menu');
-        return;
+        return "success";
     }
 
     const url1 = process.env.REACT_APP_BACKEND_URL + '/api/restaurant/menu/images/' + uid;
     console.log("hello",url1);
 
-    fetch(url1, {
+    let formData = new FormData();
+    await formData.append('image', image);
+
+    // for (var pair of formData.entries()) {
+    //     console.log(pair[0]+ ', ' + pair[1]); 
+    // }
+
+    console.log("formdata",formData.get('image'));
+
+    try{
+    let response = await fetch(url1, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+            'Authorization': `Bearer ${token}`,
+            mode: 'no-cors'
         },
-        body: {file: image}
-    }).then((response) => {
+        body: formData
+    })
+    
+    
         if (response.ok) {
             console.log(response);
-            response.json().then((data) => {
+            const data = await response.json();
                 console.log(data);
-            });
-            navigate('/restaurant/menu');
+                return "success";
         } else {
-            response.json().then((data) => {
-                console.log(data);
-                alert(data.error);
-            });
+            const data = await response.json();
+            console.log(data);
+            alert(data.error);
         }
-    }).catch((error) => {
+    } catch (error) {
         console.log(error);
         alert('An error occurred. Please try again later.');
-    });
+    };
+
+    return "error";
 }
 
 export default PostDishImage;

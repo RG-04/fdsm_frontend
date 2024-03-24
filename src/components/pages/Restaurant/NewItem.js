@@ -43,7 +43,14 @@ const RestaurantNewItem = () => {
                 console.log(response);
                 response.json().then((data) => {
                     console.log(data);
-                    PostDishImage({image: image, uid: data.uid,token: restaurantAuthState.token});
+                    PostDishImage({image: image, uid: data.uid,token: restaurantAuthState.token}).then((imageRes) => {
+                    if(imageRes === "success") {
+                        alert('Item added successfully');
+                        navigate('/restaurant/menu');
+                    }}).catch((error) => {
+                        console.log(error);
+                        alert('An error occurred. Please try again later.');
+                    });
                 });
             } else {
                 response.json().then((data) => {
