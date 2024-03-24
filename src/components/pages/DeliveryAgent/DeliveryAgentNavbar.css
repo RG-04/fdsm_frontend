@@ -1,4 +1,4 @@
-.nav-bar-management {
+.nav-bar-delivery-agent {
     position: sticky;
     top: 0px;
     background-color: transparent;
@@ -10,16 +10,16 @@
     align-items: center;
 }
 
-.nav-bar-management .navbar-logo img {
+.nav-bar-delivery-agent .navbar-logo img {
     margin: 15px 30px;
     height: 50px;
 }
 
-.nav-bar-management .nav-home:hover {
+.nav-bar-delivery-agent .nav-home:hover {
     transform: scale(1.05);
 }
 
-.nav-bar-management .menu-button {
+.nav-bar-delivery-agent .menu-button {
     width: 40px;
     height: 40px;
     background: transparent;
@@ -31,11 +31,11 @@
     transition: 0.1s;
 }
 
-.nav-bar-management .menu-button:hover {
+.nav-bar-delivery-agent .menu-button:hover {
     transform: scale(1.1);
 }
 
-.nav-bar-management .bar {
+.nav-bar-delivery-agent .bar {
     width: 100%;
     height: 5px;
     background-color: rgb(253, 244, 244);
@@ -43,20 +43,20 @@
     transition: 0.4s;
 }
 
-.nav-bar-management .change .bar:nth-child(1) {
+.nav-bar-delivery-agent .change .bar:nth-child(1) {
     transform: rotate(-45deg) translate(-6px, 6px);
 }
 
-.nav-bar-management .change .bar:nth-child(2) {
+.nav-bar-delivery-agent .change .bar:nth-child(2) {
     opacity: 0;
 }
 
-.nav-bar-management .change .bar:nth-child(3) {
+.nav-bar-delivery-agent .change .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -5px);
 }
 
 
-.nav-bar-management .menu-container {
+.nav-bar-delivery-agent .menu-container {
     position: fixed;
     top: 0;
     right: -20%;
@@ -69,12 +69,12 @@
     box-shadow: none;
 }
 
-.nav-bar-management .menu-container.active {
+.nav-bar-delivery-agent .menu-container.active {
     right: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
-.nav-bar-management .menu-links {
+.nav-bar-delivery-agent .menu-links {
     padding: 10px;
     text-decoration: none;
     font-size: 1.5em;
@@ -85,7 +85,7 @@
     margin: 40px 20%;
 }
 
-.nav-bar-management div.menu-container a {
+.nav-bar-delivery-agent div.menu-container a {
     --c: #f0f0f0;
     /* the border color */
     --b: 5px;
@@ -103,11 +103,11 @@
     cursor: pointer;
 }
 
-.nav-bar-management div.menu-container a:hover {
+.nav-bar-delivery-agent div.menu-container a:hover {
     --_i: 100%;
     transition: .1s, background-size .1s .1s;
 }
 
-.nav-bar-management .menu-button.hidden {
+.nav-bar-delivery-agent .menu-button.hidden {
     filter: drop-shadow(2px 2px 1px #7c7979) invert(1);
 }
