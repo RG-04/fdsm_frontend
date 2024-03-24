@@ -1,13 +1,10 @@
-import React from "react";
-
-const PostDishImage = async ({ image, uid, token }) => {
+const postRestaurantImage = async ({ image, token }) => {
   console.log("image", image);
   if (image === null) {
     return "success";
   }
 
-  const url1 =
-    process.env.REACT_APP_BACKEND_URL + "/api/restaurant/menu/images/" + uid;
+  const url1 = process.env.REACT_APP_BACKEND_URL + "/api/restaurant/info/image";
   console.log("hello", url1);
 
   var formData = new FormData();
@@ -46,4 +43,4 @@ const PostDishImage = async ({ image, uid, token }) => {
   return "error";
 };
 
-export default PostDishImage;
+export default postRestaurantImage;
