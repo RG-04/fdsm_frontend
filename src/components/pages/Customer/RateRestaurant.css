@@ -1,4 +1,4 @@
-.rate-restaurant{
+.rate-restaurant {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -15,18 +15,18 @@
     justify-content: center;
 }
 
-.rate-restaurant .rating-form{
+.rate-restaurant .rating-form {
     font-size: 2em;
 }
 
-.rate-restaurant .submit-review{
+.rate-restaurant .submit-review {
     width: fit-content;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.rate-restaurant .submit-review > button {
+.rate-restaurant .submit-review>button {
     background-color: #4a4f52;
     font-size: 20px;
     padding: 15px;
@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-.rate-restaurant .submit-review > button:hover {
+.rate-restaurant .submit-review>button:hover {
     transform: scale(1.05);
     background-color: #8e969b;
 }
@@ -56,4 +56,27 @@
     border: 2px solid #ccc;
     border-radius: 5px;
     padding: 2px;
+}
+
+.rate-restaurant .radio-range .radio-input {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.rate-restaurant .radio-range input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.rate-restaurant .radio-range label {
+    display: inline-block;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-size: 1em;
+    transition: 0.3s;
 }

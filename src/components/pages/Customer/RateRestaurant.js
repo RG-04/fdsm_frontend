@@ -59,16 +59,88 @@ const RateRestaurant = ({ restaurantInfo, customerAuthState, setRateRes, orderIn
                 <h1>Rate {restaurantInfo.name}</h1>
             </div>
             <div className="rating-form">
-                <Form.Label>
-                    Rating: {rating}
-                </Form.Label>
-                <Form.Range
-                    value={rating}
-                    onChange={(e) => handleRatingChange(e)}
-                    className="custom-slider"
-                    min="1"
-                    max="5" />
-
+                <div className="radio-range">
+                    <div className="radio-input">
+                        <input
+                            type="radio"
+                            id="rating1"
+                            name="rating"
+                            value="1"
+                            onChange={(e) => handleRatingChange(e)}
+                        />
+                        <label htmlFor="rating1">
+                            {rating >= 1 ? (
+                                <i className="fa-solid fa-star" style={{ color: "#ffa200" }} />
+                            ) : (
+                                <i className="fa-regular fa-star" />
+                            )}
+                        </label>
+                    </div>
+                    <div className="radio-input">
+                        <input
+                            type="radio"
+                            id="rating2"
+                            name="rating"
+                            value="2"
+                            onChange={(e) => handleRatingChange(e)}
+                        />
+                        <label htmlFor="rating2">
+                            {rating >= 2 ? (
+                                <i className="fa-solid fa-star" style={{ color: "#ffa200" }} />
+                            ) : (
+                                <i className="fa-regular fa-star" />
+                            )}
+                        </label>
+                    </div>
+                    <div className="radio-input">
+                        <input
+                            type="radio"
+                            id="rating3"
+                            name="rating"
+                            value="3"
+                            onChange={(e) => handleRatingChange(e)}
+                        />
+                        <label htmlFor="rating3">
+                            {rating >= 3 ? (
+                                <i className="fa-solid fa-star" style={{ color: "#ffa200" }} />
+                            ) : (
+                                <i className="fa-regular fa-star" />
+                            )}
+                        </label>
+                    </div>
+                    <div className="radio-input">
+                        <input
+                            type="radio"
+                            id="rating4"
+                            name="rating"
+                            value="4"
+                            onChange={(e) => handleRatingChange(e)}
+                        />
+                        <label htmlFor="rating4">
+                            {rating >= 4 ? (
+                                <i className="fa-solid fa-star" style={{ color: "#ffa200" }} />
+                            ) : (
+                                <i className="fa-regular fa-star" />
+                            )}
+                        </label>
+                    </div>
+                    <div className="radio-input">
+                        <input
+                            type="radio"
+                            id="rating5"
+                            name="rating"
+                            value="5"
+                            onChange={(e) => handleRatingChange(e)}
+                        />
+                        <label htmlFor="rating5">
+                            {rating >= 5 ? (
+                                <i className="fa-solid fa-star" style={{ color: "#ffa200" }} />
+                            ) : (
+                                <i className="fa-regular fa-star" />
+                            )}
+                        </label>
+                    </div>
+                </div>
             </div>
             <div className="comment-form">
                 <Form.Control
