@@ -104,9 +104,6 @@ const ManagementRestaurantOrders = () => {
                                 ))}
                             </div>
                             <div className="date">{order.orderTime.split("T")[0]}</div>
-                            <div className="track-order">
-                                <button className="order-list-button">Track Order</button>
-                            </div>
                         </div>
                     ))}
                 </div>

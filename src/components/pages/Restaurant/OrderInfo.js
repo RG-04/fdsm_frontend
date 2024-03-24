@@ -8,7 +8,7 @@ const RestaurantOrderInfo = () => {
     const { restaurantAuthState } = useRestaurantAuthContext();
     const navigate = useNavigate();
 
-    const [order, setOrder] = useState({ customer: {}, deliverer: {}, items: [] });
+    const [order, setOrder] = useState({ customer: {}, deliverer: {}, items: [], deliveryAddress: {}});
     const uid = useParams().orderID;
 
     useEffect(() => {
@@ -60,7 +60,7 @@ const RestaurantOrderInfo = () => {
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Address:</div>
-                                    <div className="detail-value">{order.deliveryAddress}</div>
+                                    <div className="detail-value">{order.deliveryAddress.text}</div>
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Delivery Agent:</div>

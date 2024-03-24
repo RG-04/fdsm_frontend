@@ -9,7 +9,7 @@ const CustomerOrderInfo = () => {
     const { customerAuthState } = useCustomerAuthContext();
     const navigate = useNavigate();
 
-    const [order, setOrder] = useState({ restaurant: {}, deliverer: { location: {}}, items: [] , customer: { location: {} }});
+    const [order, setOrder] = useState({ restaurant: {}, deliverer: { location: {}}, items: [] , customer: { location: {} }, deliveryAddress: {}});
     const uid = useParams().orderID;
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const CustomerOrderInfo = () => {
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Delivery Address:</div>
-                                    <div className="detail-value">{order.deliveryAddress}</div>
+                                    <div className="detail-value">{order.deliveryAddress.text}</div>
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Delivery Agent:</div>
@@ -110,7 +110,7 @@ const CustomerOrderInfo = () => {
                             <div className="main-container map">
                                 <div className="title">Track Your Order</div>
                                 <div className="map-div">
-                                    <RouteMap start={order.deliverer.location} destination={order.customer.location}/>
+                                    <RouteMap start={order.deliverer.location} destination={order.deliveryAddress}/>
                                 </div>
                                 <div className="refresh">
                                     <button className="refresh-button" onClick={() => window.location.reload()}>Refresh</button>

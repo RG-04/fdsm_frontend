@@ -104,11 +104,11 @@
     cursor: pointer;
 }
 
-.customer-cart .main-container.payment-list {
+.customer-cart .main-container.payment-list, .customer-cart .main-container.address {
     width: 40%;
 }
 
-.customer-cart .payment-title{
+.customer-cart .payment-title, .customer-cart .address-title{
     font-size: 2em;
     margin-bottom: 20px;
 }
@@ -125,5 +125,13 @@
 
 .customer-cart .payment-method.selected {
     background-color: #97b1ee;
+    border-radius: 5px;
+}
+
+.customer-cart .address-input input{
+    font-size: 1.1em;
+    width: 100%;
+    padding: 5px;
+    border: 1.5px solid #C7BEBE;
     border-radius: 5px;
 }

@@ -103,11 +103,8 @@ const ManagementDeliveryAgentOrders = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className="address">{order.deliveryAddress}</div>
+                            <div className="address">{order.deliveryAddress.text}</div>
                             <div className="date">{order.orderTime.split("T")[0]}</div>
-                            <div className="track-order">
-                                <button className="order-list-button">Track Order</button>
-                            </div>
                         </div>
                     ))}
                 </div>

@@ -8,7 +8,7 @@ const DeliveryAgentOrderInfo = () => {
     const { deliveryAgentAuthState } = useDeliveryAgentAuthContext();
     const navigate = useNavigate();
 
-    const [order, setOrder] = useState({ customer: {}, restaurant: {}, items: [] });
+    const [order, setOrder] = useState({ customer: {}, restaurant: {}, items: [], deliveryAddress: {} });
     const uid = useParams().orderID;
 
     const [isClicked, setIsClicked] = useState(false);
@@ -102,7 +102,7 @@ const DeliveryAgentOrderInfo = () => {
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Delivery Address:</div>
-                                    <div className="detail-value">{order.deliveryAddress}</div>
+                                    <div className="detail-value">{order.deliveryAddress.text}</div>
                                 </div>
                                 <div className="detail">
                                     <div className="detail-title">Restaurant Address:</div>

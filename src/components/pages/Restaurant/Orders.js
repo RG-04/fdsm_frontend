@@ -73,9 +73,6 @@ const RestaurantOrders = () => {
                                 ))}
                             </div>
                             <div className="date">{order.orderTime.split("T")[0]}</div>
-                            <div className="track-order">
-                                <button className="order-list-button">Track Order</button>
-                            </div>
                             <div className="order-info">
                                 <button className="order-list-button" onClick={() => handleOrderInfoClick(order.uid)}>More Info</button>
                             </div>

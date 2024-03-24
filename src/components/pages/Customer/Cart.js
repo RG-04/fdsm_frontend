@@ -8,11 +8,35 @@ import { requestOrders } from "../../../helpers/RequestOrders";
 
 const Cart = () => {
   const { customerAuthState } = useCustomerAuthContext();
+  const [customerInfo, setCustomerInfo] = useState({});
 
   useEffect(() => {
     if (customerAuthState.token === "") {
       navigate("/customer/login");
     }
+
+    const url = process.env.REACT_APP_BACKEND_URL + "/api/customer/info";
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${customerAuthState.token}`,
+      },
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          console.log(data);
+          setCustomerInfo(data);
+          setAddress(data.address);
+        });
+      } else {
+        response.json().then((data) => {
+          console.log(data);
+          alert(data.error);
+        });
+      }
+    });
   }, []);
 
   const { cartItems, addToCart, removeFromCart, totalPrice } =
@@ -21,6 +45,11 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const [paymentMethod, setPaymentMethod] = useState("Cash");
+  const [address, setAddress] = useState("");
+
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  };
 
   const getQuantity = (restaurantID, itemID) => {
     const index = cartItems.findIndex(
@@ -49,7 +78,7 @@ const Cart = () => {
 
   const handleProceed = () => {
     if (paymentMethod === "Cash") {
-      requestOrders(cartItems, customerAuthState.token).then(
+      requestOrders(cartItems, customerAuthState.token, address).then(
         ({ successfulOrders }) => {
           cartItems.map((cartItem) => {
             if (successfulOrders.includes(cartItem.restaurantID)) {
@@ -151,21 +180,27 @@ const Cart = () => {
                 </div>
                 <div className="payment-methods">
                   <div
-                    className={`payment-method cash ${
-                      paymentMethod === "Cash" ? "selected" : ""
-                    }`}
+                    className={`payment-method cash ${paymentMethod === "Cash" ? "selected" : ""
+                      }`}
                     onClick={() => setPaymentMethod("Cash")}
                   >
                     <label htmlFor="cash">Cash</label>
                   </div>
                   <div
-                    className={`payment-method card ${
-                      paymentMethod === "Card" ? "selected" : ""
-                    }`}
+                    className={`payment-method card ${paymentMethod === "Card" ? "selected" : ""
+                      }`}
                     onClick={() => setPaymentMethod("Card")}
                   >
                     <label htmlFor="card">Card</label>
                   </div>
+                </div>
+              </div>
+              <div className="main-container address">
+                <div className="address-title">
+                  <h2>Enter Address:</h2>
+                </div>
+                <div className="address-input">
+                  <input type="text" value={address} placeholder="Address" onChange={handleAddressChange}/>
                 </div>
               </div>
             </>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const requestOrders = async (cartItems, token) => {
+export const requestOrders = async (cartItems, token, address) => {
     console.log("CartItems", cartItems);
     let splitOrder = {};
     for (let i = 0; i < cartItems.length; i++) {
@@ -25,7 +25,7 @@ export const requestOrders = async (cartItems, token) => {
             quantity: item.count,
             };
         }),
-        deliveryAddress: "Kolkata"
+        deliveryAddress: address
         };
         try {
             const response = await fetch(url, {

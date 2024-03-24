@@ -46,15 +46,12 @@ import ManagementDeliveryAgentOrders from "./components/pages/Management/Deliver
 import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
 import RouteMap from "./components/RouteMap";
 
-// import TrackOrder from "./components/pages/Customer/TrackOrder";
-
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
-        {/* <Route path="track-order" element={<TrackOrder />} /> */}
         <Route path="customer" element={<CustomerAuthContextProvider />}>
           <Route index element={<CustomerDashboard />} />
           <Route path="login" element={<CustomerLogin />} />
