@@ -14,9 +14,9 @@ import CustomerOrders from "./components/pages/Customer/Orders";
 import CustomerOrderInfo from "./components/pages/Customer/OrderInfo";
 import { CustomerAuthContextProvider } from "./contexts/CustomerAuthContext";
 
-import RestaurantLogin from './components/pages/Restaurant/Login';
-import RestaurantSignup from './components/pages/Restaurant/SignUp';
-import RestaurantDashboard from './components/pages/Restaurant/Dashboard';
+import RestaurantLogin from "./components/pages/Restaurant/Login";
+import RestaurantSignup from "./components/pages/Restaurant/SignUp";
+import RestaurantDashboard from "./components/pages/Restaurant/Dashboard";
 import RestaurantProfile from "./components/pages/Restaurant/Profile";
 import RestaurantOrders from "./components/pages/Restaurant/Orders";
 import RestaurantOrderInfo from "./components/pages/Restaurant/OrderInfo";
@@ -24,8 +24,8 @@ import RestaurantMenu from "./components/pages/Restaurant/Menu";
 import RestaurantNewItem from "./components/pages/Restaurant/NewItem";
 import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
-import DeliveryAgentLogin from './components/pages/DeliveryAgent/Login';
-import DeliveryAgentSignup from './components/pages/DeliveryAgent/SignUp';
+import DeliveryAgentLogin from "./components/pages/DeliveryAgent/Login";
+import DeliveryAgentSignup from "./components/pages/DeliveryAgent/SignUp";
 import DeliveryAgentDashboard from "./components/pages/DeliveryAgent/Dashboard";
 import DeliveryAgentProfile from "./components/pages/DeliveryAgent/Profile";
 import DeliveryAgentOrders from "./components/pages/DeliveryAgent/Orders";
@@ -44,11 +44,11 @@ import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryA
 import ManagementViewDeliveryAgent from "./components/pages/Management/ViewDeliveryAgent";
 import ManagementDeliveryAgentOrders from "./components/pages/Management/DeliveryAgentOrders";
 import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
+import RouteMap from "./components/RouteMap";
 
 // import TrackOrder from "./components/pages/Customer/TrackOrder";
 
 function App() {
-
   return (
     <Router>
       <Routes>
@@ -60,7 +60,10 @@ function App() {
           <Route path="login" element={<CustomerLogin />} />
           <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<CustomerRestaurantList />} />
-          <Route path="restaurant/:restaurantID" element={<CustomerViewRestaurant />} />
+          <Route
+            path="restaurant/:restaurantID"
+            element={<CustomerViewRestaurant />}
+          />
           <Route path="cart" element={<Cart />} />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<CustomerOrders />} />
@@ -80,7 +83,10 @@ function App() {
           <Route path="*" element={<RestaurantDashboard />} />
         </Route>
 
-        <Route path="delivery-agent" element={<DeliveryAgentAuthContextProvider />}>
+        <Route
+          path="delivery-agent"
+          element={<DeliveryAgentAuthContextProvider />}
+        >
           <Route index element={<DeliveryAgentDashboard />} />
           <Route path="login" element={<DeliveryAgentLogin />} />
           <Route path="signup" element={<DeliveryAgentSignup />} />
@@ -94,18 +100,39 @@ function App() {
           <Route index element={<ManagementDashboard />} />
           <Route path="login" element={<ManagementLogin />} />
           <Route path="customers" element={<ManagementCustomerList />} />
-          <Route path="customer/:customerID" element={<ManagementViewCustomer />} />
-          <Route path="customer/:customerID/orders" element={<ManagementCustomerOrders />} />
+          <Route
+            path="customer/:customerID"
+            element={<ManagementViewCustomer />}
+          />
+          <Route
+            path="customer/:customerID/orders"
+            element={<ManagementCustomerOrders />}
+          />
           <Route path="restaurants" element={<ManagementRestaurantList />} />
-          <Route path="restaurant/:restaurantID" element={<ManagementViewRestaurant />} />
-          <Route path="restaurant/:restaurantID/orders" element={<ManagementRestaurantOrders />} />
-          <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
-          <Route path="delivery-agent/:deliveryAgentID" element={<ManagementViewDeliveryAgent />} />
-          <Route path="delivery-agent/:deliveryAgentID/orders" element={<ManagementDeliveryAgentOrders />} />
+          <Route
+            path="restaurant/:restaurantID"
+            element={<ManagementViewRestaurant />}
+          />
+          <Route
+            path="restaurant/:restaurantID/orders"
+            element={<ManagementRestaurantOrders />}
+          />
+          <Route
+            path="delivery-agents"
+            element={<ManagementDeliveryAgentList />}
+          />
+          <Route
+            path="delivery-agent/:deliveryAgentID"
+            element={<ManagementViewDeliveryAgent />}
+          />
+          <Route
+            path="delivery-agent/:deliveryAgentID/orders"
+            element={<ManagementDeliveryAgentOrders />}
+          />
           <Route path="*" element={<ManagementDashboard />} />
         </Route>
 
-
+        <Route path="test" element={<RouteMap />} />
       </Routes>
     </Router>
   );
