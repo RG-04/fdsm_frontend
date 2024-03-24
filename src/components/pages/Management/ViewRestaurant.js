@@ -131,7 +131,7 @@ const ManagementViewRestaurant = () => {
               </div>
               <div className="detail">
                 <div className="detail-title">Tags:</div>
-                <div className="detail-value">{restaurantInfo.tags ? (restaurantInfo.tags.toString()) : ("")}</div>
+                <div className="detail-value">{restaurantInfo.tags ? (restaurantInfo.tags.join(", ")) : ("")}</div>
               </div>
               <div className="detail">
                 <div className="detail-title">Timings:</div>
@@ -192,7 +192,7 @@ const ManagementViewRestaurant = () => {
                 <div className="review">
                   <div className="review-rating">{"⭐".repeat(review.rating)}</div>
                   <div className="review-name">{review.poster.name}</div>
-                  <div className="review-comment">{review.review}</div>
+                  <div className="review-comment">{review.comment}</div>
                 </div>
               ))}
             </div>

@@ -12,12 +12,13 @@
 .restaurant-profile .all-container {
     width: 100%;
     /* height: 100vh; */
+    padding-bottom: 2px;
 }
 
 .restaurant-profile .main-container {
     background-color: #f1efef;
     width: 60%;
-    margin: 0 auto;
+    margin: 20px auto;
     border-radius: 10px;
     padding: 30px;
 }
@@ -86,4 +87,28 @@
 .restaurant-profile .save-button > button:hover, .restaurant-profile .edit-button >button:hover{
     transform: scale(1.05);
     background-color: #8e969b;
+}
+
+.restaurant-profile .review-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.restaurant-profile .review {
+    width: 80%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+
+.restaurant-profile .review-comment {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

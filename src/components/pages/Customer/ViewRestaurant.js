@@ -186,7 +186,7 @@ const ViewRestaurant = ({ all_restaurants_info, all_restaurants_menu }) => {
                 <div className="review">
                   <div className="review-rating">{"⭐".repeat(review.rating)}</div>
                   <div className="review-name">{review.poster.name}</div>
-                  <div className="review-comment">{review.review}</div>
+                  <div className="review-comment">{review.comment}</div>
                 </div>
               ))}
             </div>

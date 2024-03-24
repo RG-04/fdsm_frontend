@@ -36,7 +36,7 @@ const RestaurantSignup = () => {
                 address: address,
                 email: username,
                 password: password,
-                tags: tags,
+                tags: tags.split(','),
                 timings: timings,
                 image: imageSrc
             })
@@ -123,7 +123,7 @@ const RestaurantSignup = () => {
                                 <div className="input-box">
                                     <input
                                         type="text"
-                                        placeholder="Tags"
+                                        placeholder="Tags (comma separated)"
                                         value={tags}
                                         onChange={(e) => setTags(e.target.value)}
                                     />

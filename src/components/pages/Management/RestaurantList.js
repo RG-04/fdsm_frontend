@@ -157,7 +157,7 @@ const ManagementRestaurantList = () => {
                   <div className="restaurant-info">
                     <h3>{restaurant.name}</h3>
                     <p>Rating: {restaurant.rating}</p>
-                    <p>Tags: {restaurant.tags.toString()}</p>
+                    <p>Tags: {restaurant.tags ? restaurant.tags.join(", ") : ""}</p>
                     <p>Timings: {String(restaurant.timings.open).padStart(2, '0')} hrs to {String(restaurant.timings.close).padStart(2, '0')} hrs </p>
                   </div>
                 </div>

@@ -9,7 +9,7 @@
     background-color: #3b3636;
 }
 
-.restaurant-new-item .all-container{
+.restaurant-new-item .all-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,4 +69,21 @@
 
 .restaurant-new-item .input-button:hover {
     background: #666f8b;
+}
+
+.restaurant-new-item .custom-file-button input[type=file] {
+    margin-left: -2px !important;
+}
+
+.restaurant-new-item .custom-file-button input[type=file]::-webkit-file-upload-button {
+    display: none;
+}
+
+.restaurant-new-item .custom-file-button input[type=file]::file-selector-button {
+    display: none;
+}
+
+.restaurant-new-item .custom-file-button:hover label {
+    background-color: #dde0e3;
+    cursor: pointer;
 }

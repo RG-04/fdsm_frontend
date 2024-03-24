@@ -9,10 +9,11 @@ const RestaurantProfile = () => {
     const [number, setNumber] = useState("");
     const [address, setAddress] = useState("");
     const [username, setUsername] = useState("");
-    const [tags, setTags] = useState("");
+    const [tags, setTags] = useState();
     const [openTime, setOpenTime] = useState(0);
     const [closeTime, setCloseTime] = useState(0);
     const [imageSrc, setImageSrc] = useState("");
+    const [reviews, setReviews] = useState([]);
 
     const { restaurantAuthState } = useRestaurantAuthContext();
 
@@ -41,10 +42,11 @@ const RestaurantProfile = () => {
                         setNumber(data.phone);
                         setAddress(data.address);
                         setUsername(data.email);
-                        setTags(data.tags);
+                        data.tags ? setTags(data.tags.join(",")) : setTags("");
                         setOpenTime(data.timings.open);
                         setCloseTime(data.timings.close);
                         setImageSrc(data.image);
+                        setReviews(data.reviews);
                     });
                 } else {
                     response.json().then((data) => {
@@ -76,8 +78,8 @@ const RestaurantProfile = () => {
                 name: name,
                 phone: number,
                 address: address,
-                tags: tags,
-                timings: {open: openTime, close: closeTime},
+                tags: tags.split(","),
+                timings: { open: openTime, close: closeTime },
                 image: imageSrc,
             }),
         })
@@ -252,6 +254,22 @@ const RestaurantProfile = () => {
                             </div>
                         )}
                     </div>
+                    {reviews.length ? (
+                        <div className="main-container reviews">
+                            <div className="title">
+                                <h1>Reviews</h1>
+                            </div>
+                            <div className="review-list">
+                                {reviews.map((review) => (
+                                    <div className="review">
+                                        <div className="review-rating">{"⭐".repeat(review.rating)}</div>
+                                        <div className="review-name">{review.poster.name}</div>
+                                        <div className="review-comment">{review.comment}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ) : (<></>)}
                 </div>
             </div>
         </>
