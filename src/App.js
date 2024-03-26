@@ -43,6 +43,8 @@ import ManagementRestaurantOrders from "./components/pages/Management/Restaurant
 import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryAgentList";
 import ManagementViewDeliveryAgent from "./components/pages/Management/ViewDeliveryAgent";
 import ManagementDeliveryAgentOrders from "./components/pages/Management/DeliveryAgentOrders";
+import ManagementOffersList from "./components/pages/Management/OffersList";
+import ManagementNewOffer from "./components/pages/Management/NewOffer";
 import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
 import RouteMap from "./components/RouteMap";
 
@@ -127,6 +129,8 @@ function App() {
             element={<ManagementDeliveryAgentOrders />}
           />
           <Route path="*" element={<ManagementDashboard />} />
+          <Route path="offers" element={<ManagementOffersList />} />
+          <Route path="newoffer" element={<ManagementNewOffer />} />
         </Route>
 
         <Route path="test" element={<RouteMap />} />

@@ -35,3 +35,8 @@ table {
 textarea {
   white-space: revert;
 }
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}

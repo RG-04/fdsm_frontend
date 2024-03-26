@@ -54,13 +54,16 @@ const ManagementDashboard = () => {
             <div className="left-side">
               <div className="left-div">
                 <Link to="customers">
-                  <button className="dashboard-button">Customers</button>
+                  <button className="dashboard-button">View Customers</button>
                 </Link>
                 <Link to="restaurants">
-                  <button className="dashboard-button">Restaurants</button>
+                  <button className="dashboard-button">View Restaurants</button>
                 </Link>
                 <Link to="delivery-agents">
-                  <button className="dashboard-button">Delivery Agents</button>
+                  <button className="dashboard-button">View Delivery Agents</button>
+                </Link>
+                <Link to="offers">
+                  <button className="dashboard-button">View Offers</button>
                 </Link>
               </div>
             </div>

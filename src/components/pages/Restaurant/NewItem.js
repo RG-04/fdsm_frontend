@@ -19,6 +19,32 @@ const RestaurantNewItem = () => {
     if (restaurantAuthState.token === "") {
       navigate("/restaurant/login");
     }
+
+    const url = process.env.REACT_APP_BACKEND_URL + "/api/restaurant/info";
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${restaurantAuthState.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(response);
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+            alert(data.error);
+            navigate("/restaurant/login");
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("An error occurred. Please try again later.");
+        navigate("/restaurant/login");
+      });
   }, []);
 
   const handleSubmit = (e) => {
