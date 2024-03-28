@@ -1,29 +1,24 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Input from "../../components/Input";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default () => {
-  const [data, setData] = useState({ email: "", password: "" });
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
-  const { endpoint, setAuthState } = useOutletContext();
+  const { setAuthState } = useOutletContext();
   const navigate = useNavigate();
-  const name = useMemo(
-    () =>
-      endpoint
-        .slice(1, endpoint.length)
-        .split("-")
-        .map(
-          (word) => word.charAt(0).toUpperCase() + word.slice(1, word.length)
-        )
-        .join(" "),
-    [endpoint]
-  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = process.env.REACT_APP_API_URL + endpoint + "/login";
+    const url = process.env.REACT_APP_API_URL + "/customer/signup";
 
     try {
       setLoading(true);
@@ -44,7 +39,7 @@ export default () => {
       setAuthState({ token });
       console.log("success");
 
-      navigate(endpoint);
+      navigate("/customer");
     } catch (error) {
       alert("Invalid email or password");
       console.error(error);
@@ -54,12 +49,23 @@ export default () => {
   };
 
   return (
-    <section className="bg-gray-100 flex justify-center items-center h-screen">
+    <section className="bg-gray-100 flex justify-center items-center min-h-screen">
       <div className="bg-white rounded p-8 shadow-md w-96 my-5 lg:ml-1/3">
         <h2 className="text-2xl font-semibold text-center mb-4">
-          {name} Login
+          Customer Sign Up
         </h2>
         <form onSubmit={handleSubmit}>
+          <Input
+            name="name"
+            label="Name"
+            type="text"
+            placeholder="Enter your name"
+            id="name"
+            className="mb-4"
+            required={true}
+            value={data.name}
+            onChange={(e) => setData({ ...data, name: e.target.value })}
+          />
           <Input
             name="email"
             label="Email"
@@ -70,6 +76,28 @@ export default () => {
             required={true}
             value={data.email}
             onChange={(e) => setData({ ...data, email: e.target.value })}
+          />
+          <Input
+            name="address"
+            label="Address"
+            type="text"
+            placeholder="Enter your address"
+            id="address"
+            className="mb-4"
+            required={true}
+            value={data.address}
+            onChange={(e) => setData({ ...data, address: e.target.value })}
+          />
+          <Input
+            name="phone"
+            label="Phone Number"
+            type="text"
+            placeholder="Enter your phone number"
+            id="phone"
+            className="mb-4"
+            required={true}
+            value={data.phone}
+            onChange={(e) => setData({ ...data, phone: e.target.value })}
           />
           <Input
             name="password"
@@ -88,20 +116,18 @@ export default () => {
               className="text-center bg-tblack-400 text-white px-4 py-2 rounded hover:bg-tblack-700 focus:outline-none focus:bg-tblack-700 disabled:bg-tblack-200"
               disabled={loading}
             >
-              {loading ? "Logging In...." : "Login"}
+              {loading ? "Signing Up..." : "Sign Up"}
             </button>
-            {endpoint !== "/management" && (
-              <p className="text-center">
-                Don't have an account? &nbsp;
-                <Link
-                  to={endpoint + "/signup"}
-                  href="#"
-                  className="text-blue-500 cursor-pointer"
-                >
-                  Sign Up
-                </Link>
-              </p>
-            )}
+            <p className="text-sm text-center">
+              {" "}
+              Already have an account? &nbsp;
+              <Link
+                to={"/customer/login"}
+                className="text-blue-500 cursor-pointer"
+              >
+                Log In
+              </Link>
+            </p>
           </div>
         </form>
       </div>
