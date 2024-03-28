@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-white">
+
+<!-- Background Image -->
+<div class="fixed inset-0 overflow-hidden">
+    <img class="object-cover w-full h-full filter blur-sm" src="https://source.unsplash.com/VieM9BdZKFo" alt="Food Image">
+</div>
+
+<!-- Content -->
+<div class="relative z-10">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-white text-lg font-semibold">ea2go</h1>
+                <ul class="flex space-x-4 text-white">
+                    <li><a href="#" class="hover:text-gray-200">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Restaurants</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Orders</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Profile</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Restaurant Image and Order Details -->
+    <div class="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mx-auto max-w-xl mt-10 text-left relative">
+        <!-- Restaurant Image -->
+        <img src="https://source.unsplash.com/MqT0asuoIcU" alt="Restaurant Image" class="rounded-t-lg w-full h-40 object-cover mb-4">
+        <!-- Order Details -->
+        <div class="p-4">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Order Information</h2>
+            <!-- Order Details Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Restaurant Name -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Restaurant:</p>
+                    <p>Delicious Restaurant</p>
+                </div>
+                <!-- Delivery Agent -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Delivery Agent:</p>
+                    <p>Delivery Agent Name</p>
+                </div>
+                <!-- Delivery Address -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Delivery Address:</p>
+                    <p>123 Street, City, Country</p>
+                </div>
+                <!-- Order Status -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Order Status:</p>
+                    <p>Delivered</p>
+                </div>
+                <!-- Item List -->
+                <div class="col-span-2">
+                    <p class="text-gray-600 font-semibold">Item List:</p>
+                    <ul>
+                        <li>Item 1 - Quantity: 2</li>
+                        <li>Item 2 - Quantity: 1</li>
+                        
+                        <!-- Add more items here -->
+                    </ul>
+                </div>
+                <!-- Total Price -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Total Price:</p>
+                    <p>$25.99</p>
+                </div>
+                <!-- OTP -->
+                <div>
+                    <p class="text-gray-600 font-semibold">OTP:</p>
+                    <p>123456</p>
+                </div>
+                <!-- ETA -->
+                <div>
+                    <p class="text-gray-600 font-semibold">ETA:</p>
+                    <p>30 minutes</p>
+                </div>
+                <!-- Order Time -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Order Time:</p>
+                    <p>2024-03-28 14:30:00</p>
+                </div>
+            </div>
+            <!-- Review Buttons -->
+            <div class="flex justify-between mt-8">
+                <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500">Review Restaurant</button>
+                <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500" id = "reviewDeliveryAgentBtn">Review Delivery Agent</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Track Order Container -->
+    <div class="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mx-auto max-w-xl mt-10 mb-10 text-left relative">
+        <!-- Track Order Title -->
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Track Order</h2>
+        <!-- Map Placeholder -->
+        <div class="bg-gray-200 w-full h-96 mb-4"></div>
+        <!-- Refresh Button -->
+        <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500">Refresh</button>
+    </div>
+
+           <!-- Review Delivery Agent Popup -->
+           <div id="reviewDeliveryAgentModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white rounded-lg p-8 w-96">
+                <h2 class="text-2xl font-semibold mb-4 text-center">Review Delivery Agent</h2>
+                <!-- Star Rating -->
+                
+                <div class="flex flex-row-reverse justify-center items-center">
+                    <i class="fas fa-star text-yellow-100 peer peer-hover:text-yellow-500 hover:text-yellow-500 w-12 h-12"></i>
+                    <i class="fas fa-star text-yellow-100 peer peer-hover:text-yellow-500 hover:text-yellow-500 w-12 h-12"></i>
+                    <i class="fas fa-star text-yellow-100 peer peer-hover:text-yellow-500 hover:text-yellow-500 w-12 h-12"></i>
+                    <i class="fas fa-star text-yellow-100 peer peer-hover:text-yellow-500 hover:text-yellow-500 w-12 h-12"></i>
+                    <i class="fas fa-star text-yellow-100 peer peer-hover:text-yellow-500 hover:text-yellow-500 w-12 h-12"></i>
+                  </div>
+
+                <!-- Review Text -->
+                <div class="mb-4">
+                    <label class="block text-gray-600 font-semibold mb-2" for="reviewText">Review:</label>
+                    <textarea id="reviewText" class="w-full h-24 px-3 py-2 border rounded-md"></textarea>
+                </div>
+                <!-- Buttons -->
+                <div class="flex justify-end">
+                    <button id="closeModal" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500 mr-2">Close</button>
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500">Submit</button>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+<script>
+    // Get the button and modal
+    const reviewDeliveryAgentBtn = document.getElementById('reviewDeliveryAgentBtn');
+    const reviewDeliveryAgentModal = document.getElementById('reviewDeliveryAgentModal');
+    const closeModal = document.getElementById('closeModal');
+    const submitReview = document.getElementById('submitReview');
+    
+    // Star rating logic
+    let rating = 0;
+
+    document.querySelectorAll('input[name="hs-ratings-readonly"]').forEach((elem) => {
+        elem.addEventListener('click', function() {
+            rating = parseInt(this.value);
+            console.log(`Selected rating: ${rating}`);
+        });
+    });
+
+    // Event listener for the button
+    reviewDeliveryAgentBtn.addEventListener('click', () => {
+        reviewDeliveryAgentModal.classList.remove('hidden');
+    });
+
+    // Event listener to close the modal
+    closeModal.addEventListener('click', () => {
+        reviewDeliveryAgentModal.classList.add('hidden');
+    });
+
+    // Event listener to submit the review
+    submitReview.addEventListener('click', () => {
+        const reviewText = document.getElementById('reviewText').value;
+        console.log(`Rating: ${rating}, Review Text: ${reviewText}`);
+        reviewDeliveryAgentModal.classList.add('hidden');
+    });
+</script>
+
+
+</body>
+
+  
+</html>

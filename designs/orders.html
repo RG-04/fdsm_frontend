@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ea2go - Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .bg-blur {
+            background-image: url('https://source.unsplash.com/poI7DelFiVA');
+            background-size: cover;
+            backdrop-filter: blur(5px);
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-white text-lg font-semibold">ea2go</h1>
+                <ul class="flex space-x-4 text-white">
+                    <li><a href="#" class="hover:text-gray-200">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Restaurants</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Orders</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Profile</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Orders List -->
+    <div class="bg-white bg-opacity-90 py-12">
+        <div class="container mx-auto px-4 w-3/4"> <!-- Adjusted width to 70% -->
+            <h2 class="text-2xl font-semibold text-gray-800 mb-8">Your Orders</h2>
+
+            <!-- Pending Orders Container -->
+            <div class="mb-12">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Pending Orders</h3>
+                <div class="space-y-8">
+                    <!-- Pending Order 1 -->
+                    <a href="#" class="lnk">
+                        <div class="order-card flex flex-row items-center bg-white shadow-md rounded-md overflow-hidden mb-5">
+                            <img src="https://source.unsplash.com/random/800x600" alt="Dish Image" class="w-48 h-48 object-cover p-4">
+                            <div class="flex-grow p-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Delicious Restaurant</h3>
+                                <p class="text-gray-600 mt-2">Ordered on: 2024-03-27</p>
+                                <div class="flex justify-between items-center mt-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold">Items:</h4>
+                                        <ul>
+                                            <li>Spaghetti Carbonara - 2x</li>
+                                            <li>Margherita Pizza - 1x</li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-gray-600">$36.97</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Pending Order 2 -->
+                    <a href="#" class="lnk">
+                        <div class="order-card flex flex-row items-center bg-white shadow-md rounded-md overflow-hidden mb-5">
+                            <img src="https://source.unsplash.com/random/800x601" alt="Dish Image" class="w-48 h-48 object-cover p-4">
+                            <div class="flex-grow p-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Tasty Pizzeria</h3>
+                                <p class="text-gray-600 mt-2">Ordered on: 2024-03-26</p>
+                                <div class="flex justify-between items-center mt-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold">Items:</h4>
+                                        <ul>
+                                            <li>Sushi Rolls - 3x</li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-gray-600">$47.97</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Delivered Orders Container -->
+            <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Delivered Orders</h3>
+                <div class="space-y-8">
+                    <!-- Delivered Order 1 -->
+                    <a href="#" class="lnk">
+                        <div class="order-card flex flex-row items-center bg-white shadow-md rounded-md overflow-hidden mb-5">
+                            <img src="https://source.unsplash.com/random/800x602" alt="Dish Image" class="w-48 h-48 object-cover p-4">
+                            <div class="flex-grow p-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Sushi Master</h3>
+                                <p class="text-gray-600 mt-2">Delivered on: 2024-03-25</p>
+                                <div class="flex justify-between items-center mt-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold">Items:</h4>
+                                        <ul>
+                                            <li>Spaghetti Carbonara - 1x</li>
+                                            <li>Margherita Pizza - 2x</li>
+                                            <li>Sushi Rolls - 1x</li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-gray-600">$59.94</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Delivered Order 2 -->
+                    <a href="#" class="lnk">
+                        <div class="order-card flex flex-row items-center bg-white shadow-md rounded-md overflow-hidden mb-5">
+                            <img src="https://source.unsplash.com/random/800x603" alt="Dish Image" class="w-48 h-48 object-cover p-4">
+                            <div class="flex-grow p-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Italian Delight</h3>
+                                <p class="text-gray-600 mt-2">Delivered on: 2024-03-24</p>
+                                <div class="flex justify-between items-center mt-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold">Items:</h4>
+                                        <ul>
+                                            <li>Margherita Pizza - 1x</li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-gray-600">$12.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
