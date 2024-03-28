@@ -1,45 +1,76 @@
+import { useState } from "react";
+import Input from "../../components/Input";
+
 export default ({ endpoint }) => {
+  const [data, setData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const url = process.env.REACT_APP_API_URL + endpoint + "/login";
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+
+      const { token } = await response.json();
+      localStorage.setItem("token", token);
+
+      window.location.href = endpoint;
+    } catch (error) {
+      alert("Invalid email or password");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="bg-gray-100 flex justify-center items-center h-screen">
       <div className="bg-white rounded p-8 shadow-md w-80 ml-1/3">
         <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
-        <form>
-          <div className="mb-4">
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              className="form-input mt-1 block w-full border-b-2 border-0 border-solid border-gray-300 px-2 py-1 focus:border-blue-500"
-              placeholder="Enter your username"
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className="form-input mt-1 block w-full border-b-2 border-0 border-solid border-gray-300 px-2 py-1 focus:border-blue-500"
-              placeholder="Enter your password"
-            />
-          </div>
+        <form onSubmit={handleSubmit}>
+          <Input
+            name="email"
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            id="email"
+            className="mb-4"
+            required={true}
+            value={data.email}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
+          />
+          <Input
+            name="password"
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            id="password"
+            className="mb-4"
+            required={true}
+            value={data.password}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
+          />
           <div className="flex flex-col space-y-2">
             <button
               type="submit"
               className="text-center bg-tblack text-white px-4 py-2 rounded hover:bg-tblack-700 focus:outline-none focus:bg-tblack-700"
+              disabled={loading}
             >
-              Login
+              {loading ? "Logging In...." : "Login"}
             </button>
             <p className="text-center">
               Don't have an account? &nbsp;
