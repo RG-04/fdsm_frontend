@@ -81,7 +81,7 @@ const Cart = () => {
   const getQuantity = (restaurantID, itemID) => {
     const index = cartItems.findIndex(
       (cartItem) =>
-        cartItem.restaurantID == restaurantID && cartItem.item.id == itemID
+        cartItem.restaurantID == restaurantID && cartItem.item.uid == itemID
     );
     if (index === -1) {
       return 0;
@@ -193,7 +193,7 @@ const Cart = () => {
                             <div className="quantity">
                               {getQuantity(
                                 cartItem.restaurantID,
-                                cartItem.item.id
+                                cartItem.item.uid
                               )}
                             </div>
                             <div
