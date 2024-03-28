@@ -273,7 +273,7 @@ export default () => {
           </div>
           {edit && (
             <div className="flex items-center">
-              <span className="font-semibold w-1/3">Tags:</span>
+              <span className="font-semibold w-1/3">Image:</span>
               <Input
                 type="file"
                 accept=".jpg,.jpeg,.png"
