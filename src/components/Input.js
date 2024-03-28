@@ -10,6 +10,7 @@ export default ({
   required = false,
   accept = "*",
   showLabel = true,
+  disabled = false,
 }) => {
   return (
     <div className={className + " custom-input-" + type}>
@@ -25,11 +26,12 @@ export default ({
           type={type || "text"}
           id={id}
           name={name}
-          className="form-input mt-1 block w-full border-b-solid border-b-2 border-gray-300 px-2 py-1 focus:border-blue-500 valid:border-blue-300"
+          className="form-input mt-1 block w-full border-b-solid border-b-2 border-gray-300 px-2 py-1 focus:border-blue-500 valid:border-blue-300 disabled:border-0"
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           required={required}
+          disabled={disabled}
         />
       ) : (
         <input
@@ -40,6 +42,7 @@ export default ({
           onChange={onChange}
           required={required}
           accept={accept}
+          disabled={disabled}
         />
       )}
     </div>

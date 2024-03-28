@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import RestaurantCard from "../../components/RestaurantCard";
 import CustomerNavbarNew from "../../components/CustomerNavbarNew";
 import Loader from "../../components/Loader";
@@ -13,6 +13,7 @@ export default ({ showRecommended = false }) => {
     search: "",
   });
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const handleFilterChange = (e) => {
     setFilters({
@@ -114,7 +115,7 @@ export default ({ showRecommended = false }) => {
     return () => {
       ignore = true;
     };
-  }, [authState.token, endpoint]);
+  }, [authState.token, endpoint, showRecommended]);
 
   if (loading) {
     return <Loader />;

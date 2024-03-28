@@ -6,17 +6,17 @@ import Home from "./components/pages/Home";
 import CustomerSignup from "./pages/customer/Signup";
 import CustomerDashboard from "./pages/customer/Dashboard";
 import CustomerViewRestaurant from "./pages/customer/ViewRestaurant";
+import CustomerProfile from "./pages/customer/Profile";
 // import CustomerRestaurantList from "./components/pages/Customer/RestaurantList";
 // import CustomerViewRestaurant from "./components/pages/Customer/ViewRestaurant";
 // import Cart from "./components/pages/Customer/Cart";
-// import CustomerProfile from "./components/pages/Customer/Profile";
 // import CustomerOrders from "./components/pages/Customer/Orders";
 // import CustomerOrderInfo from "./components/pages/Customer/OrderInfo";
 // import { CustomerAuthContextProvider } from "./contexts/CustomerAuthContext";
 
 import RestaurantSignup from "./pages/restaurant/Signup";
+import RestaurantProfile from "./pages/restaurant/Profile";
 // import RestaurantDashboard from "./components/pages/Restaurant/Dashboard";
-// import RestaurantProfile from "./components/pages/Restaurant/Profile";
 // import RestaurantOrders from "./components/pages/Restaurant/Orders";
 // import RestaurantOrderInfo from "./components/pages/Restaurant/OrderInfo";
 // import RestaurantMenu from "./components/pages/Restaurant/Menu";
@@ -24,12 +24,13 @@ import RestaurantSignup from "./pages/restaurant/Signup";
 // import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
+import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
 // import DeliveryAgentDashboard from "./components/pages/DeliveryAgent/Dashboard";
-// import DeliveryAgentProfile from "./components/pages/DeliveryAgent/Profile";
 // import DeliveryAgentOrders from "./components/pages/DeliveryAgent/Orders";
 // import DeliveryAgentOrderInfo from "./components/pages/DeliveryAgent/OrderInfo";
 // import { DeliveryAgentAuthContextProvider } from "./contexts/DeliveryAgentAuthContext";
 
+import ManagementProfile from "./pages/management/Profile";
 // import ManagementDashboard from "./components/pages/Management/Dashboard";
 // import ManagementCustomerList from "./components/pages/Management/CustomerList";
 // import ManagementViewCustomer from "./components/pages/Management/ViewCustomer";
@@ -66,13 +67,17 @@ function App() {
           <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<RestaurantList />} />
           <Route path="restaurant/:restaurantID" element={<CustomerViewRestaurant />} />
+          <Route
+            path="recommendations"
+            element={<RestaurantList showRecommended={true} />}
+          />
+          <Route path="profile" element={<CustomerProfile />} />
           {/*<Route
             path="restaurant/:restaurantID"
             element={<CustomerViewRestaurant />}
           />
-          <Route path="cart" element={<Cart />} />
-          <Route path="profile" element={<CustomerProfile />} />
-          <Route path="orders" element={<CustomerOrders />} />
+  <Route path="cart" element={<Cart />} />*/}
+          {/*<Route path="orders" element={<CustomerOrders />} />
           <Route path="order/:orderID" element={<CustomerOrderInfo />} />
           <Route path="*" element={<CustomerDashboard />} /> */}
         </Route>
@@ -84,8 +89,8 @@ function App() {
           {/* <Route index element={<RestaurantDashboard />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<RestaurantSignup />} />
-          {/*<Route path="profile" element={<RestaurantProfile />} />
-          <Route path="orders" element={<RestaurantOrders />} />
+          <Route path="profile" element={<RestaurantProfile />} />
+          {/*<Route path="orders" element={<RestaurantOrders />} />
           <Route path="order/:orderID" element={<RestaurantOrderInfo />} />
           <Route path="menu" element={<RestaurantMenu />} />
           <Route path="newitem" element={<RestaurantNewItem />} />
@@ -99,8 +104,8 @@ function App() {
           {/* <Route index element={<DeliveryAgentDashboard />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<DeliveryAgentSignup />} />
-          {/* <Route path="profile" element={<DeliveryAgentProfile />} />
-          <Route path="orders" element={<DeliveryAgentOrders />} />
+          <Route path="profile" element={<DeliveryAgentProfile />} />
+          {/* <Route path="orders" element={<DeliveryAgentOrders />} />
           <Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
           <Route path="*" element={<DeliveryAgentDashboard />} /> */}
         </Route>
@@ -111,6 +116,7 @@ function App() {
         >
           {/* <Route index element={<ManagementDashboard />} /> */}
           <Route path="login" element={<Login />} />
+          <Route path="profile" element={<ManagementProfile />} />
           {/* <Route path="customers" element={<ManagementCustomerList />} />
           <Route
             path="customer/:customerID"
@@ -119,9 +125,10 @@ function App() {
           <Route
             path="customer/:customerID/orders"
             element={<ManagementCustomerOrders />}
-          />
-          <Route path="restaurants" element={<ManagementRestaurantList />} />
-          <Route
+        />*/}
+
+          <Route path="restaurants" element={<RestaurantList />} />
+          {/* <Route
             path="restaurant/:restaurantID"
             element={<ManagementViewRestaurant />}
           />
@@ -146,7 +153,7 @@ function App() {
           <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
 
-        {/* <Route path="test" element={<RestaurantList />} /> */}
+        {/* <Route path="test" element={<Profile />} /> */}
       </Routes>
     </Router>
   );
