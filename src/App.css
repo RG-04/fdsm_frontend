@@ -17,7 +17,8 @@
   Remove list styles (bullets/numbers)
   in case you use it with normalize.css
 */
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -39,4 +40,8 @@ textarea {
 a {
   text-decoration: none !important;
   color: inherit;
+}
+
+body {
+  background: #f4f4f8;
 }

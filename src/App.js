@@ -48,6 +48,7 @@ import ManagementNewOffer from "./components/pages/Management/NewOffer";
 import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
 
 import Login from "./pages/common/Login";
+import OutletProvider from "./outlet/outletProvider";
 
 function App() {
   return (
@@ -55,10 +56,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
-        <Route path="customer" element={<CustomerAuthContextProvider />}>
-          <Route index element={<CustomerDashboard />} />
-          <Route path="login" element={<CustomerLogin />} />
-          <Route path="signup" element={<CustomerSignup />} />
+
+        <Route
+          path="customer"
+          element={<OutletProvider endpoint="/customer" />}
+        >
+          {/* <Route index element={<CustomerDashboard />} /> */}
+          <Route path="login" element={<Login />} />
+          {/* <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<CustomerRestaurantList />} />
           <Route
             path="restaurant/:restaurantID"
@@ -68,38 +73,44 @@ function App() {
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<CustomerOrders />} />
           <Route path="order/:orderID" element={<CustomerOrderInfo />} />
-          <Route path="*" element={<CustomerDashboard />} />
+          <Route path="*" element={<CustomerDashboard />} /> */}
         </Route>
 
-        <Route path="restaurant" element={<RestaurantAuthContextProvider />}>
-          <Route index element={<RestaurantDashboard />} />
-          <Route path="login" element={<RestaurantLogin />} />
-          <Route path="signup" element={<RestaurantSignup />} />
+        <Route
+          path="restaurant"
+          element={<OutletProvider endpoint="/restaurant" />}
+        >
+          {/* <Route index element={<RestaurantDashboard />} /> */}
+          <Route path="login" element={<Login />} />
+          {/* <Route path="signup" element={<RestaurantSignup />} />
           <Route path="profile" element={<RestaurantProfile />} />
           <Route path="orders" element={<RestaurantOrders />} />
           <Route path="order/:orderID" element={<RestaurantOrderInfo />} />
           <Route path="menu" element={<RestaurantMenu />} />
           <Route path="newitem" element={<RestaurantNewItem />} />
-          <Route path="*" element={<RestaurantDashboard />} />
+          <Route path="*" element={<RestaurantDashboard />} /> */}
         </Route>
 
         <Route
           path="delivery-agent"
-          element={<DeliveryAgentAuthContextProvider />}
+          element={<OutletProvider endpoint="/delivery-agent" />}
         >
-          <Route index element={<DeliveryAgentDashboard />} />
-          <Route path="login" element={<DeliveryAgentLogin />} />
-          <Route path="signup" element={<DeliveryAgentSignup />} />
+          {/* <Route index element={<DeliveryAgentDashboard />} /> */}
+          <Route path="login" element={<Login />} />
+          {/* <Route path="signup" element={<DeliveryAgentSignup />} />
           <Route path="profile" element={<DeliveryAgentProfile />} />
           <Route path="orders" element={<DeliveryAgentOrders />} />
           <Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
-          <Route path="*" element={<DeliveryAgentDashboard />} />
+          <Route path="*" element={<DeliveryAgentDashboard />} /> */}
         </Route>
 
-        <Route path="management" element={<ManagementAuthContextProvider />}>
-          <Route index element={<ManagementDashboard />} />
-          <Route path="login" element={<ManagementLogin />} />
-          <Route path="customers" element={<ManagementCustomerList />} />
+        <Route
+          path="management"
+          element={<OutletProvider endpoint="/management" />}
+        >
+          {/* <Route index element={<ManagementDashboard />} /> */}
+          <Route path="login" element={<Login />} />
+          {/* <Route path="customers" element={<ManagementCustomerList />} />
           <Route
             path="customer/:customerID"
             element={<ManagementViewCustomer />}
@@ -131,7 +142,7 @@ function App() {
           />
           <Route path="offers" element={<ManagementOffersList />} />
           <Route path="newoffer" element={<ManagementNewOffer />} />
-          <Route path="*" element={<ManagementDashboard />} />
+          <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
 
         <Route path="test" element={<Login />} />

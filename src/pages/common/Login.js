@@ -1,9 +1,19 @@
 import { useState } from "react";
 import Input from "../../components/Input";
+import { useOutletContext } from "react-router-dom";
 
-export default ({ endpoint }) => {
+export default () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const { endpoint, setAuthState } = useOutletContext();
+
+  console.log(endpoint);
+
+  const name = endpoint
+    .slice(1, endpoint.length)
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1, word.length))
+    .join(" ");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +36,7 @@ export default ({ endpoint }) => {
       }
 
       const { token } = await response.json();
-      localStorage.setItem("token", token);
+      setAuthState({ token });
 
       window.location.href = endpoint;
     } catch (error) {
@@ -40,7 +50,9 @@ export default ({ endpoint }) => {
   return (
     <section className="bg-gray-100 flex justify-center items-center h-screen">
       <div className="bg-white rounded p-8 shadow-md w-80 ml-1/3">
-        <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
+        <h2 className="text-2xl font-semibold text-center mb-4">
+          {name} Login
+        </h2>
         <form onSubmit={handleSubmit}>
           <Input
             name="email"

@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
+import Loader from "./Loader";
+import { Outlet } from "react-router-dom";
 
 export default ({ endpoint }) => {
   const [authState, setAuthState] = useState({ token: "" });
-  const [loading, setLoading] = useState(true);
+  const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
     if (token) {
       setAuthState({ token });
     }
-    setLoading(false);
+    setFetching(false);
   }, []);
 
   useEffect(() => {
+    console.log(authState.token);
+
     if (authState.token && localStorage.getItem("token") !== authState.token) {
       localStorage.setItem("token", authState.token);
     } else {
@@ -22,13 +26,10 @@ export default ({ endpoint }) => {
 
   return (
     <>
-      {loading ? (
-        <div style={{ height: "400px", width: "400px", background: "blue" }}>
-          {" "}
-          <h1 style={{ color: "white" }}>Loading</h1>
-        </div>
+      {fetching ? (
+        <Loader />
       ) : (
-        <Outlet context={{ authState, setAuthState, endpoint, setLoading }} />
+        <Outlet context={{ authState, setAuthState, endpoint, setFetching }} />
       )}
     </>
   );

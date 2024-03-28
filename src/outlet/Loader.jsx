@@ -1,11 +1,12 @@
 import "./Loader.css";
+import logo from "../assets/logo.png";
 
 export default () => {
   return (
     <div className="loader">
       <div className="loader-box">
         <div className="loader-spinner"></div>
-        <img src="" alt="" />
+        <img src={logo} alt="" />
       </div>
     </div>
   );
