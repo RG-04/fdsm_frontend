@@ -11,8 +11,10 @@ export default () => {
     phone: "",
     password: "",
     tags: "",
-    openTime: 0,
-    closeTime: 0,
+    timings: {
+      open: 0,
+      close: 0,
+    },
   });
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -156,8 +158,13 @@ export default () => {
                 id="openTime"
                 className="mr-2"
                 required={true}
-                value={data.openTime}
-                onChange={(e) => setData({ ...data, openTime: e.target.value })}
+                value={data.timings.open}
+                onChange={(e) =>
+                  setData({
+                    ...data,
+                    timings: { ...data.timings, open: e.target.value },
+                  })
+                }
                 showLabel={false}
               />
               <p className="m-0">hrs&nbsp;to&nbsp;</p>
@@ -168,9 +175,12 @@ export default () => {
                 placeholder="Enter close time"
                 id="closeTime"
                 required={true}
-                value={data.closeTime}
+                value={data.timings.close}
                 onChange={(e) =>
-                  setData({ ...data, closeTime: e.target.value })
+                  setData({
+                    ...data,
+                    timings: { ...data.timings, close: e.target.value },
+                  })
                 }
                 showLabel={false}
               />
