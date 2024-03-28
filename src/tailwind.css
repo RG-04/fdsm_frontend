@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.border-b-solid {
+  border-bottom-style: solid;
+}

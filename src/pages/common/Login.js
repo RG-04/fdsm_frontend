@@ -79,14 +79,14 @@ export default () => {
           <div className="flex flex-col space-y-2">
             <button
               type="submit"
-              className="text-center bg-tblack text-white px-4 py-2 rounded hover:bg-tblack-700 focus:outline-none focus:bg-tblack-700"
+              className="text-center bg-tblack-400 text-white px-4 py-2 rounded hover:bg-tblack-700 focus:outline-none focus:bg-tblack-700 disabled:bg-tblack-200"
               disabled={loading}
             >
               {loading ? "Logging In...." : "Login"}
             </button>
             <p className="text-center">
               Don't have an account? &nbsp;
-              <a href="#" className="text-blue-500">
+              <a href="#" className="text-blue-500 cursor-pointer">
                 Sign Up
               </a>
             </p>
