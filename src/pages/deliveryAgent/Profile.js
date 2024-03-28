@@ -11,11 +11,10 @@ export default () => {
     name: "",
     email: "",
     phone: "",
-    address: "",
   });
 
   useEffect(() => {
-    const url = process.env.REACT_APP_API_URL + "/customer/info";
+    const url = process.env.REACT_APP_API_URL + "/delivery-agent/info";
 
     let ignore = false;
 
@@ -70,7 +69,7 @@ export default () => {
     // Save the form data
     setLoading(true);
 
-    const url = process.env.REACT_APP_API_URL + "/customer/info";
+    const url = process.env.REACT_APP_API_URL + "/delivery-agent/info";
 
     fetch(url, {
       method: "PUT",
@@ -148,17 +147,6 @@ export default () => {
               className="profile-phone w-2/3"
               showLabel={false}
               onChange={(e) => setData({ ...data, phone: e.target.value })}
-              disabled={!edit}
-            />
-          </div>
-          <div className="flex items-center">
-            <span className="font-semibold w-1/3">Address:</span>
-            <Input
-              type="text"
-              value={data.address}
-              className="profile-address w-2/3"
-              showLabel={false}
-              onChange={(e) => setData({ ...data, address: e.target.value })}
               disabled={!edit}
             />
           </div>
