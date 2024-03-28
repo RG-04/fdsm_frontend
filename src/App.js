@@ -63,6 +63,10 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<RestaurantList />} />
+          <Route
+            path="recommendations"
+            element={<RestaurantList showRecommended={true} />}
+          />
           {/*<Route
             path="restaurant/:restaurantID"
             element={<CustomerViewRestaurant />}
@@ -116,9 +120,10 @@ function App() {
           <Route
             path="customer/:customerID/orders"
             element={<ManagementCustomerOrders />}
-          />
-          <Route path="restaurants" element={<ManagementRestaurantList />} />
-          <Route
+        />*/}
+
+          <Route path="restaurants" element={<RestaurantList />} />
+          {/* <Route
             path="restaurant/:restaurantID"
             element={<ManagementViewRestaurant />}
           />
