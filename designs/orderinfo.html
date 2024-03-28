@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+
+<!-- Background Image -->
+<div class="fixed inset-0 overflow-hidden">
+    <img class="object-cover w-full h-full filter blur-sm" src="https://source.unsplash.com/VieM9BdZKFo" alt="Food Image">
+</div>
+
+<!-- Content -->
+<div class="relative z-10">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-white text-lg font-semibold">ea2go</h1>
+                <ul class="flex space-x-4 text-white">
+                    <li><a href="#" class="hover:text-gray-200">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Restaurants</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Orders</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Profile</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Restaurant Image and Order Details -->
+    <div class="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mx-auto max-w-xl mt-10 text-left relative">
+        <!-- Restaurant Image -->
+        <img src="https://source.unsplash.com/MqT0asuoIcU" alt="Restaurant Image" class="rounded-t-lg w-full h-40 object-cover mb-4">
+        <!-- Order Details -->
+        <div class="p-4">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Order Information</h2>
+            <!-- Order Details Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Restaurant Name -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Restaurant:</p>
+                    <p>Delicious Restaurant</p>
+                </div>
+                <!-- Delivery Agent -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Delivery Agent:</p>
+                    <p>Delivery Agent Name</p>
+                </div>
+                <!-- Delivery Address -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Delivery Address:</p>
+                    <p>123 Street, City, Country</p>
+                </div>
+                <!-- Order Status -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Order Status:</p>
+                    <p>Delivered</p>
+                </div>
+                <!-- Item List -->
+                <div class="col-span-2">
+                    <p class="text-gray-600 font-semibold">Item List:</p>
+                    <ul>
+                        <li>Item 1 - Quantity: 2</li>
+                        <li>Item 2 - Quantity: 1</li>
+                        <!-- Add more items here -->
+                    </ul>
+                </div>
+                <!-- Total Price -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Total Price:</p>
+                    <p>$25.99</p>
+                </div>
+                <!-- OTP -->
+                <div>
+                    <p class="text-gray-600 font-semibold">OTP:</p>
+                    <p>123456</p>
+                </div>
+                <!-- ETA -->
+                <div>
+                    <p class="text-gray-600 font-semibold">ETA:</p>
+                    <p>30 minutes</p>
+                </div>
+                <!-- Order Time -->
+                <div>
+                    <p class="text-gray-600 font-semibold">Order Time:</p>
+                    <p>2024-03-28 14:30:00</p>
+                </div>
+            </div>
+            <!-- Review Buttons -->
+            <div class="flex justify-between mt-8">
+                <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500">Review Restaurant</button>
+                <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500">Review Delivery Agent</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Track Order Container -->
+    <div class="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mx-auto max-w-xl mt-10 mb-10 text-left relative">
+        <!-- Track Order Title -->
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Track Order</h2>
+        <!-- Map Placeholder -->
+        <div class="bg-gray-200 w-full h-96 mb-4"></div>
+        <!-- Refresh Button -->
+        <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500">Refresh</button>
+    </div>
+</div>
+
+</body>
+</html>
