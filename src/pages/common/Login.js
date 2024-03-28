@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Input from "../../components/Input";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 export default () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const { endpoint, setAuthState } = useOutletContext();
-
-  console.log(endpoint);
-
-  const name = endpoint
-    .slice(1, endpoint.length)
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1, word.length))
-    .join(" ");
+  const navigate = useNavigate();
+  const name = useMemo(
+    () =>
+      endpoint
+        .slice(1, endpoint.length)
+        .split("-")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1, word.length)
+        )
+        .join(" "),
+    [endpoint]
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,8 +41,9 @@ export default () => {
 
       const { token } = await response.json();
       setAuthState({ token });
+      console.log("success");
 
-      window.location.href = endpoint;
+      navigate(endpoint);
     } catch (error) {
       alert("Invalid email or password");
       console.error(error);
