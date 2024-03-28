@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ea2go - Food Delivery Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-yellow-300 to-yellow-500">
+
+<!-- Background Image -->
+<div class="fixed inset-0 overflow-hidden">
+    <img class="object-cover w-full h-full filter blur-sm" src="https://source.unsplash.com/MqT0asuoIcU" alt="Food Image">
+</div>
+
+<!-- Content -->
+<div class="relative z-10">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-white text-lg font-semibold">ea2go</h1>
+                <ul class="flex space-x-4 text-white">
+                    <li><a href="#" class="hover:text-gray-200">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Menu</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Orders</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Profile</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Text -->
+    <div class="bg-white bg-opacity-80 rounded-lg shadow-lg p-8 mx-auto max-w-md mt-24 text-center">
+        <h2 class="text-4xl font-semibold text-gray-800">Welcome to ea2go!</h2>
+        <p class="text-gray-600 mt-4">What would you like to do today?</p>
+
+        <!-- Options -->
+        <div class="mt-8 space-y-4">
+            <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300">Order Now!</a>
+            <a href="#" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300">Recommended</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
