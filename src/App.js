@@ -46,7 +46,8 @@ import ManagementDeliveryAgentOrders from "./components/pages/Management/Deliver
 import ManagementOffersList from "./components/pages/Management/OffersList";
 import ManagementNewOffer from "./components/pages/Management/NewOffer";
 import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
-import RouteMap from "./components/RouteMap";
+
+import Login from "./pages/common/Login";
 
 function App() {
   return (
@@ -133,7 +134,7 @@ function App() {
           <Route path="*" element={<ManagementDashboard />} />
         </Route>
 
-        <Route path="test" element={<RouteMap />} />
+        <Route path="test" element={<Login />} />
       </Routes>
     </Router>
   );
