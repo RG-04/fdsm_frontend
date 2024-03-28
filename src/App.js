@@ -5,10 +5,10 @@ import Home from "./components/pages/Home";
 
 import CustomerSignup from "./pages/customer/Signup";
 import CustomerDashboard from "./pages/customer/Dashboard";
+import CustomerProfile from "./pages/customer/Profile";
 // import CustomerRestaurantList from "./components/pages/Customer/RestaurantList";
 // import CustomerViewRestaurant from "./components/pages/Customer/ViewRestaurant";
 // import Cart from "./components/pages/Customer/Cart";
-// import CustomerProfile from "./components/pages/Customer/Profile";
 // import CustomerOrders from "./components/pages/Customer/Orders";
 // import CustomerOrderInfo from "./components/pages/Customer/OrderInfo";
 // import { CustomerAuthContextProvider } from "./contexts/CustomerAuthContext";
@@ -67,13 +67,13 @@ function App() {
             path="recommendations"
             element={<RestaurantList showRecommended={true} />}
           />
+          <Route path="profile" element={<CustomerProfile />} />
           {/*<Route
             path="restaurant/:restaurantID"
             element={<CustomerViewRestaurant />}
           />
-          <Route path="cart" element={<Cart />} />
-          <Route path="profile" element={<CustomerProfile />} />
-          <Route path="orders" element={<CustomerOrders />} />
+  <Route path="cart" element={<Cart />} />*/}
+          {/*<Route path="orders" element={<CustomerOrders />} />
           <Route path="order/:orderID" element={<CustomerOrderInfo />} />
           <Route path="*" element={<CustomerDashboard />} /> */}
         </Route>
@@ -148,7 +148,7 @@ function App() {
           <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
 
-        {/* <Route path="test" element={<RestaurantList />} /> */}
+        {/* <Route path="test" element={<Profile />} /> */}
       </Routes>
     </Router>
   );
