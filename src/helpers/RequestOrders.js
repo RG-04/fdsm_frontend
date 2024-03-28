@@ -1,6 +1,6 @@
 import React from "react";
 
-export const requestOrders = async (cartItems, token, address) => {
+export const requestOrders = async (cartItems, token, address, discount, code) => {
     console.log("CartItems", cartItems);
     let splitOrder = {};
     for (let i = 0; i < cartItems.length; i++) {
@@ -11,6 +11,12 @@ export const requestOrders = async (cartItems, token, address) => {
         }
     }
     console.log("SplitOrder", splitOrder);
+
+    if(Object.keys(splitOrder).length > 1 && code != "") {
+        alert("Offer can be applied to only one restaurant at a time.");
+        return;
+    }
+
     const url = process.env.REACT_APP_BACKEND_URL + "/api/customer/order";
 
     let successfulOrders = [];

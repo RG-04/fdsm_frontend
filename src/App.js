@@ -128,9 +128,9 @@ function App() {
             path="delivery-agent/:deliveryAgentID/orders"
             element={<ManagementDeliveryAgentOrders />}
           />
-          <Route path="*" element={<ManagementDashboard />} />
           <Route path="offers" element={<ManagementOffersList />} />
           <Route path="newoffer" element={<ManagementNewOffer />} />
+          <Route path="*" element={<ManagementDashboard />} />
         </Route>
 
         <Route path="test" element={<RouteMap />} />
