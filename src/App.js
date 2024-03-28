@@ -23,12 +23,13 @@ import RestaurantProfile from "./pages/restaurant/Profile";
 // import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
+import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
 // import DeliveryAgentDashboard from "./components/pages/DeliveryAgent/Dashboard";
-// import DeliveryAgentProfile from "./components/pages/DeliveryAgent/Profile";
 // import DeliveryAgentOrders from "./components/pages/DeliveryAgent/Orders";
 // import DeliveryAgentOrderInfo from "./components/pages/DeliveryAgent/OrderInfo";
 // import { DeliveryAgentAuthContextProvider } from "./contexts/DeliveryAgentAuthContext";
 
+import ManagementProfile from "./pages/management/Profile";
 // import ManagementDashboard from "./components/pages/Management/Dashboard";
 // import ManagementCustomerList from "./components/pages/Management/CustomerList";
 // import ManagementViewCustomer from "./components/pages/Management/ViewCustomer";
@@ -100,8 +101,8 @@ function App() {
           {/* <Route index element={<DeliveryAgentDashboard />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<DeliveryAgentSignup />} />
-          {/* <Route path="profile" element={<DeliveryAgentProfile />} />
-          <Route path="orders" element={<DeliveryAgentOrders />} />
+          <Route path="profile" element={<DeliveryAgentProfile />} />
+          {/* <Route path="orders" element={<DeliveryAgentOrders />} />
           <Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
           <Route path="*" element={<DeliveryAgentDashboard />} /> */}
         </Route>
@@ -112,6 +113,7 @@ function App() {
         >
           {/* <Route index element={<ManagementDashboard />} /> */}
           <Route path="login" element={<Login />} />
+          <Route path="profile" element={<ManagementProfile />} />
           {/* <Route path="customers" element={<ManagementCustomerList />} />
           <Route
             path="customer/:customerID"
