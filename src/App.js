@@ -47,6 +47,7 @@ import Login from "./pages/common/Login";
 import OutletProvider from "./outlet/outletProvider";
 import CustomerNavbarNew from "./components/CustomerNavbarNew";
 import Signup from "./pages/customer/Signup";
+import RestaurantList from "./pages/common/RestaurantList";
 
 function App() {
   return (
@@ -63,8 +64,8 @@ function App() {
           {/* <Route index element={<CustomerDashboard />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<CustomerSignup />} />
-          {/*<Route path="restaurants" element={<CustomerRestaurantList />} />
-          <Route
+          <Route path="restaurants" element={<RestaurantList />} />
+          {/*<Route
             path="restaurant/:restaurantID"
             element={<CustomerViewRestaurant />}
           />
@@ -144,7 +145,7 @@ function App() {
           <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
 
-        {/* <Route path="test" element={<Signup />} /> */}
+        {/* <Route path="test" element={<RestaurantList />} /> */}
       </Routes>
     </Router>
   );

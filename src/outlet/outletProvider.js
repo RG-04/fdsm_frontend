@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 import { Outlet } from "react-router-dom";
 
 export default ({ endpoint }) => {
