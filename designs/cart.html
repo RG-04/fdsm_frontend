@@ -90,6 +90,43 @@
                 </div>
             </div>
 
+            <!-- Promo Code Section -->
+            <div class="mt-6">
+                <label for="promo-code" class="block text-xl font-semibold text-gray-800 mb-2">Promo Code:</label>
+                <div class="flex gap-4">
+                    <input type="text" id="promo-code" class="form-input w-full border rounded-md p-2" placeholder="Enter promo code">
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none">Apply</button>
+                </div>
+            </div>
+
+            <!-- Deals and offers section -->
+            <div class="mt-8 relative">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 flex-grow">Deals for You:</h3>
+                    <div class="flex items-center">
+                        <button onclick="scrollLeft()" class="bg-gray-200 hover:bg-gray-300 rounded-full p-2 text-gray-600 mr-2">&#8592;</button>
+                        <button onclick="scrollRight()" class="bg-gray-200 hover:bg-gray-300 rounded-full p-2 text-gray-600">&#8594;</button>
+                    </div>
+                </div>
+                <div id="dealsContainer" class="flex gap-4 overflow-auto">
+                    <!-- Sample Offer Button -->
+                    <button onclick="selectOffer(this)" class="offer-btn min-w-max bg-white text-gray-800 border-2 border-gray-200 rounded-lg p-4 hover:-translate-y-1 hover:border-gray-800 hover:bg-white transition-all duration-300">10% off Sushi Rolls</button>
+
+                    <button onclick="selectOffer(this)" class="offer-btn min-w-max bg-white text-gray-800 border-2 border-gray-200 rounded-lg p-4 hover:-translate-y-1 hover:border-gray-800 hover:bg-white transition-all duration-300">10% off Sushi Rolls</button>
+
+                    <button onclick="selectOffer(this)" class="offer-btn min-w-max bg-white text-gray-800 border-2 border-gray-200 rounded-lg p-4 hover:-translate-y-1 hover:border-gray-800 hover:bg-white transition-all duration-300">10% off Sushi Rolls</button>
+
+                    <button onclick="selectOffer(this)" class="offer-btn min-w-max bg-white text-gray-800 border-2 border-gray-200 rounded-lg p-4 hover:-translate-y-1 hover:border-gray-800 hover:bg-white transition-all duration-300">10% off Sushi Rolls</button>
+
+                    <button onclick="selectOffer(this)" class="offer-btn min-w-max bg-white text-gray-800 border-2 border-gray-200 rounded-lg p-4 hover:-translate-y-1 hover:border-gray-800 hover:bg-white transition-all duration-300">10% off Sushi Rolls</button>
+
+
+                    <!-- Repeat or add more buttons as needed -->
+                </div>
+            </div>
+            
+
+
             <!-- Total -->
             <div class="mt-8">
                 <div class="flex justify-between items-center">
@@ -127,3 +164,26 @@
 </body>
 
 </html>
+
+<!-- 
+function selectOffer(selectedButton) {
+    // Reset all buttons to their initial state
+    document.querySelectorAll('.offer-btn').forEach(button => {
+        button.classList.remove('border-blue-500', 'bg-blue-100');
+        button.classList.add('border-gray-200', 'bg-white');
+    });
+
+    // Mark the selected button
+    selectedButton.classList.remove('border-gray-200', 'bg-white');
+    selectedButton.classList.add('border-blue-500', 'bg-blue-100');
+}
+
+function scrollLeft() {
+    const container = document.getElementById('dealsContainer');
+    container.scrollBy({left: -100, behavior: 'smooth'});
+}
+
+function scrollRight() {
+    const container = document.getElementById('dealsContainer');
+    container.scrollBy({left: 100, behavior: 'smooth'});
+} -->
