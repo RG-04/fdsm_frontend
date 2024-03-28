@@ -5,6 +5,7 @@ import Home from "./components/pages/Home";
 
 import CustomerSignup from "./pages/customer/Signup";
 import CustomerDashboard from "./pages/customer/Dashboard";
+import CustomerViewRestaurant from "./pages/customer/ViewRestaurant";
 // import CustomerRestaurantList from "./components/pages/Customer/RestaurantList";
 // import CustomerViewRestaurant from "./components/pages/Customer/ViewRestaurant";
 // import Cart from "./components/pages/Customer/Cart";
@@ -45,6 +46,7 @@ import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
 
 import Login from "./pages/common/Login";
 import OutletProvider from "./outlet/outletProvider";
+import { CartProvider } from "./contexts/CartContext";
 import Signup from "./pages/customer/Signup";
 import RestaurantList from "./pages/common/RestaurantList";
 
@@ -58,11 +60,12 @@ function App() {
         <Route
           path="customer"
           element={<OutletProvider endpoint="/customer" />}
-        >
+        > 
           <Route index element={<CustomerDashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<RestaurantList />} />
+          <Route path="restaurant/:restaurantID" element={<CustomerViewRestaurant />} />
           {/*<Route
             path="restaurant/:restaurantID"
             element={<CustomerViewRestaurant />}
