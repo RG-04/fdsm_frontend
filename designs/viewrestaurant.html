@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ea2go - Single Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .bg-blur {
+            background-image: url('https://source.unsplash.com/poI7DelFiVA');
+            background-size: cover;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="bg-gray-800 py-4">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+            <h1 class="text-white text-lg font-semibold">ea2go</h1>
+            <ul class="flex space-x-4 text-white">
+                <li><a href="#" class="hover:text-gray-200">Home</a></li>
+                <li><a href="#" class="hover:text-gray-200">Restaurants</a></li>
+                <li><a href="#" class="hover:text-gray-200">Orders</a></li>
+                <li><a href="#" class="hover:text-gray-200">Profile</a></li>
+                <li><a href="#" class="hover:text-gray-200">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Restaurant Header -->
+<header class="bg-blur bg-center bg-no-repeat bg-cover py-24">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-semibold text-white mb-4">Delicious Restaurant</h2>
+        <p class="text-white text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+</header>
+
+<!-- Search and Dishes -->
+<div class="bg-white bg-opacity-90 py-12">
+    <div class="container mx-auto px-4">
+        <!-- Search Bar -->
+        <div class="flex justify-center mb-8">
+            <div class="w-full max-w-xl bg-white shadow-md rounded-md">
+                <input type="text" placeholder="Search dishes..." class="w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+        
+        <!-- Dishes Container -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Dish 1 -->
+            <div class="bg-white shadow-md rounded-md overflow-hidden transform transition duration-300 hover:scale-105">
+                <img src="https://source.unsplash.com/random/800x600" alt="Dish Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Spaghetti Carbonara</h2>
+                    <p class="text-gray-600 mt-2">$10.99</p>
+                </div>
+            </div>
+            <!-- Dish 2 -->
+            <div class="bg-white shadow-md rounded-md overflow-hidden transform transition duration-300 hover:scale-105">
+                <img src="https://source.unsplash.com/random/800x601" alt="Dish Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Margherita Pizza</h2>
+                    <p class="text-gray-600 mt-2">$12.99</p>
+                </div>
+            </div>
+            <!-- Dish 3 -->
+            <div class="bg-white shadow-md rounded-md overflow-hidden transform transition duration-300 hover:scale-105">
+                <img src="https://source.unsplash.com/random/800x602" alt="Dish Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Sushi Rolls</h2>
+                    <p class="text-gray-600 mt-2">$15.99</p>
+                </div>
+            </div>
+            <!-- Dish 4 -->
+            <div class="bg-white shadow-md rounded-md overflow-hidden transform transition duration-300 hover:scale-105">
+                <img src="https://source.unsplash.com/random/800x603" alt="Dish Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Burger Combo</h2>
+                    <p class="text-gray-600 mt-2">$8.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
