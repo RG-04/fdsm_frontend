@@ -15,7 +15,7 @@ export default ({ endpoint }) => {
               type="text"
               id="username"
               name="username"
-              className="form-input mt-1 block w-full border-b border-gray-300 focus:border-blue-500"
+              className="form-input mt-1 block w-full border-b-2 border-0 border-solid border-gray-300 px-2 py-1 focus:border-blue-500"
               placeholder="Enter your username"
             />
           </div>
@@ -30,7 +30,7 @@ export default ({ endpoint }) => {
               type="password"
               id="password"
               name="password"
-              className="form-input mt-1 block w-full border-b border-gray-300 focus:border-blue-500"
+              className="form-input mt-1 block w-full border-b-2 border-0 border-solid border-gray-300 px-2 py-1 focus:border-blue-500"
               placeholder="Enter your password"
             />
           </div>
