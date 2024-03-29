@@ -22,6 +22,8 @@ const CustomerViewRestaurant = () => {
     const url =
       process.env.REACT_APP_API_URL + "/customer/restaurant/" + restaurantID;
 
+    let ignore = false;
+
     fetch(url, {
       method: "GET",
       headers: {
@@ -30,6 +32,10 @@ const CustomerViewRestaurant = () => {
       },
     })
       .then((response) => {
+        if (ignore) {
+          return;
+        }
+
         if (response.ok) {
           console.log(response);
           response.json().then((data) => {
@@ -46,10 +52,18 @@ const CustomerViewRestaurant = () => {
         }
       })
       .catch((error) => {
+        if (ignore) {
+          return;
+        }
+
         console.log(error);
         navigate("/customer/login");
         alert("An error occurred. Please try again later.");
       });
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const getQuantity = (itemID) => {

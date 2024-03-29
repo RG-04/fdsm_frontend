@@ -12,6 +12,8 @@ const CustomerDashboard = () => {
   useEffect(() => {
     const url = process.env.REACT_APP_API_URL + "/customer/info";
 
+    let ignore = false;
+
     if (authState.token === "") {
       navigate("/customer/login");
       return;
@@ -25,6 +27,10 @@ const CustomerDashboard = () => {
       },
     })
       .then((response) => {
+        if (ignore) {
+          return;
+        }
+
         if (response.ok) {
           response.json().then((data) => {
             setCustomerDetails(data);
@@ -38,12 +44,20 @@ const CustomerDashboard = () => {
         }
       })
       .catch((error) => {
+        if (ignore) {
+          return;
+        }
+
         console.log(error);
 
         navigate("/customer");
         alert("An error occurred. Please try again later.");
         setLoading(false);
       });
+
+    return () => {
+      ignore = true;
+    };
   }, [authState.token]);
 
   if (loading) {
