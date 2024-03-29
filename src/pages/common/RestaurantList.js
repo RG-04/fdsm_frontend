@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import RestaurantCard from "../../components/RestaurantCard";
-import CustomerNavbarNew from "../../components/CustomerNavbarNew";
 import Loader from "../../components/Loader";
 
 export default ({ showRecommended = false }) => {
@@ -122,8 +121,6 @@ export default ({ showRecommended = false }) => {
   }
 
   return (
-    <>
-      <CustomerNavbarNew />
     <section>
       <div className="container mx-auto px-4 mt-4 flex justify-between">
         <div className="flex-1 mr-4 bg-white shadow-md rounded-md">
@@ -174,6 +171,5 @@ export default ({ showRecommended = false }) => {
         </div>
       </div>
     </section>
-    </>
   );
 };

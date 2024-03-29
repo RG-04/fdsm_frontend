@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
-import CustomerNavbarNew from "../../components/CustomerNavbarNew";
 import FavoriteButton from "../../components/FavouriteButton";
 import DishCard from "../../components/DishCard";
 import Ratings from "../../components/Ratings";
@@ -167,7 +166,6 @@ const CustomerViewRestaurant = () => {
 
   return (
     <>
-      <CustomerNavbarNew />
       <RestaurantHeader />
 
       <div className="py-12">
