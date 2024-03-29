@@ -4,6 +4,7 @@ import { CartContext } from "../../contexts/CartContext";
 import FavoriteButton from "../../components/FavouriteButton";
 import DishCard from "../../components/DishCard";
 import Ratings from "../../components/Ratings";
+// import { get } from "http";
 
 const CustomerViewRestaurant = () => {
   const { cartItems, addToCart, removeFromCart, totalPrice } =
@@ -224,8 +225,8 @@ const CustomerViewRestaurant = () => {
               <DishCard
                 item={item}
                 showButton={true}
-                handleAddToCart={() => handleAddToCart(item)}
-                handleRemoveFromCart={() => handleRemoveFromCart(item)}
+                handleAddToCart={handleAddToCart}
+                handleRemoveFromCart={handleRemoveFromCart}
                 getQuantity={getQuantity}
               />
             ))}

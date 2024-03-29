@@ -7,7 +7,7 @@ export default ({ data, endpoint }) => {
       to={endpoint + "/restaurant/" + data.uid}
       className="block cursor-pointer"
     >
-      <div className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-torange-200">
         <img
           src={process.env.REACT_APP_BACKEND_URL + data.image}
           alt={data.name}

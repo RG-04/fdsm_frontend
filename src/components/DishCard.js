@@ -7,9 +7,9 @@ export default (props = { showButton: false }) => {
     const Button = (handleAddToCart, handleRemoveFromCart, getQuantity) => {
         return (
             <div className="flex items-center space-x-2">
-                        <button className="bg-gray-200 text-torange-400 px-2 py-1 rounded-full" onClick={handleRemoveFromCart(item)}><i className="fas fa-minus"></i></button>
+                        <button className="bg-gray-200 text-torange-400 px-2 py-1 rounded-full" onClick={() => handleRemoveFromCart(item)}><i className="fas fa-minus"></i></button>
                         <span className="text-gray-800 font-semibold">{getQuantity(item.uid)}</span>
-                        <button className="bg-gray-200 text-torange-400 px-2 py-1 rounded-full" onClick={handleAddToCart(item)}><i className="fas fa-plus"></i></button>
+                        <button className="bg-gray-200 text-torange-400 px-2 py-1 rounded-full" onClick={() => handleAddToCart(item)}><i className="fas fa-plus"></i></button>
                     </div>
         )
     };
