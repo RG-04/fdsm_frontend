@@ -6,6 +6,7 @@ import CustomerNavbarNew from "../components/CustomerNavbarNew";
 import ManagementNavbarNew from "../components/MangementNavbarNew";
 import RestaurantNavbarNew from "../components/RestaurantNavbarNew";
 import DeliveryAgentNavbarNew from "../components/DeliveryAgentNavbarNew";
+import { CartProvider } from "../contexts/CartContext";
 
 export default ({ endpoint }) => {
   const [authState, setAuthState] = useState({ token: "" });
@@ -75,6 +76,13 @@ export default ({ endpoint }) => {
     <>
       {fetching ? (
         <Loader />
+      ) : endpoint === "/customer" ? (
+        <CartProvider>
+          {Navbar}
+          <Outlet
+            context={{ authState, setAuthState, endpoint, setFetching }}
+          />
+        </CartProvider>
       ) : (
         <>
           {Navbar}

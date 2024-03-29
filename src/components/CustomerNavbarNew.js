@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext";
 
 const CustomerNavbarNew = ({ setAuthState, loggedIn = false }) => {
+  const { clearCart } = useContext(CartContext);
+
   const handleLogout = () => {
     setAuthState({ token: "" });
-    localStorage.removeItem("cartItems");
-    localStorage.removeItem("totalPrice");
+    clearCart();
   };
 
   return (
