@@ -16,7 +16,7 @@ export default (props = { showButton: false }) => {
 
     return (
         <div className="bg-white shadow-md rounded-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-torange-200">
-                <img src={process.env.REACT_APP_BACKEDN_URL + item.image} alt="Dish Image" className="w-full h-48 object-cover" />
+                <img src={process.env.REACT_APP_BACKEND_URL + item.image} alt="Dish Image" className="w-full h-48 object-cover" />
                 <div className="p-4 flex justify-between items-center">
                     <div>
                         <h2 className="text-xl font-semibold text-gray-800">{item.name}</h2>

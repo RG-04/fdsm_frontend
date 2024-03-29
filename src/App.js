@@ -50,6 +50,7 @@ import OutletProvider from "./outlet/outletProvider";
 import { CartProvider } from "./contexts/CartContext";
 import Signup from "./pages/customer/Signup";
 import RestaurantList from "./pages/common/RestaurantList";
+import Orders from "./pages/common/Orders";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
             element={<RestaurantList showRecommended={true} />}
           />
           <Route path="profile" element={<CustomerProfile />} />
+          <Route path="orders" element={<Orders />} />
           {/*<Route
             path="restaurant/:restaurantID"
             element={<CustomerViewRestaurant />}

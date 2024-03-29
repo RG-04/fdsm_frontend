@@ -80,7 +80,7 @@ const CustomerDashboard = () => {
             Order Now!
           </Link>
           <Link
-            to="#"
+            to="recommendations"
             className="bg-torange-400 hover:bg-torange-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md cursor-pointer transition duration-300"
           >
             Recommended

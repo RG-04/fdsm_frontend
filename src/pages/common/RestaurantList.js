@@ -106,7 +106,7 @@ export default ({ showRecommended = false }) => {
         }
 
         console.log(error);
-        navigate("/customer");
+        navigate(endpoint);
         alert("An error occurred. Please try again later.");
         setLoading(false);
       });

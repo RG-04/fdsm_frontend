@@ -37,7 +37,7 @@ const CustomerNavbarNew = ({ setAuthState, loggedIn = false }) => {
                   </li>
                   <li>
                     <Link
-                      to="customer/orders"
+                      to="/customer/orders"
                       className="hover:text-gray-400 cursor-pointer"
                     >
                       Orders
