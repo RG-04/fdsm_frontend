@@ -21,30 +21,52 @@ export default ({ endpoint }) => {
   }, []);
 
   useEffect(() => {
+    console.log(authState.token, Boolean(authState.token));
     switch (endpoint.slice(1, endpoint.length)) {
       case "customer":
-        setNavbar(<CustomerNavbarNew setAuthState={setAuthState} />);
+        setNavbar(
+          <CustomerNavbarNew
+            setAuthState={setAuthState}
+            loggedIn={Boolean(authState.token)}
+          />
+        );
         break;
       case "management":
-        setNavbar(<ManagementNavbarNew setAuthState={setAuthState} />);
+        setNavbar(
+          <ManagementNavbarNew
+            setAuthState={setAuthState}
+            loggedIn={Boolean(authState.token)}
+          />
+        );
         break;
       case "restaurant":
-        setNavbar(<RestaurantNavbarNew setAuthState={setAuthState} />);
+        setNavbar(
+          <RestaurantNavbarNew
+            setAuthState={setAuthState}
+            loggedIn={Boolean(authState.token)}
+          />
+        );
         break;
       case "delivery-agent":
-        setNavbar(<DeliveryAgentNavbarNew setAuthState={setAuthState} />);
+        setNavbar(
+          <DeliveryAgentNavbarNew
+            setAuthState={setAuthState}
+            loggedIn={Boolean(authState.token)}
+          />
+        );
         break;
       default:
         break;
     }
-  }, [endpoint]);
+  }, [endpoint, authState.token]);
 
   useEffect(() => {
     console.log(authState.token);
 
-    if (authState.token && localStorage.getItem("token") !== authState.token) {
+    if (authState.token) {
       localStorage.setItem("token", authState.token);
     } else {
+      console.log("removing token");
       localStorage.removeItem("token");
     }
   }, [authState.token]);
