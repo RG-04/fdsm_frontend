@@ -8,11 +8,6 @@ import CustomerDashboard from "./pages/customer/Dashboard";
 import CustomerViewRestaurant from "./pages/customer/ViewRestaurant";
 import CustomerProfile from "./pages/customer/Profile";
 import Cart from "./pages/customer/Cart";
-// import CustomerRestaurantList from "./components/pages/Customer/RestaurantList";
-// import CustomerViewRestaurant from "./components/pages/Customer/ViewRestaurant";
-// import CustomerOrders from "./components/pages/Customer/Orders";
-// import CustomerOrderInfo from "./components/pages/Customer/OrderInfo";
-// import { CustomerAuthContextProvider } from "./contexts/CustomerAuthContext";
 
 import RestaurantSignup from "./pages/restaurant/Signup";
 import RestaurantProfile from "./pages/restaurant/Profile";
@@ -26,9 +21,6 @@ import RestaurantDashboard from "./pages/restaurant/Dashboard";
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
 import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
 import DeliveryAgentDashboard from "./pages/deliveryAgent/Dashboard";
-// import DeliveryAgentOrders from "./components/pages/DeliveryAgent/Orders";
-// import DeliveryAgentOrderInfo from "./components/pages/DeliveryAgent/OrderInfo";
-// import { DeliveryAgentAuthContextProvider } from "./contexts/DeliveryAgentAuthContext";
 
 import ManagementProfile from "./pages/management/Profile";
 // import ManagementDashboard from "./components/pages/Management/Dashboard";
@@ -47,8 +39,6 @@ import ManagementProfile from "./pages/management/Profile";
 
 import Login from "./pages/common/Login";
 import OutletProvider from "./outlet/outletProvider";
-import { CartProvider } from "./contexts/CartContext";
-import Signup from "./pages/customer/Signup";
 import RestaurantList from "./pages/common/RestaurantList";
 import Orders from "./pages/common/Orders";
 import OrderInfo from "./pages/common/OrderInfo";
