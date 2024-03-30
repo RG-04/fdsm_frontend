@@ -226,6 +226,7 @@ export default () => {
                 type="text"
                 placeholder="Enter OTP"
                 className="border-solid border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-torange"
+                id="otp"
               />
               <button
                 className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500 ml-4"

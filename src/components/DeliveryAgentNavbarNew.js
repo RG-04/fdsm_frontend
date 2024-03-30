@@ -25,7 +25,7 @@ const DeliveryAgentNavbarNew = ({ setAuthState, loggedIn = false }) => {
                   </li>
                   <li>
                     <Link
-                      to="delivery-agent/orders"
+                      to="/delivery-agent/orders"
                       className="hover:text-gray-400 cursor-pointer"
                     >
                       Orders

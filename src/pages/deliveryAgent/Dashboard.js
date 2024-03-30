@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import Loader from "../../components/Loader";
+import UpdateLocation from "../../components/UpdateLocation";
 
 const DeliveryAgentDashboard = () => {
     const { authState } = useOutletContext();
@@ -66,8 +67,8 @@ const DeliveryAgentDashboard = () => {
         };
     }, [authState.token]);
 
-    const handleUpdateLocation = () => {
-        setIsClicked(true);
+    const handleUpdateLocationClick = () => {
+        setIsClicked(!isClicked);
     }
 
     const handleStopWorking = () => {
@@ -109,10 +110,10 @@ const DeliveryAgentDashboard = () => {
                 <div className="mt-8 space-y-4">
                     <button
                         disabled={isProcessing}
-                        onClick={handleUpdateLocation}
+                        onClick={handleUpdateLocationClick}
                         className="bg-torange-400 hover:bg-torange-600 text-white font-semibold py-2 px-6 mx-2 rounded-lg shadow-md cursor-pointer transition duration-300"
                     >
-                        Update Location
+                        {isClicked ? "Cancel" : "Update Location"}
                     </button>
                     <button
                         disabled={isProcessing}
@@ -132,6 +133,19 @@ const DeliveryAgentDashboard = () => {
                         <></>
                     )}
                 </div>
+                {isClicked ? (
+                    <UpdateLocation
+                        authState={authState}
+                        location={location}
+                        setLocation={setLocation}
+                        isClicked={isClicked}
+                        setIsClicked={setIsClicked}
+                        isProcessing={isProcessing}
+                        setIsProcessing={setIsProcessing}
+                    />
+                ) : (
+                    <></>
+                )}
             </div>
         </>
     );

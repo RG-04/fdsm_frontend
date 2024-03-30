@@ -81,14 +81,6 @@ function App() {
           <Route path="orders" element={<Orders />} />
           <Route path="order/:id" element={<OrderInfo />} />
           <Route path="cart" element={<Cart />} />
-          {/*<Route
-            path="restaurant/:restaurantID"
-            element={<CustomerViewRestaurant />}
-          />
-  <Route path="cart" element={<Cart />} />*/}
-          {/*<Route path="orders" element={<CustomerOrders />} />
-          <Route path="order/:orderID" element={<CustomerOrderInfo />} />
-          <Route path="*" element={<CustomerDashboard />} /> */}
         </Route>
 
         <Route
@@ -117,9 +109,6 @@ function App() {
           <Route path="profile" element={<DeliveryAgentProfile />} />
           <Route path="orders" element={<Orders />} />
           <Route path="order/:id" element={<OrderInfo />} />
-          {/* <Route path="orders" element={<DeliveryAgentOrders />} />
-          <Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
-          <Route path="*" element={<DeliveryAgentDashboard />} /> */}
         </Route>
 
         <Route

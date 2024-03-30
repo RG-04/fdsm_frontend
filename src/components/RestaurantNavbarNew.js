@@ -25,7 +25,7 @@ const RestaurantNavbarNew = ({ setAuthState, loggedIn = false }) => {
                   </li>
                   <li>
                     <Link
-                      to="restaurant/orders"
+                      to="/restaurant/orders"
                       className="hover:text-gray-400 cursor-pointer"
                     >
                       Orders
