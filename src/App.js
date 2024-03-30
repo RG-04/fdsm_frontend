@@ -21,7 +21,8 @@ import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
 import DeliveryAgentDashboard from "./pages/deliveryAgent/Dashboard";
 
 import ManagementProfile from "./pages/management/Profile";
-// import ManagementDashboard from "./components/pages/Management/Dashboard";
+import ManagementDashboard from "./pages/management/Dashboard";
+import ManagementViewRestaurant from "./pages/management/ViewRestaurant";
 // import ManagementCustomerList from "./components/pages/Management/CustomerList";
 // import ManagementViewCustomer from "./components/pages/Management/ViewCustomer";
 // import ManagementCustomerOrders from "./components/pages/Management/CustomerOrders";
@@ -101,7 +102,7 @@ function App() {
           path="management"
           element={<OutletProvider endpoint="/management" />}
         >
-          {/* <Route index element={<ManagementDashboard />} /> */}
+          <Route index element={<ManagementDashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<ManagementProfile />} />
           {/* <Route path="customers" element={<ManagementCustomerList />} />
@@ -115,11 +116,8 @@ function App() {
         />*/}
 
           <Route path="restaurants" element={<RestaurantList />} />
+          <Route path="restaurant/:restaurantID" element={<ManagementViewRestaurant />} />
           {/* <Route
-            path="restaurant/:restaurantID"
-            element={<ManagementViewRestaurant />}
-          />
-          <Route
             path="restaurant/:restaurantID/orders"
             element={<ManagementRestaurantOrders />}
           />
