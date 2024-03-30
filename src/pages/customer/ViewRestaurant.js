@@ -160,7 +160,7 @@ const CustomerViewRestaurant = () => {
 
   const RestaurantHeader = () => {
     return (
-      <header className="bg-blur bg-center bg-no-repeat bg-cover py-32 relative">
+      <header className="bg-blur bg-center bg-no-repeat bg-cover py-32 relative" style={{ backgroundImage: `url('${process.env.REACT_APP_BACKEND_URL}${restaurantInfo.image}')` }}>
         {/* Favorites Button */}
         <button className="absolute top-10 right-10 bg-white p-2 rounded-full shadow-md text-red-500 text-xl hover:text-red-500 focus:outline-none">
           <FavoriteButton
