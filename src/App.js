@@ -24,10 +24,8 @@ import ManagementProfile from "./pages/management/Profile";
 import ManagementDashboard from "./pages/management/Dashboard";
 import ManagementViewRestaurant from "./pages/management/ViewRestaurant";
 import ManagementCustomerList from "./pages/management/CustomerList";
-// import ManagementViewCustomer from "./components/pages/Management/ViewCustomer";
-// import ManagementCustomerOrders from "./components/pages/Management/CustomerOrders";
-// import ManagementRestaurantList from "./components/pages/Management/RestaurantList";
-// import ManagementViewRestaurant from "./components/pages/Management/ViewRestaurant";
+import ManagementDeliveryAgentList from "./pages/management/DeliveryAgentList";
+import ViewDeliveryAgent from "./pages/management/ViewDeliveryAgent";
 // import ManagementRestaurantOrders from "./components/pages/Management/RestaurantOrders";
 // import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryAgentList";
 // import ManagementViewDeliveryAgent from "./components/pages/Management/ViewDeliveryAgent";
@@ -111,6 +109,9 @@ function App() {
           <Route path="restaurants" element={<RestaurantList />} />
           <Route path="restaurant/:restaurantID" element={<ManagementViewRestaurant />} />
           <Route path="restaurant/:id/orders" element={<Orders userType="restaurant" />} />
+          <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
+          <Route path="delivery-agent/:id" element={<ViewDeliveryAgent />} />
+          <Route path="delivery-agent/:id/orders" element={<Orders userType="deliverer" />} />
           {/* <Route
             path="restaurant/:restaurantID/orders"
             element={<ManagementRestaurantOrders />}

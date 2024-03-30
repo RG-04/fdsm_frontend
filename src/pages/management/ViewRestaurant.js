@@ -159,7 +159,7 @@ const ManagementViewRestaurant = () => {
                         </div>
 
                         <div className="flex items-center border-b-1 border-t-0 border-r-0 border-l-0 border-solid border-gray-300 pb-6 pt-6">
-                            <p className="text-lg text-gray-800">{"⭐".repeat(restaurantInfo.rating)}</p>
+                            <Ratings rating={restaurantInfo.rating} />
                         </div>
                     </div>
                 </div>
