@@ -127,7 +127,7 @@ export default () => {
     <>
       <div className="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mx-auto max-w-xl my-10 text-left relative">
         <img
-          src="https://source.unsplash.com/MqT0asuoIcU"
+          src={process.env.REACT_APP_BACKEND_URL + order.restaurant.image}
           alt="Restaurant Image"
           className="rounded-t-lg w-full h-40 object-cover mb-4"
         />
@@ -180,7 +180,7 @@ export default () => {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">ETA:</p>
-                  <p>{order.etd}</p>
+                  <p>{order.etd.split('T')[1].split('.')[0]}</p>
                 </div>
               </>
             ) : (
@@ -188,12 +188,12 @@ export default () => {
             )}
             <div>
               <p className="text-gray-600 font-semibold">Order Time:</p>
-              <p>{order.orderTime}</p>
+              <p>{order.orderTime.split('T')[1].split('.')[0]}</p>
             </div>
           </div>
           {isCustomer &&
-          order.isCompleted &&
-          !(order.isDelivererRated || order.isRestaurantRated) ? (
+            order.isCompleted &&
+            !(order.isDelivererRated || order.isRestaurantRated) ? (
             <div className="flex justify-between mt-8">
               {!order.isRestaurantRated ? (
                 <button
@@ -252,7 +252,7 @@ export default () => {
               destination={order.deliveryAddress}
             />
           </div>
-          <button className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500">
+          <button className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500" onClick={() => window.location.reload()}>
             Refresh
           </button>
         </div>
