@@ -13,7 +13,7 @@ import RestaurantSignup from "./pages/restaurant/Signup";
 import RestaurantProfile from "./pages/restaurant/Profile";
 import RestaurantDashboard from "./pages/restaurant/Dashboard";
 import RestaurantMenu from "./pages/restaurant/Menu";
-// import RestaurantNewItem from "./components/pages/Restaurant/NewItem";
+import RestaurantNewItem from "./pages/restaurant/NewItem";
 // import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
@@ -82,7 +82,7 @@ function App() {
           <Route path="order/:id" element={<OrderInfo />} />
           <Route path="orders" element={<Orders />} />
           <Route path="menu" element={<RestaurantMenu />} />
-          {/* <Route path="newitem" element={<RestaurantNewItem />} /> */}
+          <Route path="newitem" element={<RestaurantNewItem />} />
         </Route>
 
         <Route
