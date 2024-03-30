@@ -81,7 +81,7 @@ const Cart = () => {
   const getQuantity = (restaurantID, itemID) => {
     const index = cartItems.findIndex(
       (cartItem) =>
-        cartItem.restaurantID == restaurantID && cartItem.item.id == itemID
+        cartItem.restaurantID == restaurantID && cartItem.item.uid == itemID
     );
     if (index === -1) {
       return 0;
@@ -116,7 +116,7 @@ const Cart = () => {
               );
             }
           })
-          if(failedOrders.length > 0) {
+          if (failedOrders.length > 0) {
             alert("Failed to place orders for some restaurants. Please try again later.");
           }
           navigate("/customer/orders");
@@ -127,7 +127,7 @@ const Cart = () => {
 
   const handleOfferChange = (e) => {
     console.log(discount, code)
-    if(e.target.value === "") {
+    if (e.target.value === "") {
       setDiscount(0);
       setCode("");
       return;
@@ -193,7 +193,7 @@ const Cart = () => {
                             <div className="quantity">
                               {getQuantity(
                                 cartItem.restaurantID,
-                                cartItem.item.id
+                                cartItem.item.uid
                               )}
                             </div>
                             <div
@@ -242,7 +242,7 @@ const Cart = () => {
                   <h2>Enter Address:</h2>
                 </div>
                 <div className="address-input">
-                  <input type="text" value={address} placeholder="Address" onChange={handleAddressChange}/>
+                  <input type="text" value={address} placeholder="Address" onChange={handleAddressChange} />
                 </div>
               </div>
 
@@ -253,12 +253,12 @@ const Cart = () => {
                   </div>
                   <div className="offer-list">
                     <div className="offer">
-                    <input type="radio" id="button-none" value="" name="radio-offer" onChange={handleOfferChange}/>
-                    <div className="offer-code">No Offer</div>
+                      <input type="radio" id="button-none" value="" name="radio-offer" onChange={handleOfferChange} />
+                      <div className="offer-code">No Offer</div>
                     </div>
                     {offers.map((offer) => (
                       <div className="offer">
-                        <input type="radio" id={"button-" + offer.code} value={offer.code} name="radio-offer" onChange={handleOfferChange}/>
+                        <input type="radio" id={"button-" + offer.code} value={offer.code} name="radio-offer" onChange={handleOfferChange} />
                         <div className="offer-code">{offer.code}</div>
                         <div className="offer-discount">
                           Discount: {offer.discount}%
