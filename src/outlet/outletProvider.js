@@ -64,6 +64,8 @@ export default ({ endpoint }) => {
   useEffect(() => {
     console.log(authState.token);
 
+    if (fetching) return;
+
     if (authState.token) {
       localStorage.setItem("token", authState.token);
     } else {
