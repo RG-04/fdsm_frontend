@@ -1,0 +1,5 @@
+.mapboxgl-canvas,
+.mapboxgl-canvas-container,
+.mapboxgl-map {
+  width: 100% !important;
+}
