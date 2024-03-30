@@ -29,6 +29,14 @@ const CustomerNavbarNew = ({ setAuthState, loggedIn = false }) => {
                   </li>
                   <li>
                     <Link
+                      to="/customer/favourites"
+                      className="hover:text-gray-400 cursor-pointer"
+                    >
+                      Favourites
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       to="/customer/cart"
                       className="hover:text-gray-400 cursor-pointer"
                     >

@@ -3,7 +3,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import RestaurantCard from "../../components/RestaurantCard";
 import Loader from "../../components/Loader";
 
-export default ({ showRecommended = false }) => {
+export default ({ showRecommended = false, showFavourites = false }) => {
   const ratings = [2, 3, 3.5, 4, 4.5, 5];
   const [restaurants, setrestaurants] = useState([]);
   const { authState, endpoint } = useOutletContext();
@@ -57,7 +57,17 @@ export default ({ showRecommended = false }) => {
         return false;
       };
 
-      return filter_rating() && filter_search();
+      const filter_favourites = () => {
+        if (!showFavourites) {
+          return true;
+        }
+        if (restaurant.isFavourite) {
+          return true;
+        }
+        return false;
+      }
+
+      return filter_rating() && filter_search() && filter_favourites();
     };
 
     return sieve_inner;

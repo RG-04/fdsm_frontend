@@ -72,6 +72,7 @@ function App() {
             path="recommendations"
             element={<RestaurantList showRecommended={true} />}
           />
+          <Route path="favourites" element={<RestaurantList showFavourites={true} />} />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<Orders />} />
           <Route path="cart" element={<Cart />} />

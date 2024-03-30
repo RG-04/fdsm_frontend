@@ -11,7 +11,7 @@ export default () => {
     const [code, setCode] = useState("");
     const [offers, setOffers] = useState([]);
     const [loading, setLoading] = useState(false);
-    const { cartItems, addToCart, removeFromCart, totalPrice } = useContext(CartContext);
+    const { cartItems, addToCart, removeFromCart, totalPrice, removeOrder } = useContext(CartContext);
 
     const navigate = useNavigate();
 
@@ -57,18 +57,10 @@ export default () => {
             setLoading(true);
             requestOrders(cartItems, authState.token, address, discount, code).then(
                 ({ successfulOrders, failedOrders }) => {
-                    cartItems.map((cartItem) => {
-                        if (successfulOrders.includes(cartItem.restaurantID)) {
-                            let n = cartItem.count;
-                            for (let i = 0; i < n; i++) {
-                                handleRemoveFromCart(
-                                    cartItem.restaurantID,
-                                    cartItem.restaurantName,
-                                    cartItem.item
-                                );
-                            }
-                        }
-                    })
+                    successfulOrders.map((restaurantID) => {
+                        removeOrder(restaurantID);
+                    });
+
                     if (failedOrders.length > 0) {
                         alert("Failed to place orders for some restaurants. Please try again later.");
                     }
@@ -147,6 +139,20 @@ export default () => {
             }
         });
     }, []);
+
+    if (cartItems.length === 0) {
+        return (
+            <div className="bg-white bg-opacity-90 py-12">
+                <div className="container mx-auto px-4 w-3/4">
+                    <div className="text-center">
+                        <h3 className="text-2xl font-semibold text-gray-800">Your cart is empty</h3>
+                        <button onClick={() => navigate("/customer/restaurants")} className="bg-torange-400 hover:bg-torange-600 text-white font-semibold py-2 px-6 mx-2 my-2 rounded-lg shadow-md cursor-pointer transition duration-300"
+                        >Browse Restaurants</button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>

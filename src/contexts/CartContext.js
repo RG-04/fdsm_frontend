@@ -6,6 +6,7 @@ export const CartContext = createContext({
   totalPrice: 0,
   addToCart: (restaurantID, restaurantName, item) => { },
   removeFromCart: (restaurantID, restaurantName, item) => { },
+  removeOrder: (restaurantID) => { },
   clearCart: () => { },
 });
 
@@ -49,6 +50,21 @@ export const CartProvider = ({ children }) => {
     setCartItems(newCartItems);
   };
 
+  const removeOrder = (restaurantID) => {
+    let newCartItems = [...cartItems];
+
+    newCartItems = newCartItems.filter(
+      (cartItem) => (cartItem.restaurantID !== restaurantID)
+    );
+
+    setCartItems(newCartItems);
+    let total = 0;
+    newCartItems.map((cartItem) => {
+      total += cartItem.item.price * cartItem.count;
+    });
+    setTotalPrice(total);
+  };
+
   const clearCart = () => {
     setTotalPrice(0);
     setCartItems([]);
@@ -56,7 +72,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart, totalPrice }}
+      value={{ cartItems, addToCart, removeFromCart, clearCart, totalPrice, removeOrder }}
     >
       {children}
     </CartContext.Provider>
