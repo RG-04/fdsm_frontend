@@ -25,7 +25,7 @@ import RestaurantProfile from "./pages/restaurant/Profile";
 
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
 import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
-// import DeliveryAgentDashboard from "./components/pages/DeliveryAgent/Dashboard";
+import DeliveryAgentDashboard from "./pages/deliveryAgent/Dashboard";
 // import DeliveryAgentOrders from "./components/pages/DeliveryAgent/Orders";
 // import DeliveryAgentOrderInfo from "./components/pages/DeliveryAgent/OrderInfo";
 // import { DeliveryAgentAuthContextProvider } from "./contexts/DeliveryAgentAuthContext";
@@ -104,12 +104,12 @@ function App() {
           path="delivery-agent"
           element={<OutletProvider endpoint="/delivery-agent" />}
         >
-          {/* <Route index element={<DeliveryAgentDashboard />} /> */}
+          <Route index element={<DeliveryAgentDashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<DeliveryAgentSignup />} />
           <Route path="profile" element={<DeliveryAgentProfile />} />
-          {/* <Route path="orders" element={<DeliveryAgentOrders />} />
-          <Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
+          <Route path="orders" element={<Orders />} />
+          {/*<Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
           <Route path="*" element={<DeliveryAgentDashboard />} /> */}
         </Route>
 
