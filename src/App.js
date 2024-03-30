@@ -12,9 +12,7 @@ import Cart from "./pages/customer/Cart";
 import RestaurantSignup from "./pages/restaurant/Signup";
 import RestaurantProfile from "./pages/restaurant/Profile";
 import RestaurantDashboard from "./pages/restaurant/Dashboard";
-// import RestaurantOrders from "./components/pages/Restaurant/Orders";
-// import RestaurantOrderInfo from "./components/pages/Restaurant/OrderInfo";
-// import RestaurantMenu from "./components/pages/Restaurant/Menu";
+import RestaurantMenu from "./pages/restaurant/Menu";
 // import RestaurantNewItem from "./components/pages/Restaurant/NewItem";
 // import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
@@ -83,10 +81,8 @@ function App() {
           <Route path="profile" element={<RestaurantProfile />} />
           <Route path="order/:id" element={<OrderInfo />} />
           <Route path="orders" element={<Orders />} />
-          {/*<Route path="order/:orderID" element={<RestaurantOrderInfo />} />
           <Route path="menu" element={<RestaurantMenu />} />
-          <Route path="newitem" element={<RestaurantNewItem />} />
-          <Route path="*" element={<RestaurantDashboard />} /> */}
+          {/* <Route path="newitem" element={<RestaurantNewItem />} /> */}
         </Route>
 
         <Route

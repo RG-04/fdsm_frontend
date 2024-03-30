@@ -173,7 +173,7 @@ export default () => {
                     </div>
 
                     <div className="mt-6">
-                        <label htmlFor="promo-code" className="block text-xl font-semibold text-gray-800 mb-2">Promo Code:</label>
+                        <label htmlFor="promo-code" className="block text-xl font-semibold text-gray-800 mb-2">{offers.length ? "Promo Code:" : "No Offers available"}</label>
                         <div className="flex gap-4">
                             {offers.map((offer) => (
                                 <div onClick={() => handleOfferChange(offer.code)} className={"promo-container cursor-pointer shadow-md " + (code == offer.code ? "shadow-torange-200" : "")} key={offer.code}>
