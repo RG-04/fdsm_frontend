@@ -7,9 +7,9 @@ import CustomerSignup from "./pages/customer/Signup";
 import CustomerDashboard from "./pages/customer/Dashboard";
 import CustomerViewRestaurant from "./pages/customer/ViewRestaurant";
 import CustomerProfile from "./pages/customer/Profile";
+import Cart from "./pages/customer/Cart";
 // import CustomerRestaurantList from "./components/pages/Customer/RestaurantList";
 // import CustomerViewRestaurant from "./components/pages/Customer/ViewRestaurant";
-// import Cart from "./components/pages/Customer/Cart";
 // import CustomerOrders from "./components/pages/Customer/Orders";
 // import CustomerOrderInfo from "./components/pages/Customer/OrderInfo";
 // import { CustomerAuthContextProvider } from "./contexts/CustomerAuthContext";
@@ -62,7 +62,7 @@ function App() {
         <Route
           path="customer"
           element={<OutletProvider endpoint="/customer" />}
-        > 
+        >
           <Route index element={<CustomerDashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<CustomerSignup />} />
@@ -74,6 +74,7 @@ function App() {
           />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="cart" element={<Cart />} />
           {/*<Route
             path="restaurant/:restaurantID"
             element={<CustomerViewRestaurant />}
