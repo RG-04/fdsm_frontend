@@ -51,6 +51,7 @@ import { CartProvider } from "./contexts/CartContext";
 import Signup from "./pages/customer/Signup";
 import RestaurantList from "./pages/common/RestaurantList";
 import Orders from "./pages/common/Orders";
+import OrderInfo from "./pages/common/OrderInfo";
 
 function App() {
   return (
@@ -67,7 +68,10 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<CustomerSignup />} />
           <Route path="restaurants" element={<RestaurantList />} />
-          <Route path="restaurant/:restaurantID" element={<CustomerViewRestaurant />} />
+          <Route
+            path="restaurant/:restaurantID"
+            element={<CustomerViewRestaurant />}
+          />
           <Route
             path="recommendations"
             element={<RestaurantList showRecommended={true} />}
@@ -75,6 +79,7 @@ function App() {
           <Route path="favourites" element={<RestaurantList showFavourites={true} />} />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="order/:id" element={<OrderInfo />} />
           <Route path="cart" element={<Cart />} />
           {/*<Route
             path="restaurant/:restaurantID"
@@ -94,6 +99,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<RestaurantSignup />} />
           <Route path="profile" element={<RestaurantProfile />} />
+          <Route path="order/:id" element={<OrderInfo />} />
           <Route path="orders" element={<Orders />} />
           {/*<Route path="order/:orderID" element={<RestaurantOrderInfo />} />
           <Route path="menu" element={<RestaurantMenu />} />
@@ -110,7 +116,9 @@ function App() {
           <Route path="signup" element={<DeliveryAgentSignup />} />
           <Route path="profile" element={<DeliveryAgentProfile />} />
           <Route path="orders" element={<Orders />} />
-          {/*<Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
+          <Route path="order/:id" element={<OrderInfo />} />
+          {/* <Route path="orders" element={<DeliveryAgentOrders />} />
+          <Route path="order/:orderID" element={<DeliveryAgentOrderInfo />} />
           <Route path="*" element={<DeliveryAgentDashboard />} /> */}
         </Route>
 
@@ -157,7 +165,7 @@ function App() {
           <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
 
-        {/* <Route path="test" element={<Profile />} /> */}
+        <Route path="test" element={<OrderInfo />} />
       </Routes>
     </Router>
   );
