@@ -21,7 +21,7 @@ export default ({ userType = "" }) => {
 
     if (endpoint === "/management")
       url =
-        process.env.REACT_APP_API_URL + endpoint + `/${userType}/orders/${id}`;
+        process.env.REACT_APP_API_URL + endpoint + `/orders/${userType}/${id}`;
 
     fetch(url, {
       method: "GET",
