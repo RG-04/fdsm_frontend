@@ -25,8 +25,8 @@ import ManagementViewRestaurant from "./pages/management/ViewRestaurant";
 import ManagementCustomerList from "./pages/management/CustomerList";
 import ManagementDeliveryAgentList from "./pages/management/DeliveryAgentList";
 import ViewDeliveryAgent from "./pages/management/ViewDeliveryAgent";
-// import ManagementNewOffer from "./components/pages/Management/NewOffer";
-// import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
+import ManagementOffersList from "./pages/management/OffersList";
+import ManagementNewOffer from "./pages/management/NewOffer";
 
 import Login from "./pages/common/Login";
 import OutletProvider from "./outlet/outletProvider";
@@ -106,9 +106,8 @@ function App() {
           <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
           <Route path="delivery-agent/:id" element={<ViewDeliveryAgent />} />
           <Route path="delivery-agent/:id/orders" element={<Orders userType="deliverer" />} />
-          {/*<Route path="offers" element={<ManagementOffersList />} />
+          <Route path="offers" element={<ManagementOffersList />} />
           <Route path="newoffer" element={<ManagementNewOffer />} />
-          <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
       </Routes>
     </Router>

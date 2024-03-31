@@ -170,6 +170,12 @@ const ManagementViewRestaurant = () => {
                 </div>
             </div>
 
+            <div className="mt-8 w-full flex justify-center">
+                <button onClick={() => navigate("/management/restaurant/" + restaurantID + "/orders")} className="bg-torange-500 hover:bg-torange-600 text-white font-semibold py-2 px-12 rounded-md shadow-md transition duration-300">
+                    View Restaurant Orders
+                </button>
+            </div>
+
             <div className="py-12">
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between items-center mb-10 w-1/2 mx-auto">

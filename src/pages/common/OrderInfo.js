@@ -18,6 +18,7 @@ export default () => {
     customer: {},
     deliveryAddress: {},
   });
+  const timeDelta = ((new Date()).getTimezoneOffset()) * 60 * 1000;
   const { id } = useParams();
 
   const [modal, setModal] = useState("");
@@ -185,7 +186,7 @@ export default () => {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">ETA:</p>
-                  <p>{order.etd.split('T')[1].split('.')[0]}</p>
+                  <p>{(new Date(order.etd)).toLocaleTimeString() + ", " + (new Date(order.etd)).toLocaleDateString()}</p>
                 </div>
               </>
             ) : (
@@ -193,8 +194,9 @@ export default () => {
             )}
             <div>
               <p className="text-gray-600 font-semibold">Order Time:</p>
-              <p>{order.orderTime.split('T')[1].split('.')[0]}</p>
+              <p>{(new Date(order.orderTime)).toLocaleTimeString() + ", " + (new Date(order.orderTime)).toLocaleDateString()}</p>
             </div>
+            <p className="text-gray-400 font-semibold text-xs col-span-2">*All times displayed according to your local timezone.</p>
           </div>
           {isCustomer &&
             order.isCompleted &&
