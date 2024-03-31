@@ -14,7 +14,6 @@ import RestaurantProfile from "./pages/restaurant/Profile";
 import RestaurantDashboard from "./pages/restaurant/Dashboard";
 import RestaurantMenu from "./pages/restaurant/Menu";
 import RestaurantNewItem from "./pages/restaurant/NewItem";
-// import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
 import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
@@ -26,11 +25,6 @@ import ManagementViewRestaurant from "./pages/management/ViewRestaurant";
 import ManagementCustomerList from "./pages/management/CustomerList";
 import ManagementDeliveryAgentList from "./pages/management/DeliveryAgentList";
 import ViewDeliveryAgent from "./pages/management/ViewDeliveryAgent";
-// import ManagementRestaurantOrders from "./components/pages/Management/RestaurantOrders";
-// import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryAgentList";
-// import ManagementViewDeliveryAgent from "./components/pages/Management/ViewDeliveryAgent";
-// import ManagementDeliveryAgentOrders from "./components/pages/Management/DeliveryAgentOrders";
-// import ManagementOffersList from "./components/pages/Management/OffersList";
 // import ManagementNewOffer from "./components/pages/Management/NewOffer";
 // import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
 
@@ -112,28 +106,10 @@ function App() {
           <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
           <Route path="delivery-agent/:id" element={<ViewDeliveryAgent />} />
           <Route path="delivery-agent/:id/orders" element={<Orders userType="deliverer" />} />
-          {/* <Route
-            path="restaurant/:restaurantID/orders"
-            element={<ManagementRestaurantOrders />}
-          />
-          <Route
-            path="delivery-agents"
-            element={<ManagementDeliveryAgentList />}
-          />
-          <Route
-            path="delivery-agent/:deliveryAgentID"
-            element={<ManagementViewDeliveryAgent />}
-          />
-          <Route
-            path="delivery-agent/:deliveryAgentID/orders"
-            element={<ManagementDeliveryAgentOrders />}
-          />
-          <Route path="offers" element={<ManagementOffersList />} />
+          {/*<Route path="offers" element={<ManagementOffersList />} />
           <Route path="newoffer" element={<ManagementNewOffer />} />
           <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
-
-        <Route path="test" element={<OrderInfo />} />
       </Routes>
     </Router>
   );

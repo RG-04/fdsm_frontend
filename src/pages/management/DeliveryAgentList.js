@@ -7,7 +7,7 @@ export default () => {
     const navigate = useNavigate();
 
     const [deliveryAgents, setDeliveryAgents] = useState([]);
-    const { authState } = useOutletContext();
+    const { authState, setAuthState } = useOutletContext();
     const [loading, setLoading] = useState(true);
 
     const [filters, setFilters] = useState({
@@ -69,9 +69,14 @@ export default () => {
                         setLoading(false);
                     });
                 } else {
+                    let status = response.status;
                     response.json().then((data) => {
                         console.log(data);
                         alert(data.error);
+                        if (status === 801 || status === 800) {
+                            setAuthState({ token: "" });
+                            navigate("/management/login");
+                        }
                     });
                 }
             })

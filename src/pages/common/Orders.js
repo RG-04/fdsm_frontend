@@ -8,7 +8,7 @@ export default ({ userType = "" }) => {
   const [loading, setLoading] = useState(true);
   const [pendingOrders, setPendingOrders] = useState([]);
   const [deliveredOrders, setDeliveredOrders] = useState([]);
-  const { authState, endpoint } = useOutletContext();
+  const { authState, endpoint, setAuthState } = useOutletContext();
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -49,9 +49,14 @@ export default ({ userType = "" }) => {
             setLoading(false);
           });
         } else {
+          let status = response.status;
           response.json().then((data) => {
             console.log(data);
             alert(data.error);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate(endpoint + "/login");
+            }
             setLoading(false);
           });
         }

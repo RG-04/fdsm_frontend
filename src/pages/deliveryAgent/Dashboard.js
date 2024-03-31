@@ -5,7 +5,7 @@ import Loader from "../../components/Loader";
 import UpdateLocation from "../../components/UpdateLocation";
 
 const DeliveryAgentDashboard = () => {
-    const { authState } = useOutletContext();
+    const { authState, setAuthState } = useOutletContext();
     const navigate = useNavigate();
     const [deliveryAgentDetails, setDeliveryAgentDetails] = useState({});
     const [workingStatus, setWorkingStatus] = useState(false);
@@ -44,8 +44,13 @@ const DeliveryAgentDashboard = () => {
                         setLoading(false);
                     });
                 } else {
+                    let status = response.status;
                     response.json().then((data) => {
                         alert(data.error);
+                        if (status === 801 || status === 800) {
+                            setAuthState({ token: "" });
+                            navigate("/delivery-agent/login");
+                        }
                         setLoading(false);
                     });
                 }

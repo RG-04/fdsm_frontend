@@ -11,7 +11,7 @@ const ManagementViewRestaurant = () => {
 
     const [restaurantMenu, setRestaurantMenu] = useState([]);
     const [restaurantInfo, setRestaurantInfo] = useState({ reviews: [], timings: {} });
-    const { authState } = useOutletContext();
+    const { authState, setAuthState } = useOutletContext();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -43,9 +43,14 @@ const ManagementViewRestaurant = () => {
                         setLoading(false);
                     });
                 } else {
+                    let status = response.status;
                     response.json().then((data) => {
                         console.log(data);
                         alert(data.error);
+                        if (status === 801 || status === 800) {
+                            setAuthState({ token: "" });
+                            navigate("/management/login");
+                        }
                         setLoading(false);
                     });
                 }

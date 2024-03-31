@@ -10,7 +10,7 @@ export default () => {
     const [loading, setLoading] = useState(true);
     const [isProcessing, setIsProcessing] = useState(false);
 
-    const { authState } = useOutletContext();
+    const { authState, setAuthState } = useOutletContext();
     const [data, setData] = useState({
         name: "",
         email: "",
@@ -83,9 +83,14 @@ export default () => {
                     setData({ ...data, pendingMoney: 0 });
                     setIsProcessing(false);
                 } else {
+                    let status = response.status;
                     response.json().then((data) => {
                         console.log(data);
                         alert(data.error);
+                        if (status === 801 || status === 800) {
+                            setAuthState({ token: "" });
+                            navigate("/management/login");
+                        }
                         setIsProcessing(false);
                     });
                 }

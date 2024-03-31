@@ -6,7 +6,7 @@ import Loader from "../../components/Loader";
 import "./OrderInfo.css";
 
 export default () => {
-  const { endpoint, authState } = useOutletContext();
+  const { endpoint, authState, setAuthState } = useOutletContext();
   const isCustomer = endpoint === "/customer";
 
   const navigate = useNavigate();
@@ -97,10 +97,15 @@ export default () => {
             setLoading(false);
           });
         } else {
+          let status = response.status;
           response.json().then((data) => {
             console.log(data);
-            setLoading(false);
             alert(data.error);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate(endpoint + "/login");
+            }
+            setLoading(false);
           });
         }
       })

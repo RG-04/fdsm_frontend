@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import Loader from "../../components/Loader";
 
 const CustomerDashboard = () => {
-  const { authState } = useOutletContext();
+  const { authState, setAuthState } = useOutletContext();
   const navigate = useNavigate();
   const [customerDetails, setCustomerDetails] = useState({});
   const [loading, setLoading] = useState(true);
@@ -37,8 +37,13 @@ const CustomerDashboard = () => {
             setLoading(false);
           });
         } else {
+          let status = response.status;
           response.json().then((data) => {
             alert(data.error);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate("/customer/login");
+            }
             setLoading(false);
           });
         }
