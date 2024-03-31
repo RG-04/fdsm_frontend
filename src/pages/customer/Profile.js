@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import { useOutletContext } from "react-router";
 import Loader from "../../components/Loader";
+import profile from "../../assets/profile.png";
 
 export default () => {
   const [edit, setEdit] = useState(false);
@@ -117,7 +118,7 @@ export default () => {
   return (
     <div className="bg-white rounded-lg shadow-md p-8 mx-auto max-w-md mt-10 text-center">
       <img
-        src="https://source.unsplash.com/random/200x200"
+        src={profile}
         alt="Profile Image"
         className="mx-auto rounded-full w-32 h-32 mb-4"
       />
