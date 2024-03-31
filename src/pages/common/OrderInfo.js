@@ -193,7 +193,7 @@ export default () => {
           </div>
           {isCustomer &&
             order.isCompleted &&
-            !(order.isDelivererRated || order.isRestaurantRated) ? (
+            !(order.isDelivererRated && order.isRestaurantRated) ? (
             <div className="flex justify-between mt-8">
               {!order.isRestaurantRated ? (
                 <button

@@ -12,10 +12,8 @@ import Cart from "./pages/customer/Cart";
 import RestaurantSignup from "./pages/restaurant/Signup";
 import RestaurantProfile from "./pages/restaurant/Profile";
 import RestaurantDashboard from "./pages/restaurant/Dashboard";
-// import RestaurantOrders from "./components/pages/Restaurant/Orders";
-// import RestaurantOrderInfo from "./components/pages/Restaurant/OrderInfo";
-// import RestaurantMenu from "./components/pages/Restaurant/Menu";
-// import RestaurantNewItem from "./components/pages/Restaurant/NewItem";
+import RestaurantMenu from "./pages/restaurant/Menu";
+import RestaurantNewItem from "./pages/restaurant/NewItem";
 // import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
@@ -23,12 +21,11 @@ import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
 import DeliveryAgentDashboard from "./pages/deliveryAgent/Dashboard";
 
 import ManagementProfile from "./pages/management/Profile";
-// import ManagementDashboard from "./components/pages/Management/Dashboard";
-// import ManagementCustomerList from "./components/pages/Management/CustomerList";
-// import ManagementViewCustomer from "./components/pages/Management/ViewCustomer";
-// import ManagementCustomerOrders from "./components/pages/Management/CustomerOrders";
-// import ManagementRestaurantList from "./components/pages/Management/RestaurantList";
-// import ManagementViewRestaurant from "./components/pages/Management/ViewRestaurant";
+import ManagementDashboard from "./pages/management/Dashboard";
+import ManagementViewRestaurant from "./pages/management/ViewRestaurant";
+import ManagementCustomerList from "./pages/management/CustomerList";
+import ManagementDeliveryAgentList from "./pages/management/DeliveryAgentList";
+import ViewDeliveryAgent from "./pages/management/ViewDeliveryAgent";
 // import ManagementRestaurantOrders from "./components/pages/Management/RestaurantOrders";
 // import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryAgentList";
 // import ManagementViewDeliveryAgent from "./components/pages/Management/ViewDeliveryAgent";
@@ -83,10 +80,8 @@ function App() {
           <Route path="profile" element={<RestaurantProfile />} />
           <Route path="order/:id" element={<OrderInfo />} />
           <Route path="orders" element={<Orders />} />
-          {/*<Route path="order/:orderID" element={<RestaurantOrderInfo />} />
           <Route path="menu" element={<RestaurantMenu />} />
           <Route path="newitem" element={<RestaurantNewItem />} />
-          <Route path="*" element={<RestaurantDashboard />} /> */}
         </Route>
 
         <Route
@@ -105,25 +100,19 @@ function App() {
           path="management"
           element={<OutletProvider endpoint="/management" />}
         >
-          {/* <Route index element={<ManagementDashboard />} /> */}
+          <Route index element={<ManagementDashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<ManagementProfile />} />
-          {/* <Route path="customers" element={<ManagementCustomerList />} />
-          <Route
-            path="customer/:customerID"
-            element={<ManagementViewCustomer />}
-          />
-          <Route
-            path="customer/:customerID/orders"
-            element={<ManagementCustomerOrders />}
-        />*/}
+          <Route path="customers" element={<ManagementCustomerList />} />
+          <Route path="customer/:id/orders" element={<Orders userType="customer" />} />
 
           <Route path="restaurants" element={<RestaurantList />} />
+          <Route path="restaurant/:restaurantID" element={<ManagementViewRestaurant />} />
+          <Route path="restaurant/:id/orders" element={<Orders userType="restaurant" />} />
+          <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
+          <Route path="delivery-agent/:id" element={<ViewDeliveryAgent />} />
+          <Route path="delivery-agent/:id/orders" element={<Orders userType="deliverer" />} />
           {/* <Route
-            path="restaurant/:restaurantID"
-            element={<ManagementViewRestaurant />}
-          />
-          <Route
             path="restaurant/:restaurantID/orders"
             element={<ManagementRestaurantOrders />}
           />

@@ -188,7 +188,7 @@ export default () => {
               htmlFor="promo-code"
               className="block text-xl font-semibold text-gray-800 mb-2"
             >
-              Promo Code:
+              {offers.length ? "Promo Code:" : "No Offers available"}
             </label>
             <div className="flex gap-4">
               {offers.map((offer) => (

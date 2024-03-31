@@ -7,8 +7,8 @@ export default ({ order }) => {
   return (
     <>
       <Link
-        to={endpoint + "/order/" + order.uid}
-        className="lnk cursor-pointer"
+        to={endpoint != "/management" ? (endpoint + "/order/" + order.uid) : "#"}
+        className={endpoint != "/management" ? "lnk cursor-pointer" : "lnk"}
       >
         <div className="order-card flex flex-row items-center bg-white shadow-md rounded-md overflow-hidden mb-5 hover:translate-y-[-5px] transition-transform duration-300 ease-in-out hover:shadow-torange-200">
           <img
