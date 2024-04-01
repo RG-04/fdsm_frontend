@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-import Home from "./components/pages/Home";
+import Home from "./pages/common/Home";
 
 import CustomerSignup from "./pages/customer/Signup";
 import CustomerDashboard from "./pages/customer/Dashboard";
@@ -44,9 +44,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route exact path="/home" element={<Home />} />
-
         <Route
           path="customer"
           element={<OutletProvider endpoint="/customer" />}
@@ -63,7 +60,10 @@ function App() {
             path="recommendations"
             element={<RestaurantList showRecommended={true} />}
           />
-          <Route path="favourites" element={<RestaurantList showFavourites={true} />} />
+          <Route
+            path="favourites"
+            element={<RestaurantList showFavourites={true} />}
+          />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="orders" element={<Orders />} />
           <Route path="order/:id" element={<OrderInfo />} />
@@ -104,36 +104,36 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<ManagementProfile />} />
           <Route path="customers" element={<ManagementCustomerList />} />
-          <Route path="customer/:id/orders" element={<Orders userType="customer" />} />
+          <Route
+            path="customer/:id/orders"
+            element={<Orders userType="customer" />}
+          />
 
           <Route path="restaurants" element={<RestaurantList />} />
-          <Route path="restaurant/:restaurantID" element={<ManagementViewRestaurant />} />
-          <Route path="restaurant/:id/orders" element={<Orders userType="restaurant" />} />
-          <Route path="delivery-agents" element={<ManagementDeliveryAgentList />} />
-          <Route path="delivery-agent/:id" element={<ViewDeliveryAgent />} />
-          <Route path="delivery-agent/:id/orders" element={<Orders userType="deliverer" />} />
-          {/* <Route
-            path="restaurant/:restaurantID/orders"
-            element={<ManagementRestaurantOrders />}
+          <Route
+            path="restaurant/:restaurantID"
+            element={<ManagementViewRestaurant />}
+          />
+          <Route
+            path="restaurant/:id/orders"
+            element={<Orders userType="restaurant" />}
           />
           <Route
             path="delivery-agents"
             element={<ManagementDeliveryAgentList />}
           />
+          <Route path="delivery-agent/:id" element={<ViewDeliveryAgent />} />
           <Route
-            path="delivery-agent/:deliveryAgentID"
-            element={<ManagementViewDeliveryAgent />}
+            path="delivery-agent/:id/orders"
+            element={<Orders userType="deliverer" />}
           />
-          <Route
-            path="delivery-agent/:deliveryAgentID/orders"
-            element={<ManagementDeliveryAgentOrders />}
-          />
+          {/*
           <Route path="offers" element={<ManagementOffersList />} />
           <Route path="newoffer" element={<ManagementNewOffer />} />
           <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
 
-        <Route path="test" element={<OrderInfo />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
