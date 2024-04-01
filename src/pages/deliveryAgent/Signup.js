@@ -48,7 +48,7 @@ export default () => {
   };
 
   return (
-    <section className="bg-gray-100 flex justify-center items-center min-h-screen">
+    <section className="flex justify-center items-center min-h-fscr">
       <div className="bg-white rounded p-8 shadow-md w-96 my-5 lg:ml-1/3">
         <h2 className="text-2xl font-semibold text-center mb-4">
           Delivery Agent Sign Up

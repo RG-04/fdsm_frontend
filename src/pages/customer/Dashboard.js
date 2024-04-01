@@ -71,7 +71,7 @@ const CustomerDashboard = () => {
 
   return (
     <>
-      <div className="bg-white bg-opacity-80 rounded-lg shadow-lg p-8 mx-auto max-w-xl mt-32 text-center">
+      <div className="bg-opacity-80 rounded-lg shadow-lg p-8 mx-auto max-w-xl mt-32 text-center">
         <h2 className="text-4xl font-semibold text-gray-800">
           Welcome Back, {customerDetails.name}!
         </h2>

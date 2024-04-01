@@ -18,7 +18,7 @@ export default () => {
     customer: {},
     deliveryAddress: {},
   });
-  const timeDelta = ((new Date()).getTimezoneOffset()) * 60 * 1000;
+  const timeDelta = new Date().getTimezoneOffset() * 60 * 1000;
   const { id } = useParams();
 
   const [modal, setModal] = useState("");
@@ -130,8 +130,8 @@ export default () => {
   }
 
   return (
-    <>
-      <div className="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mx-auto max-w-xl my-10 text-left relative">
+    <section className="min-h-fscr bg-white bg-opacity-80 py-10">
+      <div className="bg-white rounded-lg shadow-lg p-8 mx-auto max-w-xl mb-10 text-left relative">
         <img
           src={process.env.REACT_APP_BACKEND_URL + order.restaurant.image}
           alt="Restaurant Image"
@@ -186,7 +186,11 @@ export default () => {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">ETA:</p>
-                  <p>{(new Date(order.etd)).toLocaleTimeString() + ", " + (new Date(order.etd)).toLocaleDateString()}</p>
+                  <p>
+                    {new Date(order.etd).toLocaleTimeString() +
+                      ", " +
+                      new Date(order.etd).toLocaleDateString()}
+                  </p>
                 </div>
               </>
             ) : (
@@ -194,13 +198,19 @@ export default () => {
             )}
             <div>
               <p className="text-gray-600 font-semibold">Order Time:</p>
-              <p>{(new Date(order.orderTime)).toLocaleTimeString() + ", " + (new Date(order.orderTime)).toLocaleDateString()}</p>
+              <p>
+                {new Date(order.orderTime).toLocaleTimeString() +
+                  ", " +
+                  new Date(order.orderTime).toLocaleDateString()}
+              </p>
             </div>
-            <p className="text-gray-400 font-semibold text-xs col-span-2">*All times displayed according to your local timezone.</p>
+            <p className="text-gray-400 font-semibold text-xs col-span-2">
+              *All times displayed according to your local timezone.
+            </p>
           </div>
           {isCustomer &&
-            order.isCompleted &&
-            !(order.isDelivererRated && order.isRestaurantRated) ? (
+          order.isCompleted &&
+          !(order.isDelivererRated && order.isRestaurantRated) ? (
             <div className="flex justify-between mt-8">
               {!order.isRestaurantRated ? (
                 <button
@@ -250,7 +260,7 @@ export default () => {
       </div>
 
       {isCustomer && !order.isCompleted ? (
-        <div className="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mx-auto max-w-xl mb-10 text-left relative">
+        <div className="bg-white rounded-lg shadow-lg p-8 mx-auto max-w-xl text-left relative">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Track Order
           </h2>
@@ -260,7 +270,10 @@ export default () => {
               destination={order.deliveryAddress}
             />
           </div>
-          <button className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500" onClick={() => window.location.reload()}>
+          <button
+            className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500"
+            onClick={() => window.location.reload()}
+          >
             Refresh
           </button>
         </div>
@@ -279,6 +292,6 @@ export default () => {
       ) : (
         <></>
       )}
-    </>
+    </section>
   );
 };

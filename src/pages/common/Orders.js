@@ -83,7 +83,7 @@ export default ({ userType = "" }) => {
 
   if (!orders.length) {
     return (
-      <div className="bg-white bg-opacity-90 py-12">
+      <div className="bg-opacity-90 py-12">
         <div className="container mx-auto px-4 w-3/4">
           <h2 className="text-2xl font-semibold text-gray-800 mb-8">
             No Orders
@@ -95,7 +95,7 @@ export default ({ userType = "" }) => {
 
   return (
     <>
-      <div className="bg-white bg-opacity-90 py-12">
+      <div className="min-h-fscr bg-white bg-opacity-80 py-12">
         <div className="container mx-auto px-4 w-3/4">
           <h2 className="text-2xl font-semibold text-gray-800 mb-8">Orders</h2>
 

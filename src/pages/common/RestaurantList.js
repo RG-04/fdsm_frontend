@@ -65,7 +65,7 @@ export default ({ showRecommended = false, showFavourites = false }) => {
           return true;
         }
         return false;
-      }
+      };
 
       return filter_rating() && filter_search() && filter_favourites();
     };
@@ -136,8 +136,8 @@ export default ({ showRecommended = false, showFavourites = false }) => {
   }
 
   return (
-    <section>
-      <div className="container mx-auto px-4 mt-4 flex justify-between">
+    <section className="min-h-fscr bg-white bg-opacity-80 py-10">
+      <div className="container mx-auto px-4 flex justify-between">
         <div className="flex-1 mr-4 bg-white shadow-md rounded-md">
           <input
             type="text"
@@ -174,7 +174,7 @@ export default ({ showRecommended = false, showFavourites = false }) => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 my-8">
+      <div className="container mx-auto px-4 mt-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {restaurants.filter(sieve(filters)).map((restaurant) => (
             <RestaurantCard

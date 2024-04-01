@@ -151,7 +151,7 @@ export default () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="bg-white bg-opacity-90 py-12">
+      <div className="bg-twhite bg-opacity-90 py-12">
         <div className="container mx-auto px-4 w-3/4">
           <div className="text-center">
             <h3 className="text-2xl font-semibold text-gray-800">
