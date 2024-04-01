@@ -6,7 +6,7 @@ import Loader from "../../components/Loader";
 export default ({ showRecommended = false, showFavourites = false }) => {
   const ratings = [2, 3, 3.5, 4, 4.5, 5];
   const [restaurants, setrestaurants] = useState([]);
-  const { authState, endpoint } = useOutletContext();
+  const { authState, endpoint, setAuthState } = useOutletContext();
   const [filters, setFilters] = useState({
     rating: 0,
     search: "",
@@ -103,9 +103,14 @@ export default ({ showRecommended = false, showFavourites = false }) => {
             setLoading(false);
           });
         } else {
+          let status = response.status;
           response.json().then((data) => {
             console.log(data);
             alert(data.error);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate(endpoint + "/login");
+            }
             setLoading(false);
           });
         }

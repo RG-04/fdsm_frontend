@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import Loader from "../../components/Loader";
 
 const RestaurantDashboard = () => {
-    const { authState } = useOutletContext();
+    const { authState, setAuthState } = useOutletContext();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
@@ -35,8 +35,13 @@ const RestaurantDashboard = () => {
                         setLoading(false);
                     });
                 } else {
+                    let status = response.status;
                     response.json().then((data) => {
                         alert(data.error);
+                        if (status === 801 || status === 800) {
+                            setAuthState({ token: "" });
+                            navigate("/restaurant/login");
+                        }
                         setLoading(false);
                     });
                 }

@@ -11,7 +11,7 @@ const ManagementViewRestaurant = () => {
 
     const [restaurantMenu, setRestaurantMenu] = useState([]);
     const [restaurantInfo, setRestaurantInfo] = useState({ reviews: [], timings: {} });
-    const { authState } = useOutletContext();
+    const { authState, setAuthState } = useOutletContext();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -43,9 +43,14 @@ const ManagementViewRestaurant = () => {
                         setLoading(false);
                     });
                 } else {
+                    let status = response.status;
                     response.json().then((data) => {
                         console.log(data);
                         alert(data.error);
+                        if (status === 801 || status === 800) {
+                            setAuthState({ token: "" });
+                            navigate("/management/login");
+                        }
                         setLoading(false);
                     });
                 }
@@ -163,6 +168,12 @@ const ManagementViewRestaurant = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="mt-8 w-full flex justify-center">
+                <button onClick={() => navigate("/management/restaurant/" + restaurantID + "/orders")} className="bg-torange-500 hover:bg-torange-600 text-white font-semibold py-2 px-12 rounded-md shadow-md transition duration-300">
+                    View Restaurant Orders
+                </button>
             </div>
 
             <div className="py-12">

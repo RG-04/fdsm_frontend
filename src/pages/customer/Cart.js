@@ -5,7 +5,7 @@ import { requestOrders } from "../../helpers/RequestOrders";
 import CartCard from "../../components/CartCard";
 
 export default () => {
-  const { authState } = useOutletContext();
+  const { authState, setAuthState } = useOutletContext();
   const [customerInfo, setCustomerInfo] = useState({});
   const [discount, setDiscount] = useState(0);
   const [code, setCode] = useState("");
@@ -101,9 +101,14 @@ export default () => {
             setLoading(false);
           });
         } else {
+          let status = response.status;
           response.json().then((data) => {
             console.log(data);
             alert(data.error);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate("/customer/login");
+            }
             setLoading(false);
           });
         }

@@ -6,7 +6,7 @@ import Loader from "../../components/Loader";
 import "./OrderInfo.css";
 
 export default () => {
-  const { endpoint, authState } = useOutletContext();
+  const { endpoint, authState, setAuthState } = useOutletContext();
   const isCustomer = endpoint === "/customer";
 
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ export default () => {
     customer: {},
     deliveryAddress: {},
   });
+  const timeDelta = ((new Date()).getTimezoneOffset()) * 60 * 1000;
   const { id } = useParams();
 
   const [modal, setModal] = useState("");
@@ -97,10 +98,15 @@ export default () => {
             setLoading(false);
           });
         } else {
+          let status = response.status;
           response.json().then((data) => {
             console.log(data);
-            setLoading(false);
             alert(data.error);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate(endpoint + "/login");
+            }
+            setLoading(false);
           });
         }
       })
@@ -180,7 +186,7 @@ export default () => {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">ETA:</p>
-                  <p>{order.etd.split('T')[1].split('.')[0]}</p>
+                  <p>{(new Date(order.etd)).toLocaleTimeString() + ", " + (new Date(order.etd)).toLocaleDateString()}</p>
                 </div>
               </>
             ) : (
@@ -188,8 +194,9 @@ export default () => {
             )}
             <div>
               <p className="text-gray-600 font-semibold">Order Time:</p>
-              <p>{order.orderTime.split('T')[1].split('.')[0]}</p>
+              <p>{(new Date(order.orderTime)).toLocaleTimeString() + ", " + (new Date(order.orderTime)).toLocaleDateString()}</p>
             </div>
+            <p className="text-gray-400 font-semibold text-xs col-span-2">*All times displayed according to your local timezone.</p>
           </div>
           {isCustomer &&
             order.isCompleted &&

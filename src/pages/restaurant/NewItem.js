@@ -9,7 +9,7 @@ const RestaurantNewItem = () => {
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState(null);
-    const { authState } = useOutletContext();
+    const { authState, setAuthState } = useOutletContext();
 
     const [loading, setLoading] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -41,9 +41,14 @@ const RestaurantNewItem = () => {
                     console.log(response);
                     setLoading(false);
                 } else {
+                    let status = response.status;
                     response.json().then((data) => {
                         console.log(data);
                         alert(data.error);
+                        if (status === 801 || status === 800) {
+                            setAuthState({ token: "" });
+                            navigate("/restaurant/login");
+                        }
                         navigate("/restaurant/login");
                     });
                 }

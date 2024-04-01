@@ -6,7 +6,7 @@ import Loader from "../../components/Loader";
 export default () => {
   const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { authState } = useOutletContext();
+  const { authState, setAuthState } = useOutletContext();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -57,9 +57,14 @@ export default () => {
             setLoading(false);
           });
         } else {
+          let status = response.status;
           response.json().then((data) => {
             console.log(data);
             alert(data.error);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate("/restaurant/login");
+            }
             setLoading(false);
           });
         }

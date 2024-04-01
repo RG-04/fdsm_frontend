@@ -14,7 +14,6 @@ import RestaurantProfile from "./pages/restaurant/Profile";
 import RestaurantDashboard from "./pages/restaurant/Dashboard";
 import RestaurantMenu from "./pages/restaurant/Menu";
 import RestaurantNewItem from "./pages/restaurant/NewItem";
-// import { RestaurantAuthContextProvider } from "./contexts/RestaurantAuthContext";
 
 import DeliveryAgentSignup from "./pages/deliveryAgent/Signup";
 import DeliveryAgentProfile from "./pages/deliveryAgent/Profile";
@@ -26,13 +25,8 @@ import ManagementViewRestaurant from "./pages/management/ViewRestaurant";
 import ManagementCustomerList from "./pages/management/CustomerList";
 import ManagementDeliveryAgentList from "./pages/management/DeliveryAgentList";
 import ViewDeliveryAgent from "./pages/management/ViewDeliveryAgent";
-// import ManagementRestaurantOrders from "./components/pages/Management/RestaurantOrders";
-// import ManagementDeliveryAgentList from "./components/pages/Management/DeliveryAgentList";
-// import ManagementViewDeliveryAgent from "./components/pages/Management/ViewDeliveryAgent";
-// import ManagementDeliveryAgentOrders from "./components/pages/Management/DeliveryAgentOrders";
-// import ManagementOffersList from "./components/pages/Management/OffersList";
-// import ManagementNewOffer from "./components/pages/Management/NewOffer";
-// import { ManagementAuthContextProvider } from "./contexts/ManagementAuthContext";
+import ManagementOffersList from "./pages/management/OffersList";
+import ManagementNewOffer from "./pages/management/NewOffer";
 
 import Login from "./pages/common/Login";
 import OutletProvider from "./outlet/outletProvider";
@@ -127,10 +121,9 @@ function App() {
             path="delivery-agent/:id/orders"
             element={<Orders userType="deliverer" />}
           />
-          {/*
+
           <Route path="offers" element={<ManagementOffersList />} />
           <Route path="newoffer" element={<ManagementNewOffer />} />
-          <Route path="*" element={<ManagementDashboard />} /> */}
         </Route>
 
         <Route path="/" element={<Home />} />

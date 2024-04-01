@@ -17,7 +17,7 @@ const CustomerViewRestaurant = () => {
   const [restaurantMenu, setRestaurantMenu] = useState([]);
   const [restaurantInfo, setRestaurantInfo] = useState({ reviews: [] });
   const [isFavorite, setIsFavorite] = useState(false);
-  const { authState } = useOutletContext();
+  const { authState, setAuthState } = useOutletContext();
 
   useEffect(() => {
     const url =
@@ -46,9 +46,14 @@ const CustomerViewRestaurant = () => {
             setIsFavorite(data.isFavourite);
           });
         } else {
+          alert(data.error);
+          let status = response.status;
+          if (status === 801 || status === 800) {
+            setAuthState({ token: "" });
+            navigate("/customer/login");
+          }
           response.json().then((data) => {
             console.log(data);
-            alert(data.error);
           });
         }
       })
