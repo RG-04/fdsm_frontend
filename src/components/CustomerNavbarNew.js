@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
+import logoNav from "../assets/logo-nav.png";
 
 const CustomerNavbarNew = ({ setAuthState, loggedIn = false }) => {
   const { clearCart } = useContext(CartContext);
@@ -15,7 +16,7 @@ const CustomerNavbarNew = ({ setAuthState, loggedIn = false }) => {
       <nav className="bg-gray-800 py-3">
         <div className="container mx-auto px-4 w-full">
           <div className="flex justify-between items-center">
-            <h1 className="text-white text-lg font-semibold">ea2go</h1>
+            <Link to="/" className="cursor-pointer"><img src={logoNav} alt="ea2go" className="h-4 text-white text-xs font-semibold" /></Link>
             <ul className="flex space-x-4 text-white">
               {loggedIn ? (
                 <>
@@ -73,7 +74,7 @@ const CustomerNavbarNew = ({ setAuthState, loggedIn = false }) => {
                 <>
                   <li>
                     <Link
-                      to="/home"
+                      to="/"
                       className="hover:text-gray-400 cursor-pointer"
                     >
                       Home

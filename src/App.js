@@ -127,6 +127,7 @@ function App() {
         </Route>
 
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </Router>
   );

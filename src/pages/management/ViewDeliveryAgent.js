@@ -3,6 +3,7 @@ import Input from "../../components/Input";
 import { useNavigate, useOutletContext, useParams } from "react-router";
 import Loader from "../../components/Loader";
 import Ratings from "../../components/Ratings";
+import profile from "../../assets/profile.png";
 
 export default () => {
     const navigate = useNavigate();
@@ -111,7 +112,7 @@ export default () => {
         <div className="px-4">
             <div className="bg-white rounded-lg shadow-md p-8 mx-auto max-w-md mt-10 mb-8 text-center">
                 <img
-                    src="https://source.unsplash.com/random/200x200"
+                    src={profile}
                     alt="Profile Image"
                     className="mx-auto rounded-full w-32 h-32 mb-4"
                 />

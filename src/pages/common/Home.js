@@ -5,7 +5,7 @@ export default () => {
     <div className="container mx-auto flex justify-center items-center h-screen">
       <div className="bg-white py-8 px-12 rounded-lg shadow-md space-y-10">
         <h1 className="text-4xl font-bold text-center mb-8 text-tblack">
-          Welcome to <span className="text-tyellow">eat</span>
+          Welcome to <span className="text-tyellow">ea</span>
           <span className="text-torange">2</span>
           <span className="text-tyellow">Go</span>
         </h1>
