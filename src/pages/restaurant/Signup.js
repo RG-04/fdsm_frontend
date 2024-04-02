@@ -29,12 +29,15 @@ export default () => {
     try {
       setLoading(true);
 
+      let data2 = data
+      data2.tags = data.tags.split(",").map((tag) => tag.trim());
+
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data2),
       });
 
       if (!response.ok) {
