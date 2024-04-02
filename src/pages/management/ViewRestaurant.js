@@ -131,6 +131,7 @@ const ManagementViewRestaurant = () => {
           console.log(response);
           alert("Payment successful");
           setIsProcessing(false);
+          window.location.reload();
         } else {
           let status = response.status;
           response.json().then((data) => {
@@ -218,7 +219,7 @@ const ManagementViewRestaurant = () => {
             <div className="flex items-center border-b-1 border-t-0 border-r-0 border-l-0 border-solid border-gray-300 pb-6 pt-6">
               <i class="fa-solid fa-money-bill text-xl mr-4 text-gray-700"></i>
               <p className="text-lg text-gray-800t">
-                Due: Rs. {restaurantInfo.due ? restaurantInfo.due : 0}
+                Due: Rs. {restaurantInfo.pendingMoney ? restaurantInfo.pendingMoney : 0}
               </p>
             </div>
           </div>
@@ -235,7 +236,7 @@ const ManagementViewRestaurant = () => {
         >
           View Restaurant Orders
         </button>
-        {restaurantInfo.due ? (
+        {restaurantInfo.pendingMoney ? (
           <button
             onClick={handleDuePayment}
             disabled={isProcessing}
