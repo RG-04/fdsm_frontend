@@ -16,6 +16,7 @@ const ManagementViewRestaurant = () => {
   });
   const { authState, setAuthState } = useOutletContext();
   const [loading, setLoading] = useState(true);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -114,6 +115,42 @@ const ManagementViewRestaurant = () => {
     return sieve_inner;
   };
 
+  const handleDuePayment = () => {
+    setIsProcessing(true);
+
+    const url = process.env.REACT_APP_API_URL + "/management/markpaid/restaurant/" + restaurantID;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${authState.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(response);
+          alert("Payment successful");
+          setIsProcessing(false);
+        } else {
+          let status = response.status;
+          response.json().then((data) => {
+            console.log(data);
+            if (status === 801 || status === 800) {
+              setAuthState({ token: "" });
+              navigate("/management/login");
+            }
+            alert(data.error);
+            setIsProcessing(false);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("An error occurred. Please try again later.");
+        setIsProcessing(false);
+      });
+  };
+
   const RestaurantHeader = () => {
     return (
       <header
@@ -177,6 +214,13 @@ const ManagementViewRestaurant = () => {
             <div className="flex items-center border-b-1 border-t-0 border-r-0 border-l-0 border-solid border-gray-300 pb-6 pt-6">
               <Ratings rating={restaurantInfo.rating} />
             </div>
+
+            <div className="flex items-center border-b-1 border-t-0 border-r-0 border-l-0 border-solid border-gray-300 pb-6 pt-6">
+              <i class="fa-solid fa-money-bill text-xl mr-4 text-gray-700"></i>
+              <p className="text-lg text-gray-800t">
+                Due: Rs. {restaurantInfo.due ? restaurantInfo.due : 0}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -186,10 +230,23 @@ const ManagementViewRestaurant = () => {
           onClick={() =>
             navigate("/management/restaurant/" + restaurantID + "/orders")
           }
+          disabled={isProcessing}
           className="bg-torange-500 hover:bg-torange-600 text-white font-semibold py-2 px-12 rounded-md shadow-md transition duration-300"
         >
           View Restaurant Orders
         </button>
+        {restaurantInfo.due ? (
+          <button
+            onClick={handleDuePayment}
+            disabled={isProcessing}
+            className="bg-torange-500 hover:bg-torange-600 text-white font-semibold py-2 px-12 rounded-md shadow-md transition duration-300 ml-4"
+          >
+            Pay Due Amount
+          </button>
+        ) : (
+          <></>
+        )
+        }
       </div>
 
       <div className="py-12">
