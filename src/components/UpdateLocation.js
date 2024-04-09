@@ -29,7 +29,7 @@ const UpdateLocation = ({ authState, setIsClicked, location, setLocation, isProc
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${authState.token}`,
             },
-            body: JSON.stringify(location),
+            body: JSON.stringify({ location }),
         })
             .then((response) => {
                 if (response.ok) {
