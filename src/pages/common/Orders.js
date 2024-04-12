@@ -40,11 +40,11 @@ export default ({ userType = "" }) => {
           response.json().then((data) => {
             console.log(data);
             setOrders(data);
-            setPendingOrders(
-              data.filter((order) => order.isCompleted === false)
-            );
             setDeliveredOrders(
-              data.filter((order) => order.isCompleted === true)
+              data.filter((order) => order.status === 0)
+            );
+            setPendingOrders(
+              data.filter((order) => !(order.status === 0))
             );
             setLoading(false);
           });

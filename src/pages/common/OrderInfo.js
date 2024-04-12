@@ -9,6 +9,8 @@ export default () => {
   const { endpoint, authState, setAuthState } = useOutletContext();
   const isCustomer = endpoint === "/customer";
 
+  const statusList = ["Delivered", "Out For Delivery", "To be Collected", "Preparing"]
+
   const navigate = useNavigate();
 
   const [order, setOrder] = useState({
@@ -68,6 +70,14 @@ export default () => {
         alert("An error occurred. Please try again later.");
       });
   };
+
+  const handleReadyToCollect = () => {
+    //TODO
+  }
+
+  const handleCollectOrder = () => {
+    //TODO
+  }
 
   useEffect(() => {
     const url = process.env.REACT_APP_API_URL + endpoint + `/order/${id}`;
@@ -156,7 +166,7 @@ export default () => {
             </div>
             <div>
               <p className="text-gray-600 font-semibold">Order Status:</p>
-              <p>{order.isCompleted ? "Delivered" : "Pending"}</p>
+              <p>{order.status ? "Delivered" : "Pending"}</p>
             </div>
             <div className="col-span-2">
               <p className="text-gray-600 font-semibold">Item List:</p>
@@ -178,7 +188,7 @@ export default () => {
                 {order.total}
               </p>
             </div>
-            {isCustomer && !order.isCompleted ? (
+            {isCustomer && !(order.status === 0) ? (
               <>
                 <div>
                   <p className="text-gray-600 font-semibold">OTP:</p>
@@ -209,8 +219,8 @@ export default () => {
             </p>
           </div>
           {isCustomer &&
-          order.isCompleted &&
-          !(order.isDelivererRated && order.isRestaurantRated) ? (
+            order.status === 0 &&
+            !(order.isDelivererRated && order.isRestaurantRated) ? (
             <div className="flex justify-between mt-8">
               {!order.isRestaurantRated ? (
                 <button
@@ -237,7 +247,7 @@ export default () => {
           ) : (
             <></>
           )}
-          {endpoint === "/delivery-agent" && !order.isCompleted ? (
+          {endpoint === "/delivery-agent" && order.status === 1 ? (
             <div className="flex justify-center mt-8">
               <input
                 type="text"
@@ -256,10 +266,34 @@ export default () => {
           ) : (
             <></>
           )}
+          {endpoint === "/restaurant" && order.status === 3 ? (
+            <div className="flex justify-between mt-8">
+              <button
+                className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500"
+                onClick={handleReadyToCollect}
+              >
+                Ready to Collect
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
+          {endpoint === "/delivery-agent" && order.status === 2 ? (
+            <div className="flex justify-between mt-8">
+              <button
+                className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500"
+                onClick={handleCollectOrder}
+              >
+                Collect Order
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
 
-      {isCustomer && !order.isCompleted ? (
+      {isCustomer && order.status === 1 ? (
         <div className="bg-white rounded-lg shadow-lg p-8 mx-auto max-w-xl text-left relative">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Track Order
