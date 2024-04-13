@@ -19,7 +19,7 @@ const UpdateLocation = ({
     setLocation({ ...location, lon: e.target.value });
   };
 
-  const submitLocation = () => {
+  const submitLocation = (location) => {
     setIsProcessing(true);
     const url = process.env.REACT_APP_API_URL + "/delivery-agent/location";
 
@@ -32,6 +32,7 @@ const UpdateLocation = ({
       !location.lon
     ) {
       alert("Invalid location. Please enter a valid location.");
+      setIsProcessing(false);
       return;
     }
 
@@ -71,11 +72,12 @@ const UpdateLocation = ({
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position.coords.latitude);
       console.log(position.coords.longitude);
-      setLocation({
+      const loc = {
         lat: position.coords.latitude,
         lon: position.coords.longitude,
-      });
-      setIsProcessing(false);
+      };
+      setLocation(loc);
+      submitLocation(loc);
     });
   };
 
@@ -97,7 +99,7 @@ const UpdateLocation = ({
           className="border-solid border-gray-300 rounded-md w-1/4 px-4 py-2 mx-4 focus:outline-none focus:border-torange"
         />
         <button
-          className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500"
+          className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500 ml-4 disabled:bg-gray-300"
           onClick={useCurrentLocation}
           disabled={isProcessing}
         >
@@ -106,11 +108,11 @@ const UpdateLocation = ({
       </div>
       <div className="flex justify-center mt-4 w-full">
         <button
-          className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500 ml-4"
-          onClick={submitLocation}
+          className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500 ml-4 disabled:bg-gray-300"
+          onClick={() => submitLocation(location)}
           disabled={isProcessing}
         >
-          Submit
+          {"Submit" + (isProcessing ? "ting" : "")}
         </button>
       </div>
     </>
