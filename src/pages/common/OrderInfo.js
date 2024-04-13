@@ -9,7 +9,12 @@ export default () => {
   const { endpoint, authState, setAuthState } = useOutletContext();
   const isCustomer = endpoint === "/customer";
 
-  const statusList = ["Delivered", "Out For Delivery", "To be Collected", "Preparing"]
+  let statusList = [];
+  if (isCustomer) {
+    statusList = ["Delivered", "Out For Delivery", "Preparing", "Preparing"];
+  } else {
+    statusList = ["Delivered", "Out For Delivery", "To be Collected", "Preparing"];
+  }
 
   const navigate = useNavigate();
 
@@ -40,7 +45,7 @@ export default () => {
   console.log(order);
 
   const deliverOrder = () => {
-    const url = process.env.REACT_APP_API_URL + endpoint + "/order/" + id;
+    const url = process.env.REACT_APP_API_URL + endpoint + "/order/" + id + "?action=deliver";
 
     setLoading(true);
 
@@ -72,11 +77,63 @@ export default () => {
   };
 
   const handleReadyToCollect = () => {
-    //TODO
+    const url = process.env.REACT_APP_API_URL + endpoint + "/order/" + id;
+
+    setLoading(true);
+
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${authState.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Order is now ready to collect");
+          window.location.reload();
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+            alert(data.error);
+            setLoading(false);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+        alert("An error occurred. Please try again later.");
+      });
   }
 
   const handleCollectOrder = () => {
-    //TODO
+    const url = process.env.REACT_APP_API_URL + endpoint + "/order/" + id + "?action=collect";
+
+    setLoading(true);
+
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${authState.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Order collected successfully");
+          window.location.reload();
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+            alert(data.error);
+            setLoading(false);
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+        alert("An error occurred. Please try again later.");
+      });
   }
 
   useEffect(() => {
@@ -166,14 +223,14 @@ export default () => {
             </div>
             <div>
               <p className="text-gray-600 font-semibold">Order Status:</p>
-              <p>{order.status ? "Delivered" : "Pending"}</p>
+              <p>{statusList[order.status]}</p>
             </div>
             <div className="col-span-2">
               <p className="text-gray-600 font-semibold">Item List:</p>
               <ul>
                 {order.items.map((item) => (
-                  <li>
-                    {item.dish.name} x {item.quantity}
+                  <li className="whitespace-pre">
+                    {item.dish.name}     x {item.quantity}
                   </li>
                 ))}
               </ul>
@@ -201,6 +258,26 @@ export default () => {
                       ", " +
                       new Date(order.etd).toLocaleDateString()}
                   </p>
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
+            {endpoint === "/customer" ? (
+              <>
+                <div>
+                  <p className="text-gray-600 font-semibold">Payment Status:</p>
+                  <p>{order.isPaid ? "Paid" : "Not Paid"}</p>
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
+            {endpoint === "/delivery-agent" ? (
+              <>
+                <div>
+                  <p className="text-gray-600 font-semibold">Payment Status:</p>
+                  <p>{order.isPaid ? "Paid" : "To be collected"}</p>
                 </div>
               </>
             ) : (

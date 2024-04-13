@@ -17,7 +17,7 @@ export const requestOrders = async (cartItems, token, address, discount, code) =
         return;
     }
 
-    const url = process.env.REACT_APP_BACKEND_URL + "/api/customer/order";
+    const url = process.env.REACT_APP_API_URL + "/customer/order";
 
     let successfulOrders = [];
     let failedOrders = [];

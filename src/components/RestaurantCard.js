@@ -14,7 +14,7 @@ export default ({ data, endpoint }) => {
           className="w-full h-48 object-cover"
         />
         <div className="p-4">
-          <h2 className="text-xl font-semibold text-gray-800">{data.name}</h2>
+          <h2 className="text-xl font-semibold text-gray-800">{data.name.slice(0, 24) + (data.name.length >= 24 ? "..." : "")}</h2>
           <p className="text-gray-600 mt-2">
             Rating:{" "}
             <Ratings rating={data.rating} name={data.name + "-ratings"} />
