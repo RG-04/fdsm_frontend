@@ -54,24 +54,15 @@ export default () => {
   };
 
   const handleProceed = () => {
-    if (paymentMethod === "Cash") {
-      setLoading(true);
-      requestOrders(cartItems, authState.token, address, discount, code).then(
-        ({ successfulOrders, failedOrders }) => {
-          successfulOrders.map((restaurantID) => {
-            removeOrder(restaurantID);
-          });
-
-          if (failedOrders.length > 0) {
-            alert(
-              "Failed to place orders for some restaurants. Please try again later."
-            );
-          }
-          setLoading(false);
-          navigate("/customer/orders");
-        }
-      );
+    let isPaid = false;
+    if (paymentMethod === "Card") {
+      isPaid = true;
     }
+    setLoading(true);
+    requestOrders(cartItems, totalPrice, authState.token, address, discount, code, isPaid, removeOrder, navigate).then(
+      () =>
+        setLoading(false)
+    );
   };
 
   useEffect(() => {
