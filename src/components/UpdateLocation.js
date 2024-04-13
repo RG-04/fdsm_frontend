@@ -7,6 +7,8 @@ const UpdateLocation = ({
   setLocation,
   isProcessing,
   setIsProcessing,
+  isWorking,
+  close,
 }) => {
   const handleLatitudeChange = (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ const UpdateLocation = ({
     setLocation({ ...location, lon: e.target.value });
   };
 
-  const submitLocation = (location) => {
+  const submitLocation = (location, isNormalUpdate = true) => {
     setIsProcessing(true);
     const url = process.env.REACT_APP_API_URL + "/delivery-agent/location";
 
@@ -47,24 +49,56 @@ const UpdateLocation = ({
       .then((response) => {
         if (response.ok) {
           console.log(response);
-          alert("Location updated successfully");
-          setIsClicked(false);
-          setIsProcessing(false);
-          window.location.reload();
+          if (isNormalUpdate) {
+            alert("Location updated successfully");
+            setIsClicked(false);
+            setIsProcessing(false);
+            window.location.reload();
+          }
         } else {
           response.json().then((data) => {
             console.log(data);
             alert(data.error);
-            setIsProcessing(false);
+            if (isNormalUpdate) {
+              setIsProcessing(false);
+            } else {
+              window.location.reload();
+            }
           });
-          setIsProcessing(false);
         }
       })
       .catch((error) => {
         console.log(error);
         alert("An error occurred. Please try again later.");
-        setIsProcessing(false);
+        if (isNormalUpdate) {
+          setIsProcessing(false);
+        } else {
+          window.location.reload();
+        }
       });
+  };
+
+  const enableTracking = () => {
+    navigator.geolocation.watchPosition(
+      (position) => {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+        const loc = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        };
+        setLocation(loc);
+        submitLocation(loc, false);
+      },
+      (error) => {
+        console.log(error);
+        alert("An error occurred. Please try again later.");
+        window.location.reload();
+      },
+      { timeout: 5000 }
+    );
+
+    close();
   };
 
   const useCurrentLocation = () => {
@@ -114,6 +148,16 @@ const UpdateLocation = ({
         >
           {"Submit" + (isProcessing ? "ting" : "")}
         </button>
+        {isWorking ? (
+          <button
+            className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-500 ml-4"
+            onClick={enableTracking}
+          >
+            Enable Tracking
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
