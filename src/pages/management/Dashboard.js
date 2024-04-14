@@ -113,6 +113,16 @@ const ManagementDashboard = () => {
             </Link>
           </div>
         </div>
+        <div className="mt-8 flex items-center justify-between w-full">
+          <div className="w-1/2">
+            <Link
+              to="balances"
+              className="bg-torange-400 hover:bg-torange-600 text-white font-semibold py-2 px-6 mx-auto rounded-lg shadow-md cursor-pointer transition duration-300"
+            >
+              Balance Sheet
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );

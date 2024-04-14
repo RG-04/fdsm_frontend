@@ -27,6 +27,7 @@ import ManagementDeliveryAgentList from "./pages/management/DeliveryAgentList";
 import ViewDeliveryAgent from "./pages/management/ViewDeliveryAgent";
 import ManagementOffersList from "./pages/management/OffersList";
 import ManagementNewOffer from "./pages/management/NewOffer";
+import ManagementBalances from "./pages/management/Balances";
 
 import Login from "./pages/common/Login";
 import OutletProvider from "./outlet/outletProvider";
@@ -124,6 +125,7 @@ function App() {
 
           <Route path="offers" element={<ManagementOffersList />} />
           <Route path="newoffer" element={<ManagementNewOffer />} />
+          <Route path="balances" element={<ManagementBalances />} />
         </Route>
 
         <Route path="/" element={<Home />} />
