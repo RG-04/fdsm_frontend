@@ -39,6 +39,7 @@ export default ({ userType = "" }) => {
           console.log(response);
           response.json().then((data) => {
             console.log(data);
+            data.sort((a, b) => b.orderTime.localeCompare(a.orderTime));
             setOrders(data);
             setDeliveredOrders(
               data.filter((order) => order.status === 0)

@@ -62,7 +62,7 @@ const DeliveryAgentDashboard = () => {
 
         console.log(error);
 
-        navigate("/delivery-agent");
+        navigate("/delivery-agent/login");
         alert("An error occurred. Please try again later.");
         setLoading(false);
       });

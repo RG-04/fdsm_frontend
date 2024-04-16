@@ -89,13 +89,17 @@ const placeOrder = async (splitOrder, token, address, code, isPaid, removeOrder,
     });
 
     if (failedOrders.length > 0) {
-        alert("Failed to place orders for some restaurants. Please try again later.");
+        if (isPaid === 0)
+            alert("Failed to place orders for some restaurants. Please try again later.");
+        else
+            alert("Failed to place orders for some restaurants. Your money will be refunded within 3 working days.");
     }
     navigate("/customer/orders");
 }
 
 export const requestOrders = async (cartItems, totalPrice, token, address, discount, code, isPaid, removeOrder, navigate) => {
     console.log("CartItems", cartItems);
+    console.log("isPaid", isPaid);
     let splitOrder = {};
     for (let i = 0; i < cartItems.length; i++) {
         if (splitOrder[cartItems[i].restaurantID]) {
@@ -133,10 +137,12 @@ export const requestOrders = async (cartItems, totalPrice, token, address, disco
             } else {
                 console.log("Failed to initiate transaction:", response.status);
                 alert("Failed to make payment. Please try again later.");
+                return;
             }
         } catch (error) {
             console.log("Error occurred while making payment:", error);
             alert("Failed to make payment. Please try again later.");
+            return;
         }
 
         var options = {
@@ -149,7 +155,7 @@ export const requestOrders = async (cartItems, totalPrice, token, address, disco
             "order_id": checkoutData.transaction.transactionID,
             "handler": (response) => handlePaymentResponse(response, splitOrder, token, address, code, isPaid, removeOrder, navigate),
             "prefill": {
-                "name": "Gaurav Kumar", //your customer's name
+                "name": "Your Name", //your customer's name
                 "email": "gaurav.kumar@example.com",
                 "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
             },

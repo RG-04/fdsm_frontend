@@ -53,7 +53,7 @@ const RestaurantDashboard = () => {
 
                 console.log(error);
 
-                navigate("/restaurant");
+                navigate("/restaurant/login");
                 alert("An error occurred. Please try again later.");
                 setLoading(false);
             });

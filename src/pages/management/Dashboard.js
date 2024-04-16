@@ -55,7 +55,7 @@ const ManagementDashboard = () => {
 
         console.log(error);
 
-        navigate("/management");
+        navigate("/management/login");
         alert("An error occurred. Please try again later.");
         setLoading(false);
       });

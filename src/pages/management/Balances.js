@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import Loader from '../../components/Loader';
 
 const Balances = () => {
     const [balances, setBalances] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { setAuthState } = useOutletContext();
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August",
         "September", "October", "November", "December"];
 
@@ -27,6 +28,7 @@ const Balances = () => {
                     console.log(response);
                     response.json().then((data) => {
                         console.log(data);
+                        data.sort((a, b) => b.year * 100 + b.month - a.year * 100 - a.month);
                         setBalances(data);
                         setLoading(false);
                     });
@@ -75,7 +77,7 @@ const Balances = () => {
                                     <td className="py-2">{monthNames[balance.month] + " " + balance.year}</td>
                                     <td className="py-2">Rs. {balance.inHand}</td>
                                     <td className="py-2">Rs. {balance.toCollect}</td>
-                                    <td className="text-red-500 py-2">Rs. {balance.toGive}</td>
+                                    <td className={"py-2 " + (balance.toGive > 0 ? "text-red-500" : "")}>Rs. {balance.toGive}</td>
                                     <td className="text-green-500 py-2">Rs. {balance.inHand + balance.toCollect - balance.toGive}</td>
                                 </tr>
                             ))}

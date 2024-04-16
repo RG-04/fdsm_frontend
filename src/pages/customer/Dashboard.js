@@ -55,7 +55,7 @@ const CustomerDashboard = () => {
 
         console.log(error);
 
-        navigate("/customer");
+        navigate("/customer/login");
         alert("An error occurred. Please try again later.");
         setLoading(false);
       });
