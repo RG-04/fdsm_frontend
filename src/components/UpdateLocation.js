@@ -137,7 +137,7 @@ const UpdateLocation = ({
           onClick={useCurrentLocation}
           disabled={isProcessing}
         >
-          use current location
+          Use current location
         </button>
       </div>
       <div className="flex justify-center mt-4 w-full">

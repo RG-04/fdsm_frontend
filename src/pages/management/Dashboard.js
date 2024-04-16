@@ -15,6 +15,7 @@ const ManagementDashboard = () => {
     let ignore = false;
 
     if (authState.token === "") {
+      alert("Please login to continue.")
       navigate("/management/login");
       return;
     }
@@ -114,7 +115,7 @@ const ManagementDashboard = () => {
           </div>
         </div>
         <div className="mt-8 flex items-center justify-between w-full">
-          <div className="w-1/2">
+          <div className="w-full">
             <Link
               to="balances"
               className="bg-torange-400 hover:bg-torange-600 text-white font-semibold py-2 px-6 mx-auto rounded-lg shadow-md cursor-pointer transition duration-300"
