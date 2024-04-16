@@ -304,7 +304,7 @@ const RestaurantMenu = () => {
           <div className="flex justify-evenly mt-8">
             <button
               disabled={isProcessing}
-              onClick={() => navigate("/restaraunt/newitem")}
+              onClick={() => navigate("/restaurant/newitem")}
               className="bg-tblack hover:bg-tblack-200 text-white font-semibold py-3 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Add New Item
