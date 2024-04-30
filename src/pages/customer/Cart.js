@@ -59,10 +59,17 @@ export default () => {
       isPaid = true;
     }
     setLoading(true);
-    requestOrders(cartItems, totalPrice, authState.token, address, discount, code, isPaid, removeOrder, navigate).then(
-      () =>
-        setLoading(false)
-    );
+    requestOrders(
+      cartItems,
+      totalPrice,
+      authState.token,
+      address,
+      discount,
+      code,
+      isPaid,
+      removeOrder,
+      navigate
+    ).then(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -139,6 +146,10 @@ export default () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    console.log("Payment Method", paymentMethod);
+  }, [paymentMethod]);
 
   if (cartItems.length === 0) {
     return (
@@ -221,24 +232,25 @@ export default () => {
               </h3>
               <div className="flex items-center space-x-4">
                 <input
-                  onChange={() => setPaymentMethod("Cash")}
+                  onChange={(e) => setPaymentMethod("Cash")}
                   type="radio"
                   id="card"
                   name="payment-method"
                   value="Cash"
                   className="checked:ring-blue-500 checked:ring-2 h-4 w-4 text-blue-600 border-gray-300 border-solid rounded-lg"
-                  checked
+                  checked={paymentMethod === "Cash"}
                 />
                 <label htmlFor="Cash" className="text-gray-700">
                   Cash
                 </label>
                 <input
-                  onChange={() => setPaymentMethod("Card")}
+                  onChange={(e) => setPaymentMethod("Card")}
                   type="radio"
                   id="paypal"
                   name="payment-method"
                   value="Card"
                   className="checked:ring-blue-500 checked:ring-2 h-4 w-4 text-blue-600 border-gray-300 border-solid rounded-lg"
+                  checked={paymentMethod === "Card"}
                 />
                 <label htmlFor="Card" className="text-gray-700">
                   Card
